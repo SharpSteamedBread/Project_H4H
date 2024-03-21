@@ -18,6 +18,8 @@ public class CommandCheck : MonoBehaviour
 
     public Animator animPlayer;
 
+    private bool attack1_1Triggered = false;
+
     private void Awake()
     {
         
@@ -34,6 +36,8 @@ public class CommandCheck : MonoBehaviour
     {
         if(objCommandEnterUI.activeSelf == true)
         {
+            Time.timeScale = 0.3f;
+
             CorrectCommand();
 
             if (Input.GetKeyDown(KeyCode.Q))
@@ -84,10 +88,25 @@ public class CommandCheck : MonoBehaviour
 
     private void CorrectCommand()
     {
-        if(inputCommand == "EEQQ")
+
+        if (inputCommand == ("EE") && !attack1_1Triggered)
         {
-            animPlayer.SetTrigger("doAttack");
+            animPlayer.SetTrigger("doAttack1_1");
+            attack1_1Triggered = true;
+        }
+
+        if (inputCommand.Contains("QQ"))
+        {
+            animPlayer.SetTrigger("doAttack1_2");
+        }
+
+        if (inputCommand == "EEQQ")
+        {
+           
+
+            animPlayer.SetTrigger("doAttack1_3");
             inputCommand = "";
+            attack1_1Triggered = false;
 
 
             foreach (Transform child in assortObjCommandKey.transform)
@@ -99,6 +118,7 @@ public class CommandCheck : MonoBehaviour
 
 
             objCommandEnterUI.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 }

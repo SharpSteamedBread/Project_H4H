@@ -21,6 +21,11 @@ public class CommandEnterUI : MonoBehaviour
             isCommandUIOpen = !isCommandUIOpen;
             objCommandEnterUI.SetActive(isCommandUIOpen!);
         }
+
+        if(isCommandUIOpen == false)
+        {
+            Time.timeScale = 1f;
+        }
     }
 
 
