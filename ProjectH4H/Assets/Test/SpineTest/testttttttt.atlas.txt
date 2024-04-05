@@ -1,0 +1,48 @@
+testttttttt.png
+size:1497,354
+filter:Linear,Linear
+pma:true
+레이어 18
+bounds:747,177,175,282
+offsets:1,5,177,288
+rotate:90
+레이어 19
+bounds:1240,7,114,148
+offsets:1,2,117,151
+rotate:90
+레이어 20
+bounds:2,127,225,473
+offsets:1,8,227,483
+rotate:90
+레이어 21
+bounds:1031,225,127,271
+offsets:1,1,129,273
+rotate:90
+레이어 22
+bounds:1410,85,85,267
+offsets:4,1,107,269
+레이어 23
+bounds:399,22,103,351
+offsets:1,1,105,353
+rotate:90
+레이어 24
+bounds:752,32,143,283
+offsets:2,2,148,287
+rotate:90
+레이어 25
+bounds:1037,134,89,213
+offsets:1,1,93,215
+rotate:90
+레이어 26
+bounds:477,140,268,212
+offsets:1,2,270,216
+레이어 27
+bounds:1037,6,115,201
+offsets:2,1,118,203
+rotate:90
+레이어 28
+bounds:1304,123,104,229
+offsets:1,3,107,234
+레이어 42
+bounds:2,2,395,123
+offsets:1,0,396,123
