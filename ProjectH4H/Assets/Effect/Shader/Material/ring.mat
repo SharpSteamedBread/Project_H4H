@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondaryTex:
-        m_Texture: {fileID: 2800000, guid: b36c0e56de1cb104e8e60632738edc4a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -115,8 +115,8 @@ Material:
     - _Contrast: 1
     - _Cull: 2
     - _Culling: 2
-    - _Cutoff: 0.6
-    - _CutoffSoftness: 0.12
+    - _Cutoff: 0.533
+    - _CutoffSoftness: 0.532
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DisplacementAmount: 0
