@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 273287519}
   - component: {fileID: 273287521}
   - component: {fileID: 273287520}
+  - component: {fileID: 273287522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -220,6 +221,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &273287522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273287516}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40cb6762216a4cc4c8f123e56424dc04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: 10
+  playerAnim: {fileID: 443753548}
+  playerSprite: {fileID: 443753546}
+  playerLAPartHP: 100
+  playerRAPartHP: 100
+  playerLLPartHP: 100
+  playerRLPartHP: 100
+  playerATK: 0
+  playerCRIT: 0
 --- !u!1 &443753545
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 729200651}
   - component: {fileID: 729200650}
+  - component: {fileID: 729200652}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -461,6 +484,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &729200652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729200649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1522563815
 GameObject:
   m_ObjectHideFlags: 0
