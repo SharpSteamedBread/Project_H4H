@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+
 
 namespace MonsterNormalOwnedStates
 {
@@ -31,15 +30,9 @@ namespace MonsterNormalOwnedStates
                 entity.ChangeState(EnemyStates.EnemyNormal_Attack);
             }
 
-            else if (distance <= entity.ChaseArea.x / 2)
+            else if(distance <= entity.ChaseArea.x / 2)
             {
                 entity.ChangeState(EnemyStates.EnemyNormal_Move);
-            }
-
-            else
-            {
-                entity.ChangeState(EnemyStates.EnemyNormal_Idle);
-                entity.Move();
             }
         }
 
@@ -49,21 +42,51 @@ namespace MonsterNormalOwnedStates
         }
     }
 
+
     public class EnemyNormal_Move : State<EnemyStatus>
     {
         public override void Enter(EnemyStatus entity)
         {
-            Debug.Log("플레이어 추격 시작");
+            Debug.Log("몬스터가 포착");
         }
 
         public override void Execute(EnemyStatus entity)
         {
             Debug.Log("몬스터 추격중");
+
+            entity.Rigid.velocity = new Vector2(entity.NextMove * entity.EnemyMove, entity.Rigid.velocity.y);
+
+            Debug.Log(entity.NextMove);
+
+            switch (entity.NextMove)
+            {
+                case -1:
+                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * 1f, entity.transform.localScale.y, entity.transform.localScale.z);
+                    entity.EnemyAnim.SetBool("isMoving", true);
+                    break;
+
+                case 0:
+                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * 1f, entity.transform.localScale.y, entity.transform.localScale.z);
+                    entity.EnemyAnim.SetBool("isMoving", false);
+                    break;
+
+                case 1:
+                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * -1f, entity.transform.localScale.y, entity.transform.localScale.z);
+                    entity.EnemyAnim.SetBool("isMoving", true);
+                    break;
+            }
+
+            float distance = Vector2.Distance(entity.TargetPos.position, entity.transform.position);
+
+            if (distance >= entity.ChaseArea.x / 2)
+            {
+                entity.ChangeState(EnemyStates.EnemyNormal_Idle);
+            }
         }
 
         public override void Exit(EnemyStatus entity)
         {
-            Debug.Log("몬스터 추격 중지");
+            Debug.Log("움직임 종료");
         }
     }
 

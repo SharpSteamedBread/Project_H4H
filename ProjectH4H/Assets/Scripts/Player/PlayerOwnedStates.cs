@@ -68,7 +68,7 @@ namespace PlayerOwnedStates
 
         public override void Exit(PlayerStatus entity)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("∏ÿ√Á!");
         }
     }
 

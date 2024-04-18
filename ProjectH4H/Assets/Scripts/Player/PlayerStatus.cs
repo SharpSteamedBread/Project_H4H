@@ -8,7 +8,7 @@ public enum PlayerStates { Player_Idle, Player_Run, Player_Attack }
 public class PlayerStatus : BaseGameEntity
 {
     [Header("플레이어 움직임")]
-    [SerializeField] private float playerMove;
+    [SerializeField] private float playerMove = 10.0f;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Transform playerSprite;
@@ -27,11 +27,12 @@ public class PlayerStatus : BaseGameEntity
     private State<PlayerStatus>[] states;
     private StateMachine<PlayerStatus> stateMachine;
 
-    private PlayerStates currentAction;
+    private PlayerStates currentState;
+    public PlayerStates CurrentState => currentState;
 
     public float PlayerMove
     {
-        set => playerMove = 10.0f;
+        set => playerMove = value;
         get => playerMove;
     }
 
@@ -47,12 +48,6 @@ public class PlayerStatus : BaseGameEntity
         get => playerSprite;
     }
 
-    public PlayerStates CurrentState
-    {
-        set => currentAction = value;
-        get => currentAction;
-    }
-
     public override void Setup()
     {
         states = new State<PlayerStatus>[3];
@@ -63,8 +58,6 @@ public class PlayerStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<PlayerStatus>();
         stateMachine.Setup(this, states[(int)PlayerStates.Player_Idle]);
-
-        playerMove = 10.0f;
     }
 
     public override void Updated()
@@ -74,6 +67,7 @@ public class PlayerStatus : BaseGameEntity
 
     public void ChangeState(PlayerStates newState)
     {
+        currentState = newState;
         stateMachine.ChangeState(states[(int)newState]);
     }
 
@@ -88,7 +82,7 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
-        //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentAction}");
+        Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
     }
 
     public void PlayerMoveInput()

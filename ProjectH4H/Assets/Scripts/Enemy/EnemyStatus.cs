@@ -7,8 +7,8 @@ public enum EnemyStates { EnemyNormal_Idle, EnemyNormal_Move, EnemyNormal_Attack
 
 public class EnemyStatus : BaseGameEntity
 {
-    private Rigidbody2D rigid;
-    private Transform enemyTransform;
+    [SerializeField] private Rigidbody2D rigid;
+    [SerializeField] private Transform enemyTransform;
 
     [Header("감지 범위")]
     [SerializeField] private Vector2 attackArea;
@@ -17,7 +17,7 @@ public class EnemyStatus : BaseGameEntity
     [SerializeField] private Transform targetPos;
 
     [Header("몬스터 움직임")]
-    [SerializeField] private float enemyMove;
+    [SerializeField] private float enemyMove = 5.0f;
     [SerializeField] private int nextMove;              // 이동 제어 변수. -1: 왼쪽 0: 대기 1: 오른쪽
     [SerializeField] private float randomSecond;
 
@@ -34,11 +34,12 @@ public class EnemyStatus : BaseGameEntity
     private State<EnemyStatus>[] states;
     private StateMachine<EnemyStatus> stateMachine;
 
-    private EnemyStates currentAction;
+    private EnemyStates currentState;
+    public EnemyStates CurrentState => currentState;
 
     public float EnemyMove
     {
-        set => enemyMove = 5.0f;
+        set => enemyMove = value;
         get => enemyMove;
     }
 
@@ -52,12 +53,6 @@ public class EnemyStatus : BaseGameEntity
     {
         set => enemySprite = gameObject.GetComponent<Transform>();
         get => enemySprite;
-    }
-
-    public EnemyStates CurrentState
-    {
-        set => currentAction = value;
-        get => currentAction;
     }
 
     public Vector2 AttackArea
@@ -80,25 +75,25 @@ public class EnemyStatus : BaseGameEntity
 
     public float AttackCooltime
     {
-        set => attackCooltime = 3.0f;
+        set => attackCooltime = value;
         get => attackCooltime;
     }
 
     public Rigidbody2D Rigid
     {
-        set => rigid = GetComponent<Rigidbody2D>();
+        set => rigid = gameObject.GetComponent<Rigidbody2D>();
         get => rigid;
     }
 
     public Transform EnemyTransform
     {
-        set => enemyTransform = GetComponent<Transform>();
+        set => enemyTransform = gameObject.GetComponent<Transform>();
         get => enemyTransform;
     }
 
     public int NextMove
     {
-        set => nextMove = Random.Range(-1, 2);
+        set => nextMove = value;
         get => nextMove;
     }
 
@@ -121,8 +116,6 @@ public class EnemyStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemyStatus>();
         stateMachine.Setup(this, states[(int)EnemyStates.EnemyNormal_Idle]);
-
-        enemyMove = 10.0f;
     }
 
     public override void Updated()
@@ -132,11 +125,15 @@ public class EnemyStatus : BaseGameEntity
 
     public void ChangeState(EnemyStates newState)
     {
+        currentState = newState;
         stateMachine.ChangeState(states[(int)newState]);
     }
 
     private void Awake()
     {
+        enemyMove = 5.0f;
+        StartCoroutine(RandomWay());
+
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
         entity.Setup();
     }
@@ -146,7 +143,7 @@ public class EnemyStatus : BaseGameEntity
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
         entity.Updated();
 
-        Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentAction}");
+        Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
     }
 
     private void OnDrawGizmos()
@@ -159,57 +156,13 @@ public class EnemyStatus : BaseGameEntity
 
     }
 
-    public IEnumerator DetectPlayer()
+    private IEnumerator RandomWay()
     {
-        float distance = Vector2.Distance(targetPos.position, transform.position);
+        nextMove = Random.Range(-1, 2);
+        randomSecond = Random.Range(1.0f, 3.0f);
 
-        //Debug.Log($"플레이어-몬스터 거리: {distance}, 감지 범위: {detectArea.x / 2}");
+        yield return new WaitForSeconds(randomSecond);
 
-        if (distance <= attackArea.x / 2)
-        {
-            //Debug.Log("감지함!");
-
-            //Debug.Log($"{attackCooltime}초간 기다려!");
-            yield return new WaitForSeconds(attackCooltime);
-            //Debug.Log($"공격!");
-            ChangeState(EnemyStates.EnemyNormal_Attack);
-        }
-
-        else if (distance <= chaseArea.x / 2)
-        {
-            ChangeState(EnemyStates.EnemyNormal_Move);
-        }
-
-        else
-        {
-            ChangeState(EnemyStates.EnemyNormal_Idle);
-        }
-
-        yield return null;
-
-        StartCoroutine(DetectPlayer());
-    }
-
-    public void Move()
-    {
-        rigid.velocity = new Vector2(nextMove * enemyMove, rigid.velocity.y);
-
-        switch (nextMove)
-        {
-            case -1:
-                enemyTransform.transform.localScale = new Vector3(transform.localScale.x * 1f, transform.localScale.y, transform.localScale.z);
-                enemyAnim.SetBool("isMoving", true);
-                break;
-
-            case 0:
-                enemyTransform.transform.localScale = new Vector3(transform.localScale.x * 1f, transform.localScale.y, transform.localScale.z);
-                enemyAnim.SetBool("isMoving", false);
-                break;
-
-            case 1:
-                enemyTransform.transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
-                enemyAnim.SetBool("isMoving", true);
-                break;
-        }
+        StartCoroutine(RandomWay());
     }
 }
