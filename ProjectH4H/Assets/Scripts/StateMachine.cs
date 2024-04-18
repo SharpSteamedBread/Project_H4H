@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine<T> where T : BaseGameEntity
+public class StateMachine<T> where T : class
 {
     private T ownerEntity;              //StateMachine의 소유주
     private State<T> currentState;      //현재 상태

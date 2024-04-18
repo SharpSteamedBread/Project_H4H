@@ -9,8 +9,7 @@ namespace PlayerOwnedStates
     {
         public override void Enter(PlayerStatus entity)
         {
-            entity.PrintText("대기합니다!");
-
+            Debug.Log("대기합니다!");
         }
         public override void Execute(PlayerStatus entity)
         {
@@ -19,13 +18,12 @@ namespace PlayerOwnedStates
                 entity.PlayerAnim.SetBool("isRunning", true);
                 entity.ChangeState(PlayerStates.Player_Run);
             }
-
-            entity.PrintText("대기중~");
+            //Debug.Log("대기중~");
         }
 
         public override void Exit(PlayerStatus entity)
         {
-            entity.PrintText("출동!");
+            Debug.Log("출동!");
 
         }
     }
@@ -36,7 +34,7 @@ namespace PlayerOwnedStates
 
         public override void Enter(PlayerStatus entity)
         {
-            entity.PrintText("걷는다!");
+            Debug.Log("걷는다!");
 
         }
 
@@ -70,7 +68,7 @@ namespace PlayerOwnedStates
 
         public override void Exit(PlayerStatus entity)
         {
-            
+            throw new System.NotImplementedException();
         }
     }
 

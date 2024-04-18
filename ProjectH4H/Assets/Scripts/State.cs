@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State<T> where T: BaseGameEntity
+public abstract class State<T>
 {
     //해당 상태를 시작할 때 1회 호출
     public abstract void Enter(T entity);

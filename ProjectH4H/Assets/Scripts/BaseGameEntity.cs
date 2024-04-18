@@ -18,7 +18,7 @@ public abstract class BaseGameEntity : MonoBehaviour
 
     public void PrintText(string text)
     {
-        Debug.Log($" ");
+        Debug.Log($"Player_Idle");
     }
 
 }

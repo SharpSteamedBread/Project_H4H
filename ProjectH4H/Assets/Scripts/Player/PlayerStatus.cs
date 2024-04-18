@@ -60,10 +60,9 @@ public class PlayerStatus : BaseGameEntity
         states[(int)PlayerStates.Player_Run] = new PlayerOwnedStates.Player_Run();
         states[(int)PlayerStates.Player_Attack] = new PlayerOwnedStates.Player_Attack();
 
-
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<PlayerStatus>();
-        stateMachine.Setup(this, states[(int)PlayerStates.Player_Run]);
+        stateMachine.Setup(this, states[(int)PlayerStates.Player_Idle]);
 
         playerMove = 10.0f;
     }
@@ -78,8 +77,26 @@ public class PlayerStatus : BaseGameEntity
         stateMachine.ChangeState(states[(int)newState]);
     }
 
+    private void Awake()
+    {
+        PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
+        entity.Setup();
+    }
+
     private void Update()
     {
-        Debug.Log(CurrentState);
+        PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
+        entity.Updated();
+
+        //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentAction}");
+    }
+
+    public void PlayerMoveInput()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+            playerAnim.SetBool("isRunning", true);
+            ChangeState(PlayerStates.Player_Run);
+        }
     }
 }
