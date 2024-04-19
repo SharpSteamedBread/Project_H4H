@@ -51,6 +51,12 @@ namespace PlayerOwnedStates
                 entity.ChangeState(PlayerStates.Player_Idle);
             }
 
+            h = Input.GetAxis("Horizontal");        // 가로축
+            v = Input.GetAxis("Vertical");          // 세로축
+
+            entity.transform.position += new Vector3(h, 0, v) * entity.PlayerMove * Time.deltaTime;
+
+            //방향 전환
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 entity.PlayerSprite.transform.localScale = new Vector3(-1, 1, 1);
@@ -59,11 +65,6 @@ namespace PlayerOwnedStates
             {
                 entity.PlayerSprite.transform.localScale = new Vector3(1, 1, 1);
             }
-
-            h = Input.GetAxis("Horizontal");        // 가로축
-            v = Input.GetAxis("Vertical");          // 세로축
-
-            entity.transform.position += new Vector3(h, 0, v) * entity.PlayerMove * Time.deltaTime;
         }
 
         public override void Exit(PlayerStatus entity)

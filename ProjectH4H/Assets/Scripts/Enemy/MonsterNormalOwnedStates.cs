@@ -20,6 +20,7 @@ namespace MonsterNormalOwnedStates
 
             //Debug.Log($"플레이어-몬스터 거리: {distance}, 감지 범위: {detectArea.x / 2}");
 
+            //공격 상태 입장
             if (distance <= entity.AttackArea.x / 2)
             {
                 //Debug.Log("감지함!");
@@ -30,10 +31,33 @@ namespace MonsterNormalOwnedStates
                 entity.ChangeState(EnemyStates.EnemyNormal_Attack);
             }
 
+            //추격 상태 입장
             else if(distance <= entity.ChaseArea.x / 2)
             {
                 entity.ChangeState(EnemyStates.EnemyNormal_Move);
             }
+
+            //이동
+            entity.Rigid.velocity = new Vector2(entity.NextMove * entity.EnemyMove, entity.Rigid.velocity.y);
+
+            switch (entity.NextMove)
+            {
+                case -1:
+                    entity.EnemyTransform.localScale = new Vector3(-1f, 1f, 1f);
+                    entity.EnemyAnim.SetBool("isMoving", true);
+                    break;
+
+                case 0:
+                    entity.EnemyTransform.localScale = new Vector3(1f, 1f, 1f);
+                    entity.EnemyAnim.SetBool("isMoving", false);
+                    break;
+
+                case 1:
+                    entity.EnemyTransform.localScale = new Vector3(1f, 1f, 1f);
+                    entity.EnemyAnim.SetBool("isMoving", true);
+                    break;
+            }
+
         }
 
         public override void Exit(EnemyStatus entity)
@@ -53,28 +77,6 @@ namespace MonsterNormalOwnedStates
         public override void Execute(EnemyStatus entity)
         {
             Debug.Log("몬스터 추격중");
-
-            entity.Rigid.velocity = new Vector2(entity.NextMove * entity.EnemyMove, entity.Rigid.velocity.y);
-
-            Debug.Log(entity.NextMove);
-
-            switch (entity.NextMove)
-            {
-                case -1:
-                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * 1f, entity.transform.localScale.y, entity.transform.localScale.z);
-                    entity.EnemyAnim.SetBool("isMoving", true);
-                    break;
-
-                case 0:
-                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * 1f, entity.transform.localScale.y, entity.transform.localScale.z);
-                    entity.EnemyAnim.SetBool("isMoving", false);
-                    break;
-
-                case 1:
-                    entity.EnemyTransform.transform.localScale = new Vector3(entity.transform.localScale.x * -1f, entity.transform.localScale.y, entity.transform.localScale.z);
-                    entity.EnemyAnim.SetBool("isMoving", true);
-                    break;
-            }
 
             float distance = Vector2.Distance(entity.TargetPos.position, entity.transform.position);
 
@@ -131,7 +133,7 @@ namespace MonsterNormalOwnedStates
     {
         public override void Enter(EnemyStatus entity)
         {
-            throw new System.NotImplementedException();
+            entity.EnemyDie();
         }
 
         public override void Execute(EnemyStatus entity)

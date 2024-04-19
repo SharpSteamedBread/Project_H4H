@@ -165,4 +165,9 @@ public class EnemyStatus : BaseGameEntity
 
         StartCoroutine(RandomWay());
     }
+
+    public void EnemyDie()
+    {
+        Destroy(gameObject);
+    }
 }

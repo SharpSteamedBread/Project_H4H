@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CommandCheck : MonoBehaviour
 {
+    public float bulletTime = 0.1f;
+
     public GameObject objCommandKeyQ;
     public GameObject objCommandKeyE;
     public GameObject objCommandKeyA;
@@ -20,23 +22,13 @@ public class CommandCheck : MonoBehaviour
 
     private bool attack1_1Triggered = false;
 
-    private void Awake()
-    {
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if(objCommandEnterUI.activeSelf == true)
         {
-            Time.timeScale = 0.3f;
+            Time.timeScale = bulletTime;
 
             CorrectCommand();
 
@@ -89,22 +81,16 @@ public class CommandCheck : MonoBehaviour
     private void CorrectCommand()
     {
 
-        if (inputCommand == ("EE") && !attack1_1Triggered)
+        if (inputCommand == ("A") && !attack1_1Triggered)
         {
             animPlayer.SetTrigger("doAttack1_1");
             attack1_1Triggered = true;
         }
 
-        if (inputCommand.Contains("QQ"))
+        if (inputCommand.Contains("EQ"))
         {
             animPlayer.SetTrigger("doAttack1_2");
-        }
 
-        if (inputCommand == "EEQQ")
-        {
-           
-
-            animPlayer.SetTrigger("doAttack1_3");
             inputCommand = "";
             attack1_1Triggered = false;
 
@@ -118,7 +104,8 @@ public class CommandCheck : MonoBehaviour
 
 
             objCommandEnterUI.SetActive(false);
-            Time.timeScale = 1f;
+            Time.timeScale = 1.0f;
+
         }
     }
 }
