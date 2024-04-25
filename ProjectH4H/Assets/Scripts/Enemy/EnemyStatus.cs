@@ -26,15 +26,19 @@ public class EnemyStatus : BaseGameEntity
     [SerializeField] private Transform enemySprite;
 
     [Header("스텟")]
+    [SerializeField] private int enemyHP;
     [SerializeField] private int enemyATK;
     [SerializeField] private float attackCooltime = 1.0f;
+
+    [Header("사망")]
+    [SerializeField] private GameObject enemyDeadItem;
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
     private State<EnemyStatus>[] states;
     private StateMachine<EnemyStatus> stateMachine;
 
-    private EnemyStates currentState;
+    public EnemyStates currentState;
     public EnemyStates CurrentState => currentState;
 
     public float EnemyMove
@@ -71,6 +75,12 @@ public class EnemyStatus : BaseGameEntity
     {
         set => targetPos = target.GetComponent<Transform>();
         get => targetPos;
+    }
+
+    public int EnemyHP
+    {
+        set => enemyHP = value;
+        get => enemyHP;
     }
 
     public float AttackCooltime
@@ -132,6 +142,8 @@ public class EnemyStatus : BaseGameEntity
     private void Awake()
     {
         enemyMove = 5.0f;
+        enemyHP = 100;
+
         StartCoroutine(RandomWay());
 
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
@@ -144,6 +156,11 @@ public class EnemyStatus : BaseGameEntity
         entity.Updated();
 
         Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
+
+        if(enemyHP <= 0)
+        {
+            ChangeState(EnemyStates.EnemyNormal_Die);
+        }
     }
 
     private void OnDrawGizmos()
@@ -168,6 +185,7 @@ public class EnemyStatus : BaseGameEntity
 
     public void EnemyDie()
     {
+        Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

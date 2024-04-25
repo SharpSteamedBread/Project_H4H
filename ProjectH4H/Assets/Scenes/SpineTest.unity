@@ -1891,6 +1891,7 @@ MonoBehaviour:
   enemySprite: {fileID: 1642398930}
   enemyATK: 0
   attackCooltime: 3
+  enemyDeadItem: {fileID: 1018852875426895049, guid: 753a4788f54ebbd4ba37e954e7cfd15a, type: 3}
 --- !u!1 &1884734467
 GameObject:
   m_ObjectHideFlags: 0

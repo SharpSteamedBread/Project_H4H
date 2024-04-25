@@ -9,16 +9,19 @@ namespace PlayerOwnedStates
     {
         public override void Enter(PlayerStatus entity)
         {
-            Debug.Log("대기합니다!");
+            entity.PlayerAnim.SetBool("isMoving", false);
         }
         public override void Execute(PlayerStatus entity)
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
-                entity.PlayerAnim.SetBool("isRunning", true);
-                entity.ChangeState(PlayerStates.Player_Run);
+                //커맨드 창이 안 켜졌을 때에만 이동
+                if (CommandCheck.isCommandSystemOpened == false)
+                {
+                    entity.PlayerAnim.SetBool("isMoving", true);
+                    entity.ChangeState(PlayerStates.Player_Run);
+                }
             }
-            //Debug.Log("대기중~");
         }
 
         public override void Exit(PlayerStatus entity)
@@ -35,35 +38,39 @@ namespace PlayerOwnedStates
         public override void Enter(PlayerStatus entity)
         {
             Debug.Log("걷는다!");
-
         }
 
         public override void Execute(PlayerStatus entity)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            //커맨드 창이 열려있지 않을 때에만 이동
+            if(CommandCheck.isCommandSystemOpened == false)
             {
-                entity.PlayerAnim.SetBool("isRunning", true);
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                {
+                    entity.PlayerAnim.SetBool("isMoving", true);
+                }
+
+                h = Input.GetAxis("Horizontal");        // 가로축
+                v = Input.GetAxis("Vertical");          // 세로축
+
+                entity.transform.position += new Vector3(h, 0, v) * entity.PlayerMove * Time.deltaTime;
+
+                //방향 전환
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    entity.PlayerSprite.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    entity.PlayerSprite.transform.localScale = new Vector3(1, 1, 1);
+                }
             }
 
-            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            //조작 끝 & 커맨드 창이 열려있을 때에는 행동을 초기화
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
+                || CommandCheck.isCommandSystemOpened == true)
             {
-                entity.PlayerAnim.SetBool("isRunning", false);
                 entity.ChangeState(PlayerStates.Player_Idle);
-            }
-
-            h = Input.GetAxis("Horizontal");        // 가로축
-            v = Input.GetAxis("Vertical");          // 세로축
-
-            entity.transform.position += new Vector3(h, 0, v) * entity.PlayerMove * Time.deltaTime;
-
-            //방향 전환
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                entity.PlayerSprite.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                entity.PlayerSprite.transform.localScale = new Vector3(1, 1, 1);
             }
         }
 

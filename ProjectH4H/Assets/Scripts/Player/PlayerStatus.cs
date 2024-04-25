@@ -27,7 +27,7 @@ public class PlayerStatus : BaseGameEntity
     private State<PlayerStatus>[] states;
     private StateMachine<PlayerStatus> stateMachine;
 
-    private PlayerStates currentState;
+    public PlayerStates currentState;
     public PlayerStates CurrentState => currentState;
 
     public float PlayerMove

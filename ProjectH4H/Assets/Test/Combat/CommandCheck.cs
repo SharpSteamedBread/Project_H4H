@@ -22,6 +22,8 @@ public class CommandCheck : MonoBehaviour
 
     private bool attack1_1Triggered = false;
 
+    static public bool isCommandSystemOpened = false;
+
 
     // Update is called once per frame
     void Update()
@@ -29,6 +31,7 @@ public class CommandCheck : MonoBehaviour
         if(objCommandEnterUI.activeSelf == true)
         {
             Time.timeScale = bulletTime;
+            isCommandSystemOpened = true;
 
             CorrectCommand();
 
@@ -73,7 +76,12 @@ public class CommandCheck : MonoBehaviour
                     Destroy(child.gameObject);
                 }
 
+                animPlayer.SetBool("commandCancelled", true);
+
                 gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen!;
+                isCommandSystemOpened = false;
+                animPlayer.SetBool("commandCancelled", false);
+
             }
         }
     }
@@ -105,6 +113,7 @@ public class CommandCheck : MonoBehaviour
 
             objCommandEnterUI.SetActive(false);
             Time.timeScale = 1.0f;
+            isCommandSystemOpened = false;
 
         }
     }

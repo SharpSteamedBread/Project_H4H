@@ -133,6 +133,8 @@ namespace MonsterNormalOwnedStates
     {
         public override void Enter(EnemyStatus entity)
         {
+            Debug.Log("ав╬З╢ы...");
+            entity.EnemyAnim.SetBool("isDead", true);
             entity.EnemyDie();
         }
 
