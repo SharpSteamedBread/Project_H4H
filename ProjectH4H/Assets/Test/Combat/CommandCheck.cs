@@ -76,11 +76,10 @@ public class CommandCheck : MonoBehaviour
                     Destroy(child.gameObject);
                 }
 
-                animPlayer.SetBool("commandCancelled", true);
+                animPlayer.SetTrigger("commandCancelled");
 
                 gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen!;
                 isCommandSystemOpened = false;
-                animPlayer.SetBool("commandCancelled", false);
 
             }
         }
@@ -89,18 +88,18 @@ public class CommandCheck : MonoBehaviour
     private void CorrectCommand()
     {
 
-        if (inputCommand == ("A") && !attack1_1Triggered)
+        if (inputCommand == ("A") /* && !attack1_1Triggered */)
         {
-            animPlayer.SetTrigger("doAttack1_1");
-            attack1_1Triggered = true;
+            animPlayer.SetTrigger("useSkill1_1");
+            //attack1_1Triggered = true;
         }
 
-        if (inputCommand.Contains("EQ"))
+        if (inputCommand.Contains("AEQ"))
         {
-            animPlayer.SetTrigger("doAttack1_2");
+            animPlayer.SetTrigger("useSkill1_2");
 
             inputCommand = "";
-            attack1_1Triggered = false;
+            //attack1_1Triggered = false;
 
 
             foreach (Transform child in assortObjCommandKey.transform)
