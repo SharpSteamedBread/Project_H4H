@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine;
+using Spine.Unity;
 
 public enum PlayerStates { Player_Idle, Player_Run, Player_Attack }
 
@@ -9,11 +11,14 @@ public class PlayerStatus : BaseGameEntity
 {
     [Header("플레이어 움직임")]
     [SerializeField] private float playerMove = 10.0f;
+    [SerializeField] private float playerJumpForce = 10.0f;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Transform playerSprite;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
     [Header("파츠")]
+    [SerializeField] private SkeletonMecanim playerSkeletonSprite;
     [SerializeField] private int playerLAPartHP;
     [SerializeField] private int playerRAPartHP;
     [SerializeField] private int playerLLPartHP;
@@ -36,6 +41,12 @@ public class PlayerStatus : BaseGameEntity
         get => playerMove;
     }
 
+    public float PlayerJumpForce
+    {
+        set => playerJumpForce = 10.0f;
+        get => playerJumpForce;
+    }
+
     public Animator PlayerAnim
     {
         set => playerAnim = gameObject.GetComponent<Animator>();
@@ -46,6 +57,12 @@ public class PlayerStatus : BaseGameEntity
     {
         set => playerSprite = gameObject.GetComponent<Transform>();
         get => playerSprite;
+    }
+
+    public Rigidbody2D PlayerRigidbody
+    {
+        set => playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        get => playerRigidbody;
     }
 
     public override void Setup()
@@ -91,6 +108,22 @@ public class PlayerStatus : BaseGameEntity
         {
             playerAnim.SetBool("isRunning", true);
             ChangeState(PlayerStates.Player_Run);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy_dontmove"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.red);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy_dontmove"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.white);
         }
     }
 }

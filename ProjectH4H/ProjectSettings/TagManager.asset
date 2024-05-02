@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Enemy_dontmove
+  - PlayerHitbox
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,12 @@ namespace PlayerOwnedStates
                     entity.ChangeState(PlayerStates.Player_Run);
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
+                entity.PlayerAnim.SetTrigger("isJumping");
+            }
         }
 
         public override void Exit(PlayerStatus entity)
@@ -33,7 +39,7 @@ namespace PlayerOwnedStates
 
     public class Player_Run : State<PlayerStatus>
     {
-        private float h, v;
+        private float h;
 
         public override void Enter(PlayerStatus entity)
         {
@@ -50,10 +56,15 @@ namespace PlayerOwnedStates
                     entity.PlayerAnim.SetBool("isMoving", true);
                 }
 
-                h = Input.GetAxis("Horizontal");        // 가로축
-                v = Input.GetAxis("Vertical");          // 세로축
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
+                    entity.PlayerAnim.SetTrigger("isJumping");
+                }
 
-                entity.transform.position += new Vector3(h, 0, v) * entity.PlayerMove * Time.deltaTime;
+                h = Input.GetAxis("Horizontal");        // 가로축
+
+                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.deltaTime;
 
                 //방향 전환
                 if (Input.GetKey(KeyCode.LeftArrow))

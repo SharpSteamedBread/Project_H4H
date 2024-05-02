@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyStates { EnemyNormal_Idle, EnemyNormal_Move, EnemyNormal_Attack, EnemyNormal_Damaged, EnemyNormal_Die }
+public enum EnemyThirdStates { Enemy_Idle, Enemy_Move, Enemy_Attack, Enemy_Damaged, Enemy_Die }
 
-public class EnemyStatus : BaseGameEntity
+public class EnemyThirdStatus : BaseGameEntity
 {
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private Transform enemyTransform;
@@ -35,11 +35,11 @@ public class EnemyStatus : BaseGameEntity
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
-    private State<EnemyStatus>[] states;
-    private StateMachine<EnemyStatus> stateMachine;
+    private State<EnemyThirdStatus>[] states;
+    private StateMachine<EnemyThirdStatus> stateMachine;
 
-    public EnemyStates currentState;
-    public EnemyStates CurrentState => currentState;
+    public EnemyThirdStates currentState;
+    public EnemyThirdStates CurrentState => currentState;
 
     public float EnemyMove
     {
@@ -115,17 +115,17 @@ public class EnemyStatus : BaseGameEntity
 
     public override void Setup()
     {
-        states = new State<EnemyStatus>[5];
-        states[(int)EnemyStates.EnemyNormal_Idle] = new MonsterNormalOwnedStates.EnemyNormal_Idle();
-        states[(int)EnemyStates.EnemyNormal_Move] = new MonsterNormalOwnedStates.EnemyNormal_Move();
-        states[(int)EnemyStates.EnemyNormal_Attack] = new MonsterNormalOwnedStates.EnemyNormal_Attack();
-        states[(int)EnemyStates.EnemyNormal_Damaged] = new MonsterNormalOwnedStates.EnemyNormal_Damaged();
-        states[(int)EnemyStates.EnemyNormal_Die] = new MonsterNormalOwnedStates.EnemyNormal_Die();
+        states = new State<EnemyThirdStatus>[5];
+        states[(int)EnemyThirdStates.Enemy_Idle] = new MonsterBoomOwnedStates.Enemy_Idle();
+        states[(int)EnemyThirdStates.Enemy_Move] = new MonsterBoomOwnedStates.Enemy_Move();
+        states[(int)EnemyThirdStates.Enemy_Attack] = new MonsterBoomOwnedStates.Enemy_Attack();
+        states[(int)EnemyThirdStates.Enemy_Damaged] = new MonsterBoomOwnedStates.Enemy_Damaged();
+        states[(int)EnemyThirdStates.Enemy_Die] = new MonsterBoomOwnedStates.Enemy_Die();
 
 
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
-        stateMachine = new StateMachine<EnemyStatus>();
-        stateMachine.Setup(this, states[(int)EnemyStates.EnemyNormal_Idle]);
+        stateMachine = new StateMachine<EnemyThirdStatus>();
+        stateMachine.Setup(this, states[(int)EnemyThirdStates.Enemy_Idle]);
     }
 
     public override void Updated()
@@ -133,7 +133,7 @@ public class EnemyStatus : BaseGameEntity
         stateMachine.Execute();
     }
 
-    public void ChangeState(EnemyStates newState)
+    public void ChangeState(EnemyThirdStates newState)
     {
         currentState = newState;
         stateMachine.ChangeState(states[(int)newState]);
@@ -146,20 +146,20 @@ public class EnemyStatus : BaseGameEntity
 
         StartCoroutine(RandomWay());
 
-        EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
+        EnemyThirdStatus entity = gameObject.GetComponent<EnemyThirdStatus>();
         entity.Setup();
     }
 
     private void Update()
     {
-        EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
+        EnemyThirdStatus entity = gameObject.GetComponent<EnemyThirdStatus>();
         entity.Updated();
 
         Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
 
         if(enemyHP <= 0)
         {
-            ChangeState(EnemyStates.EnemyNormal_Die);
+            ChangeState(EnemyThirdStates.Enemy_Die);
         }
     }
 
@@ -187,5 +187,13 @@ public class EnemyStatus : BaseGameEntity
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerHitbox"))
+        {
+            enemyHP = 0;
+        }
     }
 }

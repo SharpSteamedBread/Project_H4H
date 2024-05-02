@@ -5,22 +5,24 @@ using UnityEngine.UI;
 
 public class CommandCheck : MonoBehaviour
 {
+    public Animator animPlayer;
     public float bulletTime = 0.1f;
 
+    [Header("UI 키버튼")]
     public GameObject objCommandKeyQ;
     public GameObject objCommandKeyE;
     public GameObject objCommandKeyA;
     public GameObject objCommandKeyD;
-
     public GameObject assortObjCommandKey;
-
-    public GameObject objCommandEnterUI;
 
     public string inputCommand;
 
-    public Animator animPlayer;
 
-    private bool attack1_1Triggered = false;
+    [Header("커맨드 UI")]
+
+    public GameObject objCommandEnterUI;
+
+    public bool isCommandUIOpen = false;
 
     static public bool isCommandSystemOpened = false;
 
@@ -28,7 +30,9 @@ public class CommandCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(objCommandEnterUI.activeSelf == true)
+        ToggleCommandEnterUI();
+
+        if (objCommandEnterUI.activeSelf == true)
         {
             Time.timeScale = bulletTime;
             isCommandSystemOpened = true;
@@ -78,7 +82,7 @@ public class CommandCheck : MonoBehaviour
 
                 animPlayer.SetTrigger("commandCancelled");
 
-                gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen!;
+                isCommandUIOpen = !isCommandUIOpen;
                 isCommandSystemOpened = false;
 
             }
@@ -88,10 +92,9 @@ public class CommandCheck : MonoBehaviour
     private void CorrectCommand()
     {
 
-        if (inputCommand == ("A") /* && !attack1_1Triggered */)
+        if (inputCommand == ("A"))
         {
             animPlayer.SetTrigger("useSkill1_1");
-            //attack1_1Triggered = true;
         }
 
         if (inputCommand.Contains("AEQ"))
@@ -99,7 +102,6 @@ public class CommandCheck : MonoBehaviour
             animPlayer.SetTrigger("useSkill1_2");
 
             inputCommand = "";
-            //attack1_1Triggered = false;
 
 
             foreach (Transform child in assortObjCommandKey.transform)
@@ -107,13 +109,27 @@ public class CommandCheck : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = false;
+            isCommandUIOpen = false;
 
 
             objCommandEnterUI.SetActive(false);
             Time.timeScale = 1.0f;
             isCommandSystemOpened = false;
 
+        }
+    }
+
+    private void ToggleCommandEnterUI()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            isCommandUIOpen = !isCommandUIOpen;
+            objCommandEnterUI.SetActive(isCommandUIOpen!);
+        }
+
+        if (isCommandUIOpen == false)
+        {
+            Time.timeScale = 1f;
         }
     }
 }
