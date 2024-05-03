@@ -84,7 +84,7 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 3.5794258, b: 4, a: 0}
     - _Fresnel_Color: {r: 0.8438703, g: 1.4244812, b: 2.670157, a: 0}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 1.5460527, g: 3.2296011, b: 3.8560374, a: 0.78431374}
     - _Noise_Speed: {r: -0.1, g: 0.1, b: 0, a: 0}
     - _Voronoi_Color: {r: 5.207547, g: 12.521443, b: 16, a: 0}
     - _Voronoi_Speed: {r: 0, g: 0, b: 0, a: 0}
