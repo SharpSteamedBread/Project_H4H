@@ -22,15 +22,14 @@ public class CommandCheck : MonoBehaviour
 
     public GameObject objCommandEnterUI;
 
-    public bool isCommandUIOpen = false;
-
     static public bool isCommandSystemOpened = false;
+    public bool checkCommandSystemOpened = false;
 
 
     // Update is called once per frame
     void Update()
     {
-        ToggleCommandEnterUI();
+        checkCommandSystemOpened = isCommandSystemOpened;
 
         if (objCommandEnterUI.activeSelf == true)
         {
@@ -81,9 +80,11 @@ public class CommandCheck : MonoBehaviour
                 }
 
                 animPlayer.SetTrigger("commandCancelled");
+                animPlayer.SetBool("useSkill1_1 0", false);
+                animPlayer.SetBool("useSkill1_2 0", false);
 
-                isCommandUIOpen = !isCommandUIOpen;
                 isCommandSystemOpened = false;
+                gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen!;
 
             }
         }
@@ -95,11 +96,13 @@ public class CommandCheck : MonoBehaviour
         if (inputCommand == ("A"))
         {
             animPlayer.SetTrigger("useSkill1_1");
+            animPlayer.SetBool("useSkill1_1 0", true);
         }
 
         if (inputCommand.Contains("AEQ"))
         {
             animPlayer.SetTrigger("useSkill1_2");
+            animPlayer.SetBool("useSkill1_2 0", true);
 
             inputCommand = "";
 
@@ -109,27 +112,11 @@ public class CommandCheck : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            isCommandUIOpen = false;
-
-
-            objCommandEnterUI.SetActive(false);
-            Time.timeScale = 1.0f;
             isCommandSystemOpened = false;
+            gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = false;
 
-        }
-    }
+            animPlayer.SetBool("useSkill1_1 0", false);
 
-    private void ToggleCommandEnterUI()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            isCommandUIOpen = !isCommandUIOpen;
-            objCommandEnterUI.SetActive(isCommandUIOpen!);
-        }
-
-        if (isCommandUIOpen == false)
-        {
-            Time.timeScale = 1f;
         }
     }
 }

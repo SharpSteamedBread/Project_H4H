@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace MonsterSplitOwnedStates
+namespace MonsterSplitPhaseOwnedStates
 {
-    public class Enemy_Idle : State<EnemyFourthStatus>
+    public class Enemy_Idle : State<EnemyFourthSplitStatus>
     {
-        public override void Enter(EnemyFourthStatus entity)
+        public override void Enter(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 대기 시작");
         }
 
-        public override void Execute(EnemyFourthStatus entity)
+        public override void Execute(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 대기중");
 
@@ -28,13 +28,13 @@ namespace MonsterSplitOwnedStates
                 //Debug.Log($"{attackCooltime}초간 기다려!");
                 //yield return new WaitForSeconds(entity.AttackCooltime);
                 //Debug.Log($"공격!");
-                entity.ChangeState(EnemyFourthStates.Enemy_Attack);
+                entity.ChangeState(EnemyFourthSplitStates.Enemy_Attack);
             }
 
             //추격 상태 입장
             else if(distance <= entity.EncounterArea.x / 2)
             {
-                entity.ChangeState(EnemyFourthStates.Enemy_Move);
+                entity.ChangeState(EnemyFourthSplitStates.Enemy_Move);
             }
 
             //이동
@@ -60,21 +60,21 @@ namespace MonsterSplitOwnedStates
 
         }
 
-        public override void Exit(EnemyFourthStatus entity)
+        public override void Exit(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 시동거는중...");
         }
     }
 
 
-    public class Enemy_Move : State<EnemyFourthStatus>
+    public class Enemy_Move : State<EnemyFourthSplitStatus>
     {
-        public override void Enter(EnemyFourthStatus entity)
+        public override void Enter(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터가 포착");
         }
 
-        public override void Execute(EnemyFourthStatus entity)
+        public override void Execute(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 추격중");
 
@@ -82,67 +82,67 @@ namespace MonsterSplitOwnedStates
 
             if (distance >= entity.EncounterArea.x / 2)
             {
-                entity.ChangeState(EnemyFourthStates.Enemy_Idle);
+                entity.ChangeState(EnemyFourthSplitStates.Enemy_Idle);
             }
         }
 
-        public override void Exit(EnemyFourthStatus entity)
+        public override void Exit(EnemyFourthSplitStatus entity)
         {
             Debug.Log("움직임 종료");
         }
     }
 
-    public class Enemy_Attack : State<EnemyFourthStatus>
+    public class Enemy_Attack : State<EnemyFourthSplitStatus>
     {
-        public override void Enter(EnemyFourthStatus entity)
+        public override void Enter(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 공격 준비");
         }
 
-        public override void Execute(EnemyFourthStatus entity)
+        public override void Execute(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 공격!");
 
         }
 
-        public override void Exit(EnemyFourthStatus entity)
+        public override void Exit(EnemyFourthSplitStatus entity)
         {
             Debug.Log("몬스터 공격 중지.");
         }
     }
 
-    public class Enemy_Damaged : State<EnemyFourthStatus>
+    public class Enemy_Damaged : State<EnemyFourthSplitStatus>
     {
-        public override void Enter(EnemyFourthStatus entity)
+        public override void Enter(EnemyFourthSplitStatus entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Execute(EnemyFourthStatus entity)
+        public override void Execute(EnemyFourthSplitStatus entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Exit(EnemyFourthStatus entity)
+        public override void Exit(EnemyFourthSplitStatus entity)
         {
             throw new System.NotImplementedException();
         }
     }
 
-    public class Enemy_Die : State<EnemyFourthStatus>
+    public class Enemy_Die : State<EnemyFourthSplitStatus>
     {
-        public override void Enter(EnemyFourthStatus entity)
+        public override void Enter(EnemyFourthSplitStatus entity)
         {
             entity.EnemyAnim.SetBool("isDead", true);
             entity.EnemyDie();
         }
 
-        public override void Execute(EnemyFourthStatus entity)
+        public override void Execute(EnemyFourthSplitStatus entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Exit(EnemyFourthStatus entity)
+        public override void Exit(EnemyFourthSplitStatus entity)
         {
             throw new System.NotImplementedException();
         }

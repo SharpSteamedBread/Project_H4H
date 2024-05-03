@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Spine;
 using Spine.Unity;
+using Cinemachine;
 
 public enum PlayerStates { Player_Idle, Player_Run, Player_Attack }
 
@@ -27,6 +27,9 @@ public class PlayerStatus : BaseGameEntity
     [Header("스텟")]
     [SerializeField] private int playerATK;
     [SerializeField] private int playerCRIT;
+
+    [Header("카메라")]
+    [SerializeField] private Camera playerCamera;
 
     //플레이어가 가지고 있는 모든 상태, 현재 상태
     private State<PlayerStatus>[] states;
@@ -124,6 +127,56 @@ public class PlayerStatus : BaseGameEntity
         if (collision.gameObject.CompareTag("Enemy_dontmove"))
         {
             playerSkeletonSprite.skeleton.SetColor(Color.white);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy3Hitbox"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.red);
+        }
+        else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.red);
+        }
+        else if(collision.gameObject.CompareTag("EncounterBoundary"))
+        {
+            StartCoroutine(ZoomCamera());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy3Hitbox"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.white);
+        }
+        else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
+        {
+            playerSkeletonSprite.skeleton.SetColor(Color.white);
+        }
+        else if (collision.gameObject.CompareTag("EncounterBoundary"))
+        {
+            StartCoroutine(UnzoomCamera());
+        }
+    }
+
+    private IEnumerator ZoomCamera()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            playerCamera.fieldOfView--;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    private IEnumerator UnzoomCamera()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            playerCamera.fieldOfView++;
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

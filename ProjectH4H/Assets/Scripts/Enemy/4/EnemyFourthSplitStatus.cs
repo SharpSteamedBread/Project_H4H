@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public enum EnemyFourthStates { Enemy_Idle, Enemy_Move, Enemy_Attack, Enemy_Damaged, Enemy_Die }
+public enum EnemyFourthSplitStates { Enemy_Idle, Enemy_Move, Enemy_Attack, Enemy_Damaged, Enemy_Die }
 
-public class EnemyFourthStatus : BaseGameEntity
+public class EnemyFourthSplitStatus : BaseGameEntity
 {
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private Transform enemyTransform;
@@ -33,15 +33,14 @@ public class EnemyFourthStatus : BaseGameEntity
 
     [Header("사망")]
     [SerializeField] private GameObject enemyDeadItem;
-    [SerializeField] private GameObject enemySplitObj;
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
-    private State<EnemyFourthStatus>[] states;
-    private StateMachine<EnemyFourthStatus> stateMachine;
+    private State<EnemyFourthSplitStatus>[] states;
+    private StateMachine<EnemyFourthSplitStatus> stateMachine;
 
-    public EnemyFourthStates currentState;
-    public EnemyFourthStates CurrentState => currentState;
+    public EnemyFourthSplitStates currentState;
+    public EnemyFourthSplitStates CurrentState => currentState;
 
     public float EnemyMove
     {
@@ -115,25 +114,19 @@ public class EnemyFourthStatus : BaseGameEntity
         get => randomSecond;
     }
 
-    public GameObject EnemySplitObj
-    {
-        set => enemySplitObj = value;
-        get => enemySplitObj;
-    }
-
     public override void Setup()
     {
-        states = new State<EnemyFourthStatus>[5];
-        states[(int)EnemyFourthStates.Enemy_Idle] = new MonsterSplitOwnedStates.Enemy_Idle();
-        states[(int)EnemyFourthStates.Enemy_Move] = new MonsterSplitOwnedStates.Enemy_Move();
-        states[(int)EnemyFourthStates.Enemy_Attack] = new MonsterSplitOwnedStates.Enemy_Attack();
-        states[(int)EnemyFourthStates.Enemy_Damaged] = new MonsterSplitOwnedStates.Enemy_Damaged();
-        states[(int)EnemyFourthStates.Enemy_Die] = new MonsterSplitOwnedStates.Enemy_Die();
+        states = new State<EnemyFourthSplitStatus>[5];
+        states[(int)EnemyFourthSplitStates.Enemy_Idle] = new MonsterSplitPhaseOwnedStates.Enemy_Idle();
+        states[(int)EnemyFourthSplitStates.Enemy_Move] = new MonsterSplitPhaseOwnedStates.Enemy_Move();
+        states[(int)EnemyFourthSplitStates.Enemy_Attack] = new MonsterSplitPhaseOwnedStates.Enemy_Attack();
+        states[(int)EnemyFourthSplitStates.Enemy_Damaged] = new MonsterSplitPhaseOwnedStates.Enemy_Damaged();
+        states[(int)EnemyFourthSplitStates.Enemy_Die] = new MonsterSplitPhaseOwnedStates.Enemy_Die();
 
 
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
-        stateMachine = new StateMachine<EnemyFourthStatus>();
-        stateMachine.Setup(this, states[(int)EnemyFourthStates.Enemy_Idle]);
+        stateMachine = new StateMachine<EnemyFourthSplitStatus>();
+        stateMachine.Setup(this, states[(int)EnemyFourthSplitStates.Enemy_Idle]);
     }
 
     public override void Updated()
@@ -141,7 +134,7 @@ public class EnemyFourthStatus : BaseGameEntity
         stateMachine.Execute();
     }
 
-    public void ChangeState(EnemyFourthStates newState)
+    public void ChangeState(EnemyFourthSplitStates newState)
     {
         currentState = newState;
         stateMachine.ChangeState(states[(int)newState]);
@@ -157,13 +150,13 @@ public class EnemyFourthStatus : BaseGameEntity
 
         StartCoroutine(RandomWay());
 
-        EnemyFourthStatus entity = gameObject.GetComponent<EnemyFourthStatus>();
+        EnemyFourthSplitStatus entity = gameObject.GetComponent<EnemyFourthSplitStatus>();
         entity.Setup();
     }
 
     private void Update()
     {
-        EnemyFourthStatus entity = gameObject.GetComponent<EnemyFourthStatus>();
+        EnemyFourthSplitStatus entity = gameObject.GetComponent<EnemyFourthSplitStatus>();
         entity.Updated();
 
         targetPos = target.GetComponent<Transform>();
@@ -172,7 +165,7 @@ public class EnemyFourthStatus : BaseGameEntity
 
         if(enemyHP <= 0)
         {
-            ChangeState(EnemyFourthStates.Enemy_Die);
+            ChangeState(EnemyFourthSplitStates.Enemy_Die);
         }
     }
 
@@ -199,14 +192,6 @@ public class EnemyFourthStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
-
-        for(int i = 0; i < 2; i++)
-        {
-            if(!gameObject.CompareTag("EnemySplit"))
-            {
-                Instantiate(enemySplitObj, EnemyTransform.position, Quaternion.identity);
-            }
-        }
 
         Destroy(gameObject);
     }

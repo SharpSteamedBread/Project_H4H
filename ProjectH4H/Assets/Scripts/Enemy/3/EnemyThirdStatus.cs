@@ -32,6 +32,7 @@ public class EnemyThirdStatus : BaseGameEntity
 
     [Header("사망")]
     [SerializeField] private GameObject enemyDeadItem;
+    [SerializeField] private GameObject enemyBoomHitbox;
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
@@ -186,6 +187,7 @@ public class EnemyThirdStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
+        Instantiate(enemyBoomHitbox, EnemyTransform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

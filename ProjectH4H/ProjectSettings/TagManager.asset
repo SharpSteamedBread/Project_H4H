@@ -7,6 +7,11 @@ TagManager:
   - Enemy
   - Enemy_dontmove
   - PlayerHitbox
+  - Enemy3Hitbox
+  - Enemy4Hitbox
+  - EnemySplit
+  - Item
+  - EncounterBoundary
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Item
   - 
   - 
   - 
