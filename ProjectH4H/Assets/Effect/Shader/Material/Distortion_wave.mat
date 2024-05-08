@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Add_Tex:
-        m_Texture: {fileID: 2800000, guid: aa435dd83785bc24abaa57ed59b6c2e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: f27d7b3dc195d55408b7647ac09ef758, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Base_Tex:
-        m_Texture: {fileID: 2800000, guid: d8ea67364852ee740879584cf59780bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73948bbd4344e744d8aedcae6590c04c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -99,9 +99,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Add_Power: 1
     - _Add_Tex_Power: 1
     - _All_Power: 1
     - _AlphaClip: 0
+    - _Base_Power: 1
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -129,14 +131,20 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Add_Tex_Flow: {r: 0, g: 0.31, b: 0, a: 0}
+    - _Add_Flow: {r: 0, g: 0, b: 0, a: 0}
+    - _Add_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Add_Tex_Flow: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Add_Tex_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Add_Tex_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Base_Flow: {r: 0, g: 0, b: 0, a: 0}
+    - _Base_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Base_Tex_Flow: {r: 0, g: 0, b: 0, a: 0}
     - _Base_Tex_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Base_Tex_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Base_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Wave_Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

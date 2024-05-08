@@ -60,7 +60,7 @@ Material:
     m_Colors:
     - _MainTex_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _MainTex_Tile: {r: 1, g: 1, b: 0, a: 0}
-    - _MainTex_UV_Flow: {r: 0, g: 0.4, b: 0, a: 0}
+    - _MainTex_UV_Flow: {r: 0, g: 0, b: 0, a: 0}
     - _Mask_Offset: {r: 0, g: -0.51, b: 0, a: 0}
     - _Mask_Tile: {r: 1, g: 1, b: 0, a: 0}
     - _Mask_UV_Flow: {r: 0, g: 0, b: 0, a: 0}
