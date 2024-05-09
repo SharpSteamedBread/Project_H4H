@@ -23,13 +23,13 @@ public class CommandCheck : MonoBehaviour
     public GameObject objCommandEnterUI;
 
     static public bool isCommandSystemOpened = false;
-    public bool checkCommandSystemOpened = false;
+    //public bool checkCommandSystemOpened = false;
 
 
     // Update is called once per frame
     void Update()
     {
-        checkCommandSystemOpened = isCommandSystemOpened;
+        //checkCommandSystemOpened = isCommandSystemOpened;
 
         if (objCommandEnterUI.activeSelf == true)
         {
@@ -115,7 +115,7 @@ public class CommandCheck : MonoBehaviour
             isCommandSystemOpened = false;
             gameObject.GetComponent<CommandEnterUI>().isCommandUIOpen = false;
 
-            animPlayer.SetBool("useSkill1_1 0", false);
+            animPlayer.SetBool("useSkill1_1", false);
 
         }
     }

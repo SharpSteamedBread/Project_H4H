@@ -102,7 +102,7 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
-        Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
+        //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
     }
 
     public void PlayerMoveInput()
@@ -120,6 +120,11 @@ public class PlayerStatus : BaseGameEntity
         {
             playerSkeletonSprite.skeleton.SetColor(Color.red);
         }
+
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            playerAnim.SetBool("onGround", true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -127,6 +132,11 @@ public class PlayerStatus : BaseGameEntity
         if (collision.gameObject.CompareTag("Enemy_dontmove"))
         {
             playerSkeletonSprite.skeleton.SetColor(Color.white);
+        }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            playerAnim.SetBool("onGround", false);
         }
     }
 

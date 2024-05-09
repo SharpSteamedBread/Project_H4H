@@ -16,7 +16,7 @@ namespace PlayerOwnedStates
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 //커맨드 창이 안 켜졌을 때에만 이동
-                if (CommandCheck.isCommandSystemOpened == false)
+                if (CommandCheckDict.isCommandSystemOpened == false)
                 {
                     entity.PlayerAnim.SetBool("isMoving", true);
                     entity.ChangeState(PlayerStates.Player_Run);
@@ -49,7 +49,7 @@ namespace PlayerOwnedStates
         public override void Execute(PlayerStatus entity)
         {
             //커맨드 창이 열려있지 않을 때에만 이동
-            if(CommandCheck.isCommandSystemOpened == false)
+            if(CommandCheckDict.isCommandSystemOpened == false)
             {
                 if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
                 {
@@ -79,7 +79,7 @@ namespace PlayerOwnedStates
 
             //조작 끝 & 커맨드 창이 열려있을 때에는 행동을 초기화
             if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
-                || CommandCheck.isCommandSystemOpened == true)
+                || CommandCheckDict.isCommandSystemOpened == true)
             {
                 entity.ChangeState(PlayerStates.Player_Idle);
             }

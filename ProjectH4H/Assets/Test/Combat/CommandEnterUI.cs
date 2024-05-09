@@ -35,9 +35,19 @@ public class CommandEnterUI : MonoBehaviour
 
     public void InitPlayerAnim()
     {
-        animPlayer.SetBool("useSkill1_1 0", false);
-        animPlayer.SetBool("useSkill1_2 0", false);
+        animPlayer.SetBool("useSkill1_1", false);
+        animPlayer.SetBool("useSkill1_2", false);
 
+        animPlayer.SetBool("useSkill2_1", false);
+        animPlayer.SetBool("useSkill2_2", false);
+        animPlayer.SetBool("useSkill2_3", false);
+
+        animPlayer.SetBool("useSkill3_1", false);
+        animPlayer.SetBool("useSkill3_2", false);
+        animPlayer.SetBool("useSkill3_3", false);
+
+        animPlayer.SetBool("useSkill4_1", false);
+        animPlayer.SetBool("useSkill4_2", false);
     }
 
 
