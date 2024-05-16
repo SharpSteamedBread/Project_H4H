@@ -33,6 +33,10 @@ public class EnemyStatus : BaseGameEntity
     [Header("사망")]
     [SerializeField] private GameObject enemyDeadItem;
 
+    [Header("테스트 겸 피격")]
+    [SerializeField] private GameObject criticalShow;
+    [SerializeField] private CommandEnterUI activateCommandSkill;
+
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
     private State<EnemyStatus>[] states;
@@ -193,7 +197,10 @@ public class EnemyStatus : BaseGameEntity
     {
         if(collision.CompareTag("PlayerHitbox"))
         {
-            enemyHP = 0;
+            Debug.Log("아야!");
+            enemyHP = 80;
+            criticalShow.SetActive(true);
+            activateCommandSkill.TimeToSkillCommand();
         }
     }
 }

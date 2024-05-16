@@ -18,7 +18,7 @@ public class PlayerStatus : BaseGameEntity
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [Header("ÆÄÃ÷")]
-    [SerializeField] private SkeletonMecanim playerSkeletonSprite;
+    [SerializeField] private SpriteRenderer playerImage;
     [SerializeField] private int playerLAPartHP;
     [SerializeField] private int playerRAPartHP;
     [SerializeField] private int playerLLPartHP;
@@ -118,7 +118,7 @@ public class PlayerStatus : BaseGameEntity
     {
         if(collision.gameObject.CompareTag("Enemy_dontmove"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.red);
+            playerImage.color = Color.red;
         }
 
         if(collision.gameObject.CompareTag("Ground"))
@@ -131,7 +131,7 @@ public class PlayerStatus : BaseGameEntity
     {
         if (collision.gameObject.CompareTag("Enemy_dontmove"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.white);
+            playerImage.color = Color.white;
         }
 
         if (collision.gameObject.CompareTag("Ground"))
@@ -144,15 +144,16 @@ public class PlayerStatus : BaseGameEntity
     {
         if (collision.gameObject.CompareTag("Enemy3Hitbox"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.red);
+            playerImage.color = Color.red;
         }
         else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.red);
+            playerImage.color = Color.red;
         }
+
         else if(collision.gameObject.CompareTag("EncounterBoundary"))
         {
-            StartCoroutine(ZoomCamera());
+            //StartCoroutine(ZoomCamera());
         }
     }
 
@@ -160,15 +161,15 @@ public class PlayerStatus : BaseGameEntity
     {
         if (collision.gameObject.CompareTag("Enemy3Hitbox"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.white);
+            playerImage.color = Color.white;
         }
         else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
         {
-            playerSkeletonSprite.skeleton.SetColor(Color.white);
+            playerImage.color = Color.white;
         }
         else if (collision.gameObject.CompareTag("EncounterBoundary"))
         {
-            StartCoroutine(UnzoomCamera());
+            //StartCoroutine(UnzoomCamera());
         }
     }
 

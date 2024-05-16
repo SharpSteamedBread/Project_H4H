@@ -10,6 +10,8 @@ public class CommandEnterUI : MonoBehaviour
 
     public Animator animPlayer;
 
+    private float checkCommandOpenTime;
+
     private void Awake()
     {
     }
@@ -18,11 +20,9 @@ public class CommandEnterUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if(checkCommandOpenTime >= 2.0f)
         {
-            isCommandUIOpen = !isCommandUIOpen;
-            objCommandEnterUI.SetActive(isCommandUIOpen!);
-            InitPlayerAnim();
+            isCommandUIOpen = false;
         }
 
         if (isCommandUIOpen == false)
@@ -50,5 +50,23 @@ public class CommandEnterUI : MonoBehaviour
         animPlayer.SetBool("useSkill4_2", false);
     }
 
+    public void TimeToSkillCommand()
+    {
+        isCommandUIOpen = !isCommandUIOpen;
+        objCommandEnterUI.SetActive(isCommandUIOpen!);
+        InitPlayerAnim();
+        StartCoroutine(CommandRestrict());
+    }
+
+
+    private IEnumerator CommandRestrict()
+    {
+        yield return new WaitForSecondsRealtime (1.0f);
+
+        checkCommandOpenTime += 1.0f;
+
+        StartCoroutine(CommandRestrict());
+
+    }
 
 }

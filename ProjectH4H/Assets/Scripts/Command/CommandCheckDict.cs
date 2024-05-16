@@ -28,6 +28,8 @@ public class CommandCheckDict : MonoBehaviour
 
     static public bool isCommandSystemOpened = false;
 
+    [SerializeField] private GameObject bgm;
+
     private void Awake()
     {
         // 커맨드와 처리할 메소드 매핑
@@ -44,10 +46,13 @@ public class CommandCheckDict : MonoBehaviour
 
         commandDictionary.Add("DD", ActivateSkill4_1);
         commandDictionary.Add("DDA", ActivateSkill4_2);
+
+        bgm.GetComponent<AudioLowPassFilter>();
     }
 
     void Update()
     {
+
         ToggleCommandEnterUI();
         ProcessCommand(inputCommand);
 
@@ -55,6 +60,8 @@ public class CommandCheckDict : MonoBehaviour
         {
             Time.timeScale = bulletTime;
             isCommandSystemOpened = true;
+
+            bgm.GetComponent<AudioLowPassFilter>().enabled = true;
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -108,6 +115,12 @@ public class CommandCheckDict : MonoBehaviour
                 isCommandSystemOpened = false;
 
             }
+        }
+
+        else
+        {
+            bgm.GetComponent<AudioLowPassFilter>().enabled = false;
+            isCommandSystemOpened = false;
         }
     }
 
