@@ -98,29 +98,26 @@ public class CommandCheckDict : MonoBehaviour
 
                 inputCommand = inputCommand + "D";
             }
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                inputCommand = "";
-
-                foreach (Transform child in assortObjCommandKey.transform)
-                {
-                    Destroy(child.gameObject);
-                }
-
-                animPlayer.SetTrigger("commandCancelled");
-                InitAnimation();
-
-                isCommandUIOpen = !isCommandUIOpen;
-                isCommandSystemOpened = false;
-
-            }
         }
 
         else
         {
             bgm.GetComponent<AudioLowPassFilter>().enabled = false;
+
+            inputCommand = "";
+
+            foreach (Transform child in assortObjCommandKey.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            animPlayer.SetTrigger("commandCancelled");
+            InitAnimation();
+
+            isCommandUIOpen = false;
             isCommandSystemOpened = false;
+
+            Debug.Log("²¨Áø´Ù!");
         }
     }
 

@@ -2,6 +2,7 @@ using Spine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum EnemyStates { EnemyNormal_Idle, EnemyNormal_Move, EnemyNormal_Attack, EnemyNormal_Damaged, EnemyNormal_Die }
 
@@ -26,7 +27,8 @@ public class EnemyStatus : BaseGameEntity
     [SerializeField] private Transform enemySprite;
 
     [Header("스텟")]
-    [SerializeField] private int enemyHP;
+    [SerializeField] private int enemyCurrHP;
+    [SerializeField] private int enemyMaxHP;
     [SerializeField] private int enemyATK;
     [SerializeField] private float attackCooltime = 1.0f;
 
@@ -36,6 +38,8 @@ public class EnemyStatus : BaseGameEntity
     [Header("테스트 겸 피격")]
     [SerializeField] private GameObject criticalShow;
     [SerializeField] private CommandEnterUI activateCommandSkill;
+    public UnityEvent onEnemyDamaged;
+    public GameObject objDamageInteractor;
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
@@ -81,10 +85,16 @@ public class EnemyStatus : BaseGameEntity
         get => targetPos;
     }
 
-    public int EnemyHP
+    public int EnemyCurrHP
     {
-        set => enemyHP = value;
-        get => enemyHP;
+        set => enemyCurrHP = value;
+        get => enemyCurrHP;
+    }
+
+    public int EnemyMaxHP
+    {
+        set => enemyMaxHP = value;
+        get => enemyMaxHP; 
     }
 
     public float AttackCooltime
@@ -130,6 +140,9 @@ public class EnemyStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemyStatus>();
         stateMachine.Setup(this, states[(int)EnemyStates.EnemyNormal_Idle]);
+
+        //데미지 관련
+        objDamageInteractor.GetComponent<DamageInteractor>();
     }
 
     public override void Updated()
@@ -146,7 +159,8 @@ public class EnemyStatus : BaseGameEntity
     private void Awake()
     {
         enemyMove = 5.0f;
-        enemyHP = 100;
+        enemyCurrHP = 100;
+        enemyMaxHP = 100;
 
         StartCoroutine(RandomWay());
 
@@ -161,7 +175,7 @@ public class EnemyStatus : BaseGameEntity
 
         Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
 
-        if(enemyHP <= 0)
+        if(enemyCurrHP <= 0)
         {
             ChangeState(EnemyStates.EnemyNormal_Die);
         }
@@ -197,10 +211,14 @@ public class EnemyStatus : BaseGameEntity
     {
         if(collision.CompareTag("PlayerHitbox"))
         {
+            objDamageInteractor.GetComponent<DamageInteractor>();
+
             Debug.Log("아야!");
-            enemyHP = 80;
+            enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
+            //onEnemyDamaged.Invoke();
             criticalShow.SetActive(true);
             activateCommandSkill.TimeToSkillCommand();
+            Debug.Log("이게 안돼?");
         }
     }
 }

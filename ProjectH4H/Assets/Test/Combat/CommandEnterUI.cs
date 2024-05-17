@@ -10,7 +10,7 @@ public class CommandEnterUI : MonoBehaviour
 
     public Animator animPlayer;
 
-    private float checkCommandOpenTime;
+    public float checkCommandOpenTime;
 
     private void Awake()
     {
@@ -28,8 +28,11 @@ public class CommandEnterUI : MonoBehaviour
         if (isCommandUIOpen == false)
         {
             Time.timeScale = 1f;
-            CommandCheck.isCommandSystemOpened = false;
+            CommandCheckDict.isCommandSystemOpened = false;
             objCommandEnterUI.SetActive(false);
+
+            StopCoroutine(CommandRestrict());
+            checkCommandOpenTime = 0;
         }
     }
 
@@ -52,8 +55,12 @@ public class CommandEnterUI : MonoBehaviour
 
     public void TimeToSkillCommand()
     {
-        isCommandUIOpen = !isCommandUIOpen;
-        objCommandEnterUI.SetActive(isCommandUIOpen!);
+        Debug.Log("ÄÑÁø´Ù!");
+
+        isCommandUIOpen = true;
+        CommandCheckDict.isCommandSystemOpened = true;
+
+        objCommandEnterUI.SetActive(isCommandUIOpen);
         InitPlayerAnim();
         StartCoroutine(CommandRestrict());
     }
