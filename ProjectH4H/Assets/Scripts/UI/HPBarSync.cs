@@ -18,6 +18,8 @@ public class HPBarSync : MonoBehaviour
     {
         hpBar.value = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP / objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
 
+        Debug.Log(hpBar.value);
+
         if(hpBar.value <= 0 )
         {
             gameObject.SetActive(false);
