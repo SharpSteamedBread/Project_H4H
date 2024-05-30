@@ -13,6 +13,8 @@ TagManager:
   - Item
   - EncounterBoundary
   - Ground
+  - Object_falling
+  - ObjectSensor
   layers:
   - Default
   - TransparentFX
