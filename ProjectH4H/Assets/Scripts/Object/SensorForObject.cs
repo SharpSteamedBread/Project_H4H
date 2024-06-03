@@ -10,8 +10,15 @@ public class SensorForObject : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("때릴 것이다!");
-            objInteractObject.SetActive(true);
+            if(objInteractObject.CompareTag("Object_falling"))
+            {
+                objInteractObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            }
+
+            else if (objInteractObject.CompareTag("Object_hide"))
+            {
+                objInteractObject.SetActive(true);
+            }
         }
     }
 }

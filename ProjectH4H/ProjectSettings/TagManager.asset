@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - Object_falling
   - ObjectSensor
+  - Object_hide
   layers:
   - Default
   - TransparentFX
