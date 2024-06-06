@@ -16,6 +16,7 @@ TagManager:
   - Object_falling
   - ObjectSensor
   - Object_hide
+  - Object_spinning
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SpineTest.unity
+    path: Assets/Scenes/Prototype0605.unity
     guid: d4ed07c972cdb18459832ea82c521053
   - enabled: 1
     path: Assets/Scenes/CombatSystemTest.unity
