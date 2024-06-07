@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8473209867525492399}
   - component: {fileID: 8473209867525492384}
   - component: {fileID: 8473209867525492397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite_Object_falling
   m_TagString: Object_falling
   m_Icon: {fileID: 0}

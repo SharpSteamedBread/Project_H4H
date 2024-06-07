@@ -28,8 +28,8 @@ TagManager:
   - Enemy
   - Item
   - PlayerJump
-  - 
-  - 
+  - Object_falling
+  - Object_squish
   - 
   - 
   - 

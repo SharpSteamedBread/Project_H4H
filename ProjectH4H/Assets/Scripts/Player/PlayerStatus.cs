@@ -121,7 +121,8 @@ public class PlayerStatus : BaseGameEntity
             playerImage.color = Color.red;
         }
 
-        if(collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground") ||
+            collision.gameObject.CompareTag("Enemy_dontmove"))
         {
             playerAnim.SetBool("onGround", true);
         }

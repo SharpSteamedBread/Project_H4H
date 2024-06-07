@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3924464057505784619}
   - component: {fileID: 3924464057505784618}
   - component: {fileID: 6760023812871142428}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite_Object_squish
   m_TagString: Untagged
   m_Icon: {fileID: 0}

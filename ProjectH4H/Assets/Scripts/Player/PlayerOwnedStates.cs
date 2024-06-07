@@ -23,6 +23,7 @@ namespace PlayerOwnedStates
                 }
             }
 
+            //점프
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
@@ -56,6 +57,7 @@ namespace PlayerOwnedStates
                     entity.PlayerAnim.SetBool("isMoving", true);
                 }
 
+                //점프
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
