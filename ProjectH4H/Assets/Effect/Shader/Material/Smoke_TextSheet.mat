@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Smoke_TextSheet
-  m_Shader: {fileID: -6465566751694194690, guid: 0d9db12c781dc8f4a90f6fc0d3e9177f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2be8d2fadf0935d4f912109055b1ef11, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -177,7 +177,7 @@ Material:
     - _Cloud_Direction: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Cloud_Direction_1: {r: 0.1, g: 0, b: 0, a: 0}
     - _Cloud_Tiling: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 33.89676, g: 33.89676, b: 33.89676, a: 1}
+    - _Color: {r: 67.79352, g: 67.79352, b: 67.79352, a: 1}
     - _DissolveColor: {r: 0, g: 1.072119, b: 2.297397, a: 0}
     - _Distortion_Tile_1: {r: 10, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
