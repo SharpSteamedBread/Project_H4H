@@ -1,0 +1,57 @@
+{
+    "name": "PCInput",
+    "maps": [
+        {
+            "name": "Dash_DoubleInput",
+            "id": "a8d034e8-f586-4d96-ac92-18336e939641",
+            "actions": [
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "137302ca-af99-4118-878f-da72698a9f28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c44d7e81-6f42-4c31-90b3-b8568fc6c0cc",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f45d8aa-a85a-4326-8d3b-62ed7794fbd3",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Dash_DoubleInput",
+            "bindingGroup": "Dash_DoubleInput",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

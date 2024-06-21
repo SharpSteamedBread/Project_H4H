@@ -66,7 +66,7 @@ namespace PlayerOwnedStates
 
                 h = Input.GetAxis("Horizontal");        // 가로축
 
-                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.deltaTime;
+                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.smoothDeltaTime;
 
                 //방향 전환
                 if (Input.GetKey(KeyCode.LeftArrow))
