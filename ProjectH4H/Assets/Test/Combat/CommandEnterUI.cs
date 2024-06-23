@@ -20,7 +20,7 @@ public class CommandEnterUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(checkCommandOpenTime >= 4.0f)
+        if(checkCommandOpenTime >= 2.0f)
         {
             isCommandUIOpen = false;
         }

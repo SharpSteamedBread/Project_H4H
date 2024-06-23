@@ -17,12 +17,8 @@ public class ObjectBalance : MonoBehaviour
     {
        if(isPlayerOn == false)
         {
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-            objTransform.rotation = Quaternion.Lerp(objTransform.rotation, targetRotation, 2f * Time.deltaTime);
-            /*
             objTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f,
                                          Mathf.Lerp(objTransform.rotation.z, 0, 5f * Time.deltaTime)));
-            */
         }
     }
 
