@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.41666666
+        time: 0.16666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.75
+        time: 0.25
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -57,31 +57,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -462571730, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.083333336
-      value: {fileID: -1260289600, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
+      value: {fileID: 21300000, guid: b53079c3b60522c41b2f8318565bbc7e, type: 3}
     - time: 0.16666667
-      value: {fileID: -1642469682, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.25
-      value: {fileID: 159617428, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.33333334
-      value: {fileID: 2047955699, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.41666666
-      value: {fileID: 984678190, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.5
-      value: {fileID: -69865711, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.5833333
-      value: {fileID: 295996327, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.6666667
-      value: {fileID: -757202911, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.75
-      value: {fileID: 1585977807, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.8333333
-      value: {fileID: 1248376724, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 0.9166667
-      value: {fileID: -838508217, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - time: 1
-      value: {fileID: -1527918494, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
+      value: {fileID: 21300000, guid: b53079c3b60522c41b2f8318565bbc7e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -108,25 +86,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -462571730, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -1260289600, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -1642469682, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 159617428, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 2047955699, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 984678190, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -69865711, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 295996327, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -757202911, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 1585977807, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: 1248376724, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -838508217, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
-    - {fileID: -1527918494, guid: b3a1db5c186904b498a11180843e7ed4, type: 3}
+    - {fileID: 21300000, guid: b53079c3b60522c41b2f8318565bbc7e, type: 3}
+    - {fileID: 21300000, guid: b53079c3b60522c41b2f8318565bbc7e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0833334
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -155,7 +122,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.41666666
+        time: 0.16666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -164,7 +131,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.75
+        time: 0.25
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -183,7 +150,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.0833334
+  - time: 0.25
     functionName: LinkCombo2
     data: 
     objectReferenceParameter: {fileID: 0}

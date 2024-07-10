@@ -121,7 +121,8 @@ public class PlayerStatus : BaseGameEntity
             playerImage.color = Color.red;
         }
 
-        if(collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground") ||
+            collision.gameObject.CompareTag("Enemy_dontmove"))
         {
             playerAnim.SetBool("onGround", true);
         }
@@ -142,11 +143,11 @@ public class PlayerStatus : BaseGameEntity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy3Hitbox"))
-        {
-            playerImage.color = Color.red;
-        }
-        else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
+        if (collision.gameObject.CompareTag("Enemy3Hitbox") ||
+            collision.gameObject.CompareTag("Enemy4Hitbox") ||
+            collision.gameObject.CompareTag("Object_hide") ||
+            collision.gameObject.CompareTag("Object_falling") ||
+            collision.gameObject.CompareTag("Object_spinning"))
         {
             playerImage.color = Color.red;
         }
@@ -159,14 +160,15 @@ public class PlayerStatus : BaseGameEntity
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy3Hitbox"))
+        if (collision.gameObject.CompareTag("Enemy3Hitbox") ||
+            collision.gameObject.CompareTag("Enemy4Hitbox") ||
+            collision.gameObject.CompareTag("Object_hide") ||
+            collision.gameObject.CompareTag("Object_falling") ||
+            collision.gameObject.CompareTag("Object_spinning"))
         {
             playerImage.color = Color.white;
         }
-        else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
-        {
-            playerImage.color = Color.white;
-        }
+
         else if (collision.gameObject.CompareTag("EncounterBoundary"))
         {
             //StartCoroutine(UnzoomCamera());

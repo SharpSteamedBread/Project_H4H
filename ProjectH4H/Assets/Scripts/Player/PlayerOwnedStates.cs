@@ -23,6 +23,7 @@ namespace PlayerOwnedStates
                 }
             }
 
+            //점프
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
@@ -56,6 +57,7 @@ namespace PlayerOwnedStates
                     entity.PlayerAnim.SetBool("isMoving", true);
                 }
 
+                //점프
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
@@ -64,7 +66,7 @@ namespace PlayerOwnedStates
 
                 h = Input.GetAxis("Horizontal");        // 가로축
 
-                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.deltaTime;
+                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.smoothDeltaTime;
 
                 //방향 전환
                 if (Input.GetKey(KeyCode.LeftArrow))
