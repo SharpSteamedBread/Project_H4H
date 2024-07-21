@@ -12,6 +12,7 @@ public class PlayerStatus : BaseGameEntity
     [Header("플레이어 움직임")]
     [SerializeField] private float playerMove = 10.0f;
     [SerializeField] private float playerJumpForce = 10.0f;
+    [SerializeField] private float h;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Transform playerSprite;
@@ -97,12 +98,50 @@ public class PlayerStatus : BaseGameEntity
         entity.Setup();
     }
 
+    private void FixedUpdate()
+    {
+        PlayerMoving();
+    }
+
     private void Update()
     {
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
         //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
+    }
+
+    private void PlayerMoving()
+    {
+        //커맨드 창이 열려있지 않을 때에만 이동
+        if (CommandCheckDict.isCommandSystemOpened == false)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
+                playerAnim.SetBool("isMoving", true);
+            }
+
+            //점프
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
+                playerAnim.SetTrigger("isJumping");
+            }
+
+            h = Input.GetAxis("Horizontal");        // 가로축
+
+            transform.position += new Vector3(h, 0, 0) * playerMove * Time.deltaTime;
+
+            //방향 전환
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                playerSprite.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                playerSprite.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
     }
 
     public void PlayerMoveInput()

@@ -49,36 +49,6 @@ namespace PlayerOwnedStates
 
         public override void Execute(PlayerStatus entity)
         {
-            //커맨드 창이 열려있지 않을 때에만 이동
-            if(CommandCheckDict.isCommandSystemOpened == false)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-                {
-                    entity.PlayerAnim.SetBool("isMoving", true);
-                }
-
-                //점프
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
-                    entity.PlayerAnim.SetTrigger("isJumping");
-                }
-
-                h = Input.GetAxis("Horizontal");        // 가로축
-
-                entity.transform.position += new Vector3(h, 0, 0) * entity.PlayerMove * Time.smoothDeltaTime;
-
-                //방향 전환
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    entity.PlayerSprite.transform.localScale = new Vector3(-1, 1, 1);
-                }
-                else if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    entity.PlayerSprite.transform.localScale = new Vector3(1, 1, 1);
-                }
-            }
-
             //조작 끝 & 커맨드 창이 열려있을 때에는 행동을 초기화
             if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
                 || CommandCheckDict.isCommandSystemOpened == true)
