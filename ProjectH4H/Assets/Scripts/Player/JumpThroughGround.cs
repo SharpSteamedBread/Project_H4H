@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class JumpThroughGround : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private CapsuleCollider2D playerCollider;
 
     private void Awake()
     {
-        playerCollider.GetComponent<BoxCollider2D>();
+        playerCollider.GetComponent<CapsuleCollider2D>();
     }
 
 
@@ -17,7 +17,7 @@ public class JumpThroughGround : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            playerCollider.GetComponent<BoxCollider2D>().isTrigger = true;
+            playerCollider.GetComponent<CapsuleCollider2D>().isTrigger = true;
         }
     }
 
@@ -25,7 +25,7 @@ public class JumpThroughGround : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            playerCollider.GetComponent<BoxCollider2D>().isTrigger = false;
+            playerCollider.GetComponent<CapsuleCollider2D>().isTrigger = false;
         }
     }
 }

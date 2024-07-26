@@ -108,6 +108,9 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
+        PlayerJump();
+
+
         //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
     }
 
@@ -119,13 +122,6 @@ public class PlayerStatus : BaseGameEntity
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 playerAnim.SetBool("isMoving", true);
-            }
-
-            //점프
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
-                playerAnim.SetTrigger("isJumping");
             }
 
             h = Input.GetAxis("Horizontal");        // 가로축
@@ -143,6 +139,22 @@ public class PlayerStatus : BaseGameEntity
             }
         }
     }
+
+    private void PlayerJump()
+    {
+        //커맨드 창이 열려있지 않을 때에만 이동
+        if (CommandCheckDict.isCommandSystemOpened == false)
+        {
+            //점프
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
+                playerAnim.SetTrigger("isJumping");
+            }
+        }
+    }
+
+
 
     public void PlayerMoveInput()
     {

@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float valueControlY = 0;
 
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Vector3 targetPos = new Vector3(player.position.x, player.position.y + valueControlY, this.transform.position.z);
 
