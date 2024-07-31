@@ -1,17 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerComboAttack : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
-    public int ZBasicAttack;
-    public int XBasicAttack;
+    private int comboStep;
 
-    float lastInputTime = 0;
+    [SerializeField] private float lastInputTime = 0f;
     [SerializeField] private float maxComboDelay = 1.0f;
 
+    [Header("UI ¹öÆ°")]
+    [SerializeField] private Button objButtonZ;
+    [SerializeField] private Button objButtonX;
 
     private void Awake()
     {
@@ -20,250 +22,133 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ReturntoZero());
+        StartCoroutine(ReturnToZero());
     }
 
     void Update()
     {
-        DoBasicAttack();
-        ConditionControll();
+        DoComboAttack();
+        ConditionControl();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("Z key down");
+            objButtonZ.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+        }
+        else if (Input.GetKeyUp(KeyCode.Z))
+        {
+            Debug.Log("Z key up");
+            objButtonZ.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+            PerformComboAttack(KeyCode.Z);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("X key down");
+            objButtonX.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+        }
+        else if (Input.GetKeyUp(KeyCode.X))
+        {
+            Debug.Log("X key up");
+            objButtonX.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+            PerformComboAttack(KeyCode.X);
+        }
     }
 
-    private void DoBasicAttack()
+    private void PerformComboAttack(KeyCode keyCode)
     {
-        if (Time.deltaTime - lastInputTime > maxComboDelay)
-        {
-            animator.SetBool("ZAttackCombo1", false);
-            animator.SetBool("ZAttackCombo2", false);
-            animator.SetBool("ZAttackCombo3", false);
-
-            animator.SetBool("XAttackCombo1", false);
-            animator.SetBool("XAttackCombo2", false);
-            animator.SetBool("XAttackCombo3", false);
-
-            ZBasicAttack = 0;
-            XBasicAttack = 0;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            lastInputTime = Time.deltaTime;
-            ZBasicAttack++;
-            animator.SetBool("isAttack", true);
-
-            //valueCanMove = false;
-            //GetComponent<PlayerMove>().canMove = valueCanMove;
-
-            if (ZBasicAttack == 1)
-            {
-                animator.SetBool("ZAttackCombo1", true);
-
-                if (animator.GetBool("isJumping") == false)
-                {
-                    //AudioManager.instance.PlaySFX("PlayerAttack1Effect");
-                    //AudioManager.instance.PlaySFX("PlayerAttack1Voice");
-                }
-            }
-            //basicAttack = Mathf.Clamp(basicAttack, 0, 3);
-        }
-
-        else if(Input.GetKeyUp(KeyCode.X))
-        {
-            lastInputTime = Time.deltaTime;
-            XBasicAttack++;
-            animator.SetBool("isAttack", true);
-
-            //valueCanMove = false;
-            //GetComponent<PlayerMove>().canMove = valueCanMove;
-
-            if (XBasicAttack == 1)
-            {
-                animator.SetBool("XAttackCombo1", true);
-
-                if (animator.GetBool("isJumping") == false)
-                {
-                    //AudioManager.instance.PlaySFX("PlayerAttack1Effect");
-                    //AudioManager.instance.PlaySFX("PlayerAttack1Voice");
-                }
-            }
-            //basicAttack = Mathf.Clamp(basicAttack, 0, 3);
-        }
+        lastInputTime = Time.time;
+        StartCoroutine(InputDelay(keyCode));
     }
 
-    public void LinkCombo2()
+    private IEnumerator InputDelay(KeyCode keyCode)
     {
-        if (ZBasicAttack >= 2)
-        {
-            animator.SetBool("ZAttackCombo2", true);
-            animator.SetBool("ZAttackCombo1", false);
+        yield return new WaitForSeconds(0.1f);
+        comboStep++;
+        animator.SetBool("isAttack", true);
 
-            if (animator.GetBool("isJumping") == false)
-            {
-                //AudioManager.instance.PlaySFX("PlayerAttack2Effect");
-                //AudioManager.instance.PlaySFX("PlayerAttack2Voice");
-            }
-        }
-
-        else
-        {
-            animator.SetBool("ZAttackCombo1", false);
-            ZBasicAttack = 0;
-            animator.SetBool("isAttack", true);
-            //AttackMove();
-        }
-
-        if (XBasicAttack >= 2)
-        {
-            animator.SetBool("XAttackCombo2", true);
-            animator.SetBool("XAttackCombo1", false);
-
-            if (animator.GetBool("isJumping") == false)
-            {
-                //AudioManager.instance.PlaySFX("PlayerAttack2Effect");
-                //AudioManager.instance.PlaySFX("PlayerAttack2Voice");
-            }
-        }
-
-        else
-        {
-            animator.SetBool("XAttackCombo1", false);
-            XBasicAttack = 0;
-            animator.SetBool("isAttack", true);
-            //AttackMove();
-        }
+        SetComboState(keyCode, comboStep);
     }
 
-    public void LinkCombo3()
+    private void SetComboState(KeyCode keyCode, int step)
     {
-        if (ZBasicAttack >= 3)
-        {
-            animator.SetBool("ZAttackCombo3", true);
-            animator.SetBool("ZAttackCombo2", false);
+        ResetComboStates();
 
-            if (animator.GetBool("isJumping") == false)
-            {
-                //AudioManager.instance.PlaySFX("PlayerAttack3Effect");
-                //AudioManager.instance.PlaySFX("PlayerAttack3Voice");
-            }
+        if (keyCode == KeyCode.Z)
+        {
+            if (step == 1) animator.SetBool("ZAttackCombo1", true);
+            else if (step == 2) animator.SetBool("ZAttackCombo2", true);
+            else if (step == 3) animator.SetBool("ZAttackCombo3", true);
         }
-
-        else
+        else if (keyCode == KeyCode.X)
         {
-            animator.SetBool("ZAttackCombo2", false);
-            ZBasicAttack = 0;
-            animator.SetBool("isAttack", true);
-            //AttackMove();
-        }
-
-        if (XBasicAttack >= 3)
-        {
-            animator.SetBool("XAttackCombo3", true);
-            animator.SetBool("XAttackCombo2", false);
-
-            if (animator.GetBool("isJumping") == false)
-            {
-                //AudioManager.instance.PlaySFX("PlayerAttack3Effect");
-                //AudioManager.instance.PlaySFX("PlayerAttack3Voice");
-            }
-        }
-
-        else
-        {
-            animator.SetBool("XAttackCombo2", false);
-            XBasicAttack = 0;
-            //AttackMove();
+            if (step == 1) animator.SetBool("XAttackCombo1", true);
+            else if (step == 2) animator.SetBool("XAttackCombo2", true);
+            else if (step == 3) animator.SetBool("XAttackCombo3", true);
         }
     }
 
-    public void LinkComboFinish()
+    private void ResetComboStates()
     {
         animator.SetBool("ZAttackCombo1", false);
         animator.SetBool("ZAttackCombo2", false);
         animator.SetBool("ZAttackCombo3", false);
-        ZBasicAttack = 0;
-
         animator.SetBool("XAttackCombo1", false);
         animator.SetBool("XAttackCombo2", false);
         animator.SetBool("XAttackCombo3", false);
-        XBasicAttack = 0;
-
-        animator.SetBool("isAttack", true);
     }
 
-    private void ConditionControll()
+    private void ResetAllCombos()
     {
-        if (ZBasicAttack > 3)
+        ResetComboStates();
+        comboStep = 0;
+        lastInputTime = 0;
+    }
+
+    private void DoComboAttack()
+    {
+        if (Time.time - lastInputTime > maxComboDelay)
         {
-            ZBasicAttack = 3;
+            ResetAllCombos();
+        }
+    }
+
+    private void ConditionControl()
+    {
+        if (comboStep > 3)
+        {
+            comboStep = 3;
         }
 
-
-        if (animator.GetBool("ZAttackCombo1") == false && animator.GetBool("ZAttackCombo2") == false
-            && animator.GetBool("ZAttackCombo3") == false)
+        if (!animator.GetBool("ZAttackCombo1") && !animator.GetBool("ZAttackCombo2") && !animator.GetBool("ZAttackCombo3") &&
+            !animator.GetBool("XAttackCombo1") && !animator.GetBool("XAttackCombo2") && !animator.GetBool("XAttackCombo3"))
         {
-            ZBasicAttack = 0;
+            comboStep = 0;
         }
 
-        if (XBasicAttack > 3)
-        {
-            XBasicAttack = 3;
-        }
-
-
-        if (animator.GetBool("XAttackCombo1") == false && animator.GetBool("XAttackCombo2") == false
-            && animator.GetBool("XAttackCombo3") == false)
-        {
-            XBasicAttack = 0;
-        }
-
-        if (animator.GetBool("isAttack") == true)
+        if (animator.GetBool("isAttack"))
         {
             animator.SetBool("Idle", false);
         }
-
         else
         {
-            //animator.SetBool("Idle", true);
-
-            animator.SetBool("ZAttackCombo1", false);
-            animator.SetBool("ZAttackCombo2", false);
-            animator.SetBool("ZAttackCombo3", false);
-            ZBasicAttack = 0;
-
-            animator.SetBool("XAttackCombo1", false);
-            animator.SetBool("XAttackCombo2", false);
-            animator.SetBool("XAttackCombo3", false);
-            XBasicAttack = 0;
+            animator.SetBool("Idle", true);
+            ResetAllCombos();
         }
 
-        if (animator.GetBool("Idle") == true)
-        {
-            animator.SetBool("isAttack", false);
-        }
-
-        if (animator.GetBool("isJumping") == true)
+        if (animator.GetBool("isJumping"))
         {
             animator.SetBool("isAttack", false);
         }
     }
 
-    private IEnumerator ReturntoZero()
+    private IEnumerator ReturnToZero()
     {
-        yield return new WaitForSeconds(4f);
-
-        animator.SetBool("ZAttackCombo1", false);
-        animator.SetBool("ZAttackCombo2", false);
-        animator.SetBool("ZAttackCombo3", false);
-        ZBasicAttack = 0;
-
-        animator.SetBool("XAttackCombo1", false);
-        animator.SetBool("XAttackCombo2", false);
-        animator.SetBool("XAttackCombo3", false);
-        XBasicAttack = 0;
-
-        animator.SetBool("isAttack", false);
-
-        StartCoroutine(ReturntoZero());
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            ResetAllCombos();
+            animator.SetBool("isAttack", false);
+        }
     }
-
 }

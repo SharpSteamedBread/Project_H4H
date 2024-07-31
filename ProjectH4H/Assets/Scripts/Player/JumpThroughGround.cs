@@ -17,6 +17,7 @@ public class JumpThroughGround : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            Debug.Log("Äá!");
             playerCollider.GetComponent<CapsuleCollider2D>().isTrigger = true;
         }
     }
@@ -25,6 +26,7 @@ public class JumpThroughGround : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            Debug.Log("¶Õ¾ú´Ù!");
             playerCollider.GetComponent<CapsuleCollider2D>().isTrigger = false;
         }
     }

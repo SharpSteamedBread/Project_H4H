@@ -17,6 +17,7 @@ TagManager:
   - ObjectSensor
   - Object_hide
   - Object_spinning
+  - MidBoss
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - PlayerJump
   - Object_falling
   - Object_squish
-  - 
+  - MidBoss
   - 
   - 
   - 
