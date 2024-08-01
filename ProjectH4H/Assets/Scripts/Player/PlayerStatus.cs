@@ -13,6 +13,7 @@ public class PlayerStatus : BaseGameEntity
     [SerializeField] private float playerMove = 10.0f;
     [SerializeField] private float playerJumpForce = 10.0f;
     [SerializeField] private float h;
+    [SerializeField] private bool isJumping = false;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Transform playerSprite;
@@ -111,9 +112,22 @@ public class PlayerStatus : BaseGameEntity
         
         PlayerJump();
 
-        if (playerAnim.GetBool("onGround") == true)
+      
+        playerAnim.SetBool("onGround", !isJumping);
+
+        if (playerAnim.GetBool("isAttack") == true)
         {
-            Debug.Log("땅 착지!");
+            playerAnim.SetBool("isMoving", false);
+            playerMove = 0;
+        }
+
+        else
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
+                playerAnim.SetBool("isMoving", true);
+            }
+            playerMove = 40;
         }
 
 
@@ -122,13 +136,10 @@ public class PlayerStatus : BaseGameEntity
 
     private void PlayerMoving()
     {
-        //커맨드 창이 열려있지 않을 때에만 이동
+        //커맨드 창이 열려있지 않을 때 && 공격하지 않을 때에만 이동
         if (CommandCheckDict.isCommandSystemOpened == false)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-            {
-                playerAnim.SetBool("isMoving", true);
-            }
+            
 
             h = Input.GetAxis("Horizontal");        // 가로축
 
@@ -152,9 +163,10 @@ public class PlayerStatus : BaseGameEntity
         if (CommandCheckDict.isCommandSystemOpened == false)
         {
             //점프
-            if (Input.GetKeyDown(KeyCode.Space) &&
-            playerAnim.GetBool("onGround") == true)
+            if (Input.GetKeyDown(KeyCode.Space) && 
+                isJumping == false && playerAnim.GetBool("onGround") == true)
             {
+                isJumping = true;
                 playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
                 playerAnim.SetTrigger("isJumping");
             }
@@ -182,6 +194,7 @@ public class PlayerStatus : BaseGameEntity
         if(collision.gameObject.CompareTag("Ground") ||
             collision.gameObject.CompareTag("Enemy_dontmove"))
         {
+            isJumping = false;
             playerAnim.SetBool("onGround", true);
         }
     }
@@ -195,8 +208,8 @@ public class PlayerStatus : BaseGameEntity
 
         if (collision.gameObject.CompareTag("Ground"))
         {
+            isJumping = true;
             playerAnim.SetBool("onGround", false);
-            playerAnim.SetBool("isJumping", false);
         }
     }
 
@@ -231,24 +244,6 @@ public class PlayerStatus : BaseGameEntity
         else if (collision.gameObject.CompareTag("EncounterBoundary"))
         {
             //StartCoroutine(UnzoomCamera());
-        }
-    }
-
-    private IEnumerator ZoomCamera()
-    {
-        for (int i = 0; i < 15; i++)
-        {
-            playerCamera.fieldOfView--;
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    private IEnumerator UnzoomCamera()
-    {
-        for (int i = 0; i < 15; i++)
-        {
-            playerCamera.fieldOfView++;
-            yield return new WaitForSeconds(0.01f);
         }
     }
 }

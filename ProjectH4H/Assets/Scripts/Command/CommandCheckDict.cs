@@ -55,6 +55,7 @@ public class CommandCheckDict : MonoBehaviour
 
     public void OnEnable()
     {
+        animPlayer.SetTrigger("commandCancelled");
         commandEnterUI.InitPlayerAnim();
     }
 
@@ -119,7 +120,7 @@ public class CommandCheckDict : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            animPlayer.SetTrigger("commandCancelled");
+            //animPlayer.SetTrigger("commandCancelled");
             InitAnimation();
 
             isCommandUIOpen = false;

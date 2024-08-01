@@ -22,13 +22,6 @@ namespace PlayerOwnedStates
                     entity.ChangeState(PlayerStates.Player_Run);
                 }
             }
-
-            //มกวม
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                entity.PlayerRigidbody.AddForce(Vector2.up * entity.PlayerJumpForce, ForceMode2D.Impulse);
-                entity.PlayerAnim.SetTrigger("isJumping");
-            }
         }
 
         public override void Exit(PlayerStatus entity)
