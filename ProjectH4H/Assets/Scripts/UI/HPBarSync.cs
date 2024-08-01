@@ -13,17 +13,42 @@ public class HPBarSync : MonoBehaviour
 
     private void Awake()
     {
-        objMonster.GetComponent<EnemyStatus>();
-        hpBar.GetComponent<Slider>();
 
-        currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
-        maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
+            objMonster.GetComponent<EnemyStatus>();
+
+            currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
+            maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
+
+
+         if (gameObject.CompareTag("MidBoss"))
+        {
+            objMonster.GetComponent<BossStatus>();
+
+            currHP = objMonster.GetComponent<BossStatus>().currHP;
+            maxHP = objMonster.GetComponent<BossStatus>().maxHP;
+        }
+
+
+        hpBar.GetComponent<Slider>();
     }
 
     private void Update()
     {
-        currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
-        maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
+
+            objMonster.GetComponent<EnemyStatus>();
+
+            currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
+            maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
+       
+         if (gameObject.CompareTag("MidBoss"))
+        {
+            objMonster.GetComponent<BossStatus>();
+
+            currHP = objMonster.GetComponent<BossStatus>().currHP;
+            maxHP = objMonster.GetComponent<BossStatus>().maxHP;
+        }
+
+        hpBar.GetComponent<Slider>();
 
         hpBar.value = currHP / maxHP;
 

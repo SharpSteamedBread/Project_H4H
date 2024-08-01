@@ -32,24 +32,20 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("Z key down");
             objButtonZ.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
         }
         else if (Input.GetKeyUp(KeyCode.Z))
         {
-            Debug.Log("Z key up");
             objButtonZ.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
             PerformComboAttack(KeyCode.Z);
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("X key down");
             objButtonX.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
         }
         else if (Input.GetKeyUp(KeyCode.X))
         {
-            Debug.Log("X key up");
             objButtonX.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
             PerformComboAttack(KeyCode.X);
         }

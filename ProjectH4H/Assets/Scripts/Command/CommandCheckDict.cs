@@ -30,6 +30,8 @@ public class CommandCheckDict : MonoBehaviour
 
     [SerializeField] private GameObject bgm;
 
+    private CommandEnterUI commandEnterUI;
+
     private void Awake()
     {
         // 커맨드와 처리할 메소드 매핑
@@ -47,7 +49,13 @@ public class CommandCheckDict : MonoBehaviour
         commandDictionary.Add("DD", ActivateSkill4_1);
         commandDictionary.Add("DDA", ActivateSkill4_2);
 
+        commandEnterUI = gameObject.GetComponent<CommandEnterUI>();
         bgm.GetComponent<AudioLowPassFilter>();
+    }
+
+    public void OnEnable()
+    {
+        commandEnterUI.InitPlayerAnim();
     }
 
     void Update()

@@ -33,17 +33,21 @@ public class MidBossState : MonoBehaviour
 
 
     [Header("패턴 2 조건 변수")]
+    private float pattern2Dur = 10.0f;
     [SerializeField] private int pattern2Phase = 0;
 
 
     [Header("패턴 4 조건 변수")]
     [SerializeField] private Vector3 pattern4Pos;
+    [SerializeField] private Vector2 pattern4PlayerDetectArea;
+    [SerializeField] private Rigidbody2D bossRigidbody2D;
+    [SerializeField] private float bossJumpForce = 20;
+
 
 
     private Transform bossTransform;
 
     private float runTime = 0.0f;
-    private float pattern1Dur = 10.0f;
 
 
     private int valueBossHP;
@@ -53,6 +57,7 @@ public class MidBossState : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        bossRigidbody2D = GetComponent<Rigidbody2D>();
 
         StateChange(Boss1State.PATTERN1);
         //StateChange(Boss1State.PATTERN4);
@@ -89,51 +94,60 @@ public class MidBossState : MonoBehaviour
     private IEnumerator IDLE()
     {
         animator.SetBool("Idle", true);
+        animator.SetBool("isMoving", false);
+        animator.SetBool("midBossPattern2", false);
 
         StopCoroutine(Move());
-        StopCoroutine(PATTERN2Attack());
 
         valuePatternChangeTime = Random.Range(patternChangeTimeMin, patternChangeTimeMax);
         //Debug.Log($"{valuePatternChangeTime}초 뒤 패턴 변경~");
 
         yield return new WaitForSeconds(valuePatternChangeTime);
 
-        StateChange(Boss1State.IDLE);
-        //StateChange(Boss1State.SELECTPATTERN);
+        StateChange(Boss1State.SELECTPATTERN);
     }
 
     private IEnumerator SELECTPATTERN()
     {
         StartCoroutine(StopMove());
-        randomPattern = Random.Range(1, 6);
-        Debug.Log($"패턴은 {randomPattern}!");
 
-        switch (randomPattern)
+        float distance = Vector2.Distance(targetPos.position, transform.position);
+        
+        if(distance >= pattern4PlayerDetectArea.x / 2)
         {
-            case (1):
-                StateChange(Boss1State.PATTERN1);
-                break;
+            StateChange(Boss1State.PATTERN4);
+        }
 
-            case (2):
-                StateChange(Boss1State.PATTERN2);
-                break;
+        else 
+        {
+            randomPattern = Random.Range(1, 6);
+            Debug.Log($"패턴은 {randomPattern}!");
 
-            case (3):
-                StateChange(Boss1State.PATTERN3);
-                break;
+            switch (randomPattern)
+            {
+                case (1):
+                    StateChange(Boss1State.PATTERN2);
+                    break;
 
-            case (4):
-                StateChange(Boss1State.PATTERN4);
-                break;
+                case (2):
+                    StateChange(Boss1State.PATTERN2);
+                    break;
 
-            case (5):
-                StateChange(Boss1State.PATTERN5);
-                break;
+                case (3):
+                    StateChange(Boss1State.PATTERN2);
+                    break;
 
+                case (4):
+                    StateChange(Boss1State.IDLE);
+                    break;
+
+                case (5):
+                    StateChange(Boss1State.IDLE);
+                    break;
+            }
         }
 
         yield return null;
-
     }
 
     private IEnumerator PATTERN1()
@@ -143,7 +157,13 @@ public class MidBossState : MonoBehaviour
         yield return null;
     }
 
-    public void SwitchCamera()
+    public void BossCameraOn()
+    {
+        objPlayerCam.SetActive(false);
+        objMidBossCam.SetActive(true);
+    }
+
+    public void BossCameraOff()
     {
         objPlayerCam.SetActive(true);
         objMidBossCam.SetActive(false);
@@ -153,128 +173,24 @@ public class MidBossState : MonoBehaviour
 
     private IEnumerator PATTERN2()
     {
-        StartCoroutine(PATTERN2Attack());
 
         runTime = 0f;
 
-        while (runTime < pattern1Dur)
+        while (runTime < pattern2Dur)
         {
             runTime += Time.deltaTime;
 
             //Debug.Log($"시간 경과 {runTime}초!");
 
+            animator.SetBool("midBossPattern2", true);
             StartCoroutine(Move());
 
             yield return null;
         }
 
-        StopCoroutine(PATTERN2Attack());
         StateChange(Boss1State.IDLE);
     }
 
-    private IEnumerator PATTERN2Attack()
-    {
-        //공격 애니메이션 및 데미지 변화 실행
-        valuePatternChangeTime = Random.Range(patternChangeTimeMin, patternChangeTimeMax);
-        //Debug.Log($"{runTime}초 까지 {valuePatternChangeTime}초 뒤 공격~");
-
-        yield return new WaitForSeconds(valuePatternChangeTime);
-
-        float distance = Vector2.Distance(targetPos.position, transform.position);
-
-        //Debug.Log($"플레이어-몬스터 거리: {distance}, 감지 범위: {detectArea.x / 2}");
-
-        if (distance <= attack1Area.x / 2)
-        {
-            animator.SetTrigger("bossPattern1");
-        }
-
-
-        if (runTime >= pattern1Dur)
-        {
-            Debug.Log("공격 그만~");
-            StopCoroutine(PATTERN2Attack());
-        }
-
-        else
-        {
-            StartCoroutine(PATTERN2Attack());
-        }
-    }
-
-    private IEnumerator PATTERN22()
-    {
-        animator.SetBool("bossPattern2", true);
-        yield return new WaitForSeconds(3f);
-        animator.SetBool("bossPattern2", false);
-
-        //외치는 모션 재생 후 패턴 1로 넘어감
-        StartCoroutine(PATTERN2Summon());
-
-        StateChange(Boss1State.PATTERN1);
-    }
-
-    private IEnumerator PATTERN2Summon()
-    {
-        pattern2Phase++;
-
-        switch (pattern2Phase)
-        {
-            case (1):
-                Pattern2Summon1();
-                break;
-
-            case (2):
-                yield return new WaitForSeconds(30f);
-
-                animator.SetBool("bossPattern2", true);
-                Pattern2Summon2();
-                yield return new WaitForSeconds(3f);
-                animator.SetBool("bossPattern2", false);
-
-                break;
-
-            case (3):
-                yield return new WaitForSeconds(30f);
-
-                animator.SetBool("bossPattern2", true);
-                Pattern2Summon3();
-                yield return new WaitForSeconds(3f);
-                animator.SetBool("bossPattern2", false);
-
-                break;
-        }
-
-        if (pattern2Phase >= 3)
-        {
-            StateChange(Boss1State.IDLE);
-            StopCoroutine(PATTERN2Summon());
-        }
-
-        yield return null;
-
-    }
-
-    private void Pattern2Summon1()
-    {
-        Debug.Log("1페이즈 몬스터 소환~");
-
-        //AudioManager.instance.PlaySFX("Boss_Pattern2Voice");
-    }
-
-    private void Pattern2Summon2()
-    {
-        Debug.Log("2페이즈 몬스터 소환~");
-
-        //AudioManager.instance.PlaySFX("Boss_Pattern2Voice");
-    }
-
-    private void Pattern2Summon3()
-    {
-        Debug.Log("3페이즈 몬스터 소환~");
-
-        //AudioManager.instance.PlaySFX("Boss_Pattern2Voice");
-    }
 
     private IEnumerator PATTERN3()
     {
@@ -317,9 +233,27 @@ public class MidBossState : MonoBehaviour
 
     private IEnumerator PATTERN4()
     {
-        StartCoroutine(Pattern4MoveTo());
+        animator.SetTrigger("midBossPattern4");
 
         yield return null;
+    }
+
+    public void Pattern4Jump()
+    {
+        transform.position = new Vector2(targetPos.position.x, transform.position.y);
+
+        bossRigidbody2D.AddForce(Vector2.up * bossJumpForce, ForceMode2D.Impulse);
+    }
+
+    public void Pattern4Shot()
+    {
+        bossRigidbody2D.AddForce(Vector2.down * bossJumpForce * 1.5f, ForceMode2D.Impulse);
+        BossCameraOn();
+    }
+
+    public void EndPattern4()
+    {
+        StateChange(Boss1State.IDLE);
     }
 
     private IEnumerator Pattern4MoveTo()
@@ -377,6 +311,10 @@ public class MidBossState : MonoBehaviour
         StopCoroutine(IDLE());
         animator.SetBool("isMoving", false);
 
+        animator.SetBool("Idle", true);
+        animator.SetBool("midBossPattern2", false);
+
+
         yield return null;
     }
 
@@ -425,6 +363,6 @@ public class MidBossState : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, attack1Area);
+        Gizmos.DrawWireCube(transform.position, pattern4PlayerDetectArea);
     }
 }

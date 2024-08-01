@@ -123,6 +123,8 @@ public class EnemyThirdStatus : BaseGameEntity
         states[(int)EnemyThirdStates.Enemy_Damaged] = new MonsterBoomOwnedStates.Enemy_Damaged();
         states[(int)EnemyThirdStates.Enemy_Die] = new MonsterBoomOwnedStates.Enemy_Die();
 
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetPos = target.GetComponent<Transform>();
 
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemyThirdStatus>();

@@ -7,8 +7,11 @@ public class MidBossEncounter : MonoBehaviour
 {
     [SerializeField] private GameObject objPlayerCam;
 
+    [SerializeField] private GameObject objMidBoss;
     [SerializeField] private GameObject objMidBossCam;
     [SerializeField] private GameObject objMidBossUI;
+
+    [SerializeField] private GameObject objParticleUI;
 
     void Start()
     {
@@ -34,6 +37,9 @@ public class MidBossEncounter : MonoBehaviour
     {
         objPlayerCam.SetActive(false);
         objMidBossCam.SetActive(true);
+        objMidBoss.SetActive(true);
         objMidBossUI.SetActive(true);
+        objParticleUI.SetActive(true);
+
     }
 }

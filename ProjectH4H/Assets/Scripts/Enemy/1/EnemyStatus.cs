@@ -136,6 +136,8 @@ public class EnemyStatus : BaseGameEntity
         states[(int)EnemyStates.EnemyNormal_Damaged] = new MonsterNormalOwnedStates.EnemyNormal_Damaged();
         states[(int)EnemyStates.EnemyNormal_Die] = new MonsterNormalOwnedStates.EnemyNormal_Die();
 
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetPos = target.GetComponent<Transform>();
 
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemyStatus>();
@@ -215,10 +217,22 @@ public class EnemyStatus : BaseGameEntity
 
             Debug.Log("아야!");
             enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
+
             //onEnemyDamaged.Invoke();
+            CritRate();
+        }
+    }
+
+    private void CritRate()
+    {
+        int crit = Random.Range(1, 101);
+        Debug.Log($"크리티컬 수치: {crit}");
+
+        if(crit >= 70)
+        {
             criticalShow.SetActive(true);
+
             activateCommandSkill.TimeToSkillCommand();
-            Debug.Log("이게 안돼?");
         }
     }
 }

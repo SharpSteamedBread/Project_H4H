@@ -108,7 +108,13 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
+        
         PlayerJump();
+
+        if (playerAnim.GetBool("onGround") == true)
+        {
+            Debug.Log("¶¥ ÂøÁö!");
+        }
 
 
         //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
@@ -146,7 +152,8 @@ public class PlayerStatus : BaseGameEntity
         if (CommandCheckDict.isCommandSystemOpened == false)
         {
             //Á¡ÇÁ
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) &&
+            playerAnim.GetBool("onGround") == true)
             {
                 playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
                 playerAnim.SetTrigger("isJumping");
@@ -189,6 +196,7 @@ public class PlayerStatus : BaseGameEntity
         if (collision.gameObject.CompareTag("Ground"))
         {
             playerAnim.SetBool("onGround", false);
+            playerAnim.SetBool("isJumping", false);
         }
     }
 

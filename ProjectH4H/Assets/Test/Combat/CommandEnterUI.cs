@@ -5,34 +5,31 @@ using UnityEngine;
 public class CommandEnterUI : MonoBehaviour
 {
     public GameObject objCommandEnterUI;
-
     public bool isCommandUIOpen = false;
-
     public Animator animPlayer;
 
     public float checkCommandOpenTime;
+    public float commandUIEnableTime = 3.0f;
 
     private void Awake()
     {
     }
 
-   
     // Update is called once per frame
     void Update()
     {
-        if(checkCommandOpenTime >= 4.0f)
+        if (isCommandUIOpen)
         {
-            isCommandUIOpen = false;
-        }
+            checkCommandOpenTime += Time.unscaledDeltaTime;
 
-        if (isCommandUIOpen == false)
-        {
-            Time.timeScale = 1f;
-            CommandCheckDict.isCommandSystemOpened = false;
-            objCommandEnterUI.SetActive(false);
-
-            StopCoroutine(CommandRestrict());
-            checkCommandOpenTime = 0;
+            if (checkCommandOpenTime >= commandUIEnableTime)
+            {
+                isCommandUIOpen = false;
+                Time.timeScale = 1f;
+                CommandCheckDict.isCommandSystemOpened = false;
+                objCommandEnterUI.SetActive(false);
+                checkCommandOpenTime = 0;
+            }
         }
     }
 
@@ -51,6 +48,17 @@ public class CommandEnterUI : MonoBehaviour
 
         animPlayer.SetBool("useSkill4_1", false);
         animPlayer.SetBool("useSkill4_2", false);
+
+        animPlayer.SetBool("ZAttackCombo1", false);
+        animPlayer.SetBool("ZAttackCombo2", false);
+        animPlayer.SetBool("ZAttackCombo3", false);
+
+        animPlayer.SetBool("XAttackCombo1", false);
+        animPlayer.SetBool("XAttackCombo2", false);
+        animPlayer.SetBool("XAttackCombo3", false);
+
+        animPlayer.SetBool("isMoving", false);
+        animPlayer.SetBool("Idle", true);
     }
 
     public void TimeToSkillCommand()
@@ -62,18 +70,6 @@ public class CommandEnterUI : MonoBehaviour
 
         objCommandEnterUI.SetActive(isCommandUIOpen);
         InitPlayerAnim();
-        StartCoroutine(CommandRestrict());
+        checkCommandOpenTime = 0;  // Reset the timer
     }
-
-
-    private IEnumerator CommandRestrict()
-    {
-        yield return new WaitForSecondsRealtime (1.0f);
-
-        checkCommandOpenTime += 1.0f;
-
-        StartCoroutine(CommandRestrict());
-
-    }
-
 }

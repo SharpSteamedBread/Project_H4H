@@ -145,6 +145,9 @@ public class EnemySecondStatus : BaseGameEntity
 
         StartCoroutine(RandomWay());
 
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetPos = target.GetComponent<Transform>();
+
         EnemySecondStatus entity = gameObject.GetComponent<EnemySecondStatus>();
         entity.Setup();
     }

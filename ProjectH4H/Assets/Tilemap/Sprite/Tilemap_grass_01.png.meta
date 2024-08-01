@@ -121,19 +121,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 800
-        width: 400
-        height: 400
+        y: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -187, y: -199}
-        - {x: -159, y: -6}
-        - {x: -185, y: 107}
-        - {x: 200, y: 107}
-        - {x: 198, y: -199}
+      - - {x: -75, y: 74}
+        - {x: -79, y: -100}
+        - {x: 100, y: -100}
+        - {x: 100, y: 74}
       tessellationDetail: 0
       bones: []
       spriteID: 26b0ae63d6e02694eb196e4ca6d009fc
@@ -146,19 +145,19 @@ TextureImporter:
       name: Tilemap_grass_01_1
       rect:
         serializedVersion: 2
-        x: 400
-        y: 800
-        width: 400
-        height: 400
+        x: 200
+        y: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -200, y: -200}
-        - {x: -200, y: 107}
-        - {x: 200, y: 107}
-        - {x: 200, y: -200}
+      - - {x: -100, y: 75}
+        - {x: -100, y: -100}
+        - {x: 100, y: -100}
+        - {x: 100, y: 73}
       tessellationDetail: 0
       bones: []
       spriteID: cde7535832187e94dad7c9abdc0f08b7
@@ -171,20 +170,19 @@ TextureImporter:
       name: Tilemap_grass_01_2
       rect:
         serializedVersion: 2
-        x: 800
-        y: 800
-        width: 400
-        height: 400
+        x: 400
+        y: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -200, y: -200}
-        - {x: -200, y: 108}
-        - {x: 162, y: 108}
-        - {x: 180, y: -31}
-        - {x: 176, y: -200}
+      - - {x: -100, y: 75}
+        - {x: -100, y: -100}
+        - {x: 74, y: -100}
+        - {x: 72, y: 73}
       tessellationDetail: 0
       bones: []
       spriteID: bfb6a47c2a49bba4fb622597fa6e2384
@@ -198,18 +196,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 400
-        width: 400
-        height: 400
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -170, y: -200}
-        - {x: -179, y: 200}
-        - {x: 200, y: 200}
-        - {x: 200, y: -200}
+      - - {x: -77, y: 100}
+        - {x: -79, y: -100}
+        - {x: 100, y: -100}
+        - {x: 100, y: 100}
       tessellationDetail: 0
       bones: []
       spriteID: 18fd429c8e67b184b80a63ccf81248ec
@@ -222,10 +220,10 @@ TextureImporter:
       name: Tilemap_grass_01_4
       rect:
         serializedVersion: 2
-        x: 400
-        y: 400
-        width: 400
-        height: 400
+        x: 200
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,19 +241,19 @@ TextureImporter:
       name: Tilemap_grass_01_5
       rect:
         serializedVersion: 2
-        x: 800
-        y: 400
-        width: 400
-        height: 400
+        x: 400
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -200, y: -200}
-        - {x: -200, y: 200}
-        - {x: 180, y: 200}
-        - {x: 180, y: -200}
+      - - {x: -100, y: 100}
+        - {x: -100, y: -100}
+        - {x: 74, y: -100}
+        - {x: 66, y: 100}
       tessellationDetail: 0
       bones: []
       spriteID: 61eb07c06e2d0154ab2a13143c661b58
@@ -270,13 +268,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -78, y: 100}
+        - {x: -72, y: -87}
+        - {x: 100, y: -82}
+        - {x: 100, y: 100}
       tessellationDetail: 0
       bones: []
       spriteID: 0c8d8b1f943178f42a7f51d1c8f689c9
@@ -289,15 +291,19 @@ TextureImporter:
       name: Tilemap_grass_01_7
       rect:
         serializedVersion: 2
-        x: 400
+        x: 200
         y: 0
-        width: 400
-        height: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: -89}
+        - {x: 100, y: -82}
+        - {x: 100, y: 100}
       tessellationDetail: 0
       bones: []
       spriteID: 6f54e426f8c24e54681b2d0ac10183f1
@@ -310,15 +316,19 @@ TextureImporter:
       name: Tilemap_grass_01_8
       rect:
         serializedVersion: 2
-        x: 800
+        x: 400
         y: 0
-        width: 400
-        height: 400
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: -89}
+        - {x: 74, y: -80}
+        - {x: 72, y: 100}
       tessellationDetail: 0
       bones: []
       spriteID: 90f6ce1cdfe7b6b4988814f03b8bd4c2
