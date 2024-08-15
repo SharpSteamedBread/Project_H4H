@@ -237,7 +237,7 @@ RectTransform:
   m_GameObject: {fileID: 633877435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalScale: {x: 0.05, y: 0.1, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1032538439}
@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.6}
+  m_AnchoredPosition: {x: 0, y: 2.066}
   m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &633877439
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 1032538440}
-  objMonster: {fileID: 2357273603854835706}
+  objMonster: {fileID: 2357273602875139426}
 --- !u!1 &1433766635
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,8 +594,8 @@ Transform:
   m_GameObject: {fileID: 1596020477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 98, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 41485153}
   m_Father: {fileID: 2357273603854835708}
@@ -643,6 +643,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2357273602875139427}
+  - component: {fileID: 1951958902}
+  - component: {fileID: 1951958901}
+  - component: {fileID: 1951958903}
   m_Layer: 7
   m_Name: Enemy1
   m_TagString: Enemy
@@ -659,13 +662,107 @@ Transform:
   m_GameObject: {fileID: 2357273602875139426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.64, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2357273603854835708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1951958902
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357273602875139426}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1951958901
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357273602875139426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016227722, y: 0.37854767}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 30.000002, y: 30.000002}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.97922134, y: 1.4878125}
+  m_EdgeRadius: 0
+--- !u!114 &1951958903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357273602875139426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad1744d59f45984dbeb02b27a7963ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 1951958902}
+  enemyTransform: {fileID: 2357273603854835708}
+  attackArea: {x: 4.71, y: 2.94}
+  chaseArea: {x: 0, y: 0}
+  target: {fileID: 0}
+  targetPos: {fileID: 0}
+  enemyMove: 0
+  nextMove: 0
+  randomSecond: 0
+  enemyAnim: {fileID: 2357273603854835704}
+  enemySprite: {fileID: 2357273603854835708}
+  enemyCurrHP: 0
+  enemyMaxHP: 0
+  enemyATK: 0
+  attackCooltime: 3
+  enemyDeadItem: {fileID: 1018852875426895049, guid: 753a4788f54ebbd4ba37e954e7cfd15a, type: 3}
+  criticalShow: {fileID: 1596020477}
+  activateCommandSkill: {fileID: 0}
+  onEnemyDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  objDamageInteractor: {fileID: 0}
+  currentState: 0
 --- !u!1 &2357273603854835706
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,10 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2357273603854835708}
   - component: {fileID: 2357273603854835711}
-  - component: {fileID: 2357273603854835710}
-  - component: {fileID: 2357273603854835705}
   - component: {fileID: 2357273603854835704}
-  - component: {fileID: 2357273603854835707}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -745,9 +839,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b467291fb6c50544cbf62fe401fcc250, type: 3}
+  m_Sprite: {fileID: -1261360770, guid: 4e9cfe54ad13ef94e948db4d3b73bc26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 0.8828125}
@@ -756,53 +850,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2357273603854835710
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2357273603854835706}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &2357273603854835705
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2357273603854835706}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.615921, y: -4.8394766}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 30.000002, y: 30.000002}
-    newSize: {x: 1, y: 0.8828125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.044769, y: 15.462687}
-  m_EdgeRadius: 0
 --- !u!95 &2357273603854835704
 Animator:
   serializedVersion: 5
@@ -815,7 +862,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: eef82ec6fd23dbe42bb9d84e8c06aff2, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -824,50 +871,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2357273603854835707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2357273603854835706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad1744d59f45984dbeb02b27a7963ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigid: {fileID: 2357273603854835710}
-  enemyTransform: {fileID: 2357273603854835708}
-  attackArea: {x: 4.71, y: 2.94}
-  chaseArea: {x: 0, y: 0}
-  target: {fileID: 0}
-  targetPos: {fileID: 0}
-  enemyMove: 0
-  nextMove: 0
-  randomSecond: 0
-  enemyAnim: {fileID: 2357273603854835704}
-  enemySprite: {fileID: 2357273603854835708}
-  enemyCurrHP: 0
-  enemyMaxHP: 0
-  enemyATK: 0
-  attackCooltime: 3
-  enemyDeadItem: {fileID: 1018852875426895049, guid: 753a4788f54ebbd4ba37e954e7cfd15a, type: 3}
-  criticalShow: {fileID: 1596020477}
-  activateCommandSkill: {fileID: 0}
-  onEnemyDamaged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  objDamageInteractor: {fileID: 0}
-  currentState: 0

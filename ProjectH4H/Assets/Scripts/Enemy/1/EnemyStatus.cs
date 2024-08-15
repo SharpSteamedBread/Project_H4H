@@ -216,6 +216,7 @@ public class EnemyStatus : BaseGameEntity
             objDamageInteractor.GetComponent<DamageInteractor>();
 
             Debug.Log("아야!");
+            enemyAnim.SetTrigger("isDamaged");
             enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
 
             //onEnemyDamaged.Invoke();
@@ -228,7 +229,7 @@ public class EnemyStatus : BaseGameEntity
         int crit = Random.Range(1, 101);
         Debug.Log($"크리티컬 수치: {crit}");
 
-        if(crit >= 70)
+        if(crit >= 80)
         {
             criticalShow.SetActive(true);
 
