@@ -33,6 +33,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_B5E4DCF2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,8 +65,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Maintex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: 6206c21e28ab8a0449bc35340de9b13a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 10c2f8f6f3bf41c48b23cd03a5a15146, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -95,8 +103,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
+    - Vector1_ABEF5603: 1
+    - _Alpha: 0.232
     - _AlphaClip: 0
+    - _Amplitude: 0.06
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -108,10 +118,14 @@ Material:
     - _DistStr: 0.19
     - _DistortionSpeed: 1
     - _DstBlend: 0
+    - _Edge_Blend: 0.51
+    - _Effect_Radius: 3.7
     - _EnvironmentReflections: 1
+    - _Frequency: 2.51
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Gradient_Edge: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -121,6 +135,7 @@ Material:
     - _RippleCount: 3.53
     - _RippleSpeed: 0.55
     - _RippleStrength: 2
+    - _Ripple_Density: 5.4
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -129,9 +144,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_C7CD26E0: {r: 1, g: 1, b: 1, a: 0}
+    - Vector3_E4F56DDC: {r: 0.32, g: -0.46, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Gradient_color: {r: 0, g: 0, b: 0, a: 0}
     - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _Ripple_Origin: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

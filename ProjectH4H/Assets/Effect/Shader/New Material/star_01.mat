@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: star_01
-  m_Shader: {fileID: -6465566751694194690, guid: 0d9db12c781dc8f4a90f6fc0d3e9177f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6353295003a234647a5d76fd07b5d7df, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -58,5 +58,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
+    - _Base_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _Base_Tile: {r: 1, g: 1, b: 0, a: 0}
+    - _Base_UV_Flow: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 3.6886053, g: 0.5793621, b: 0.6940504, a: 0}
   m_BuildTextureStacks: []
