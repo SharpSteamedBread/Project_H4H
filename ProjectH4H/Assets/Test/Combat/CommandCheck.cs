@@ -26,7 +26,6 @@ public class CommandCheck : MonoBehaviour
     //public bool checkCommandSystemOpened = false;
 
 
-    // Update is called once per frame
     void Update()
     {
         //checkCommandSystemOpened = isCommandSystemOpened;
@@ -36,7 +35,7 @@ public class CommandCheck : MonoBehaviour
             Time.timeScale = bulletTime;
             isCommandSystemOpened = true;
 
-            CorrectCommand();
+            //CorrectCommand();
 
             if (Input.GetKeyDown(KeyCode.Q))
             {

@@ -144,7 +144,7 @@ public class EnemyThirdStatus : BaseGameEntity
 
     private void Awake()
     {
-        enemyMove = 5.0f;
+        enemyMove = 20.0f;
         enemyHP = 100;
 
         StartCoroutine(RandomWay());

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5663766129418351673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5663766129719401531}
@@ -145,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 5663766129418351673}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eef82ec6fd23dbe42bb9d84e8c06aff2, type: 2}
+  m_Controller: {fileID: 9100000, guid: de453a37cdef7694088cf7bc4337640d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   enemyATK: 0
   attackCooltime: 1
   enemyDeadItem: {fileID: 1018852875426895049, guid: 753a4788f54ebbd4ba37e954e7cfd15a, type: 3}
-  enemyBoomHitbox: {fileID: 0}
+  enemyBoomHitbox: {fileID: 4872771201276103965, guid: c389565090a7e1845b7574fdfa3048c5, type: 3}
   currentState: 0
 --- !u!1 &5663766129719401529
 GameObject:
@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 5663766129719401529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.31, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5663766129418351674}
