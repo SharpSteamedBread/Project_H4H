@@ -18,6 +18,8 @@ TagManager:
   - Object_hide
   - Object_spinning
   - MidBoss
+  - Object_Beam_Left
+  - Object_Beam_Right
   layers:
   - Default
   - TransparentFX

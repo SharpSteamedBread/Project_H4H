@@ -74,7 +74,7 @@ public class CommandCheckDict : MonoBehaviour
         {
             Time.timeScale = bulletTime;
             isCommandSystemOpened = true;
-            InitAnimation();
+            //InitAnimation();
 
             bgm.GetComponent<AudioLowPassFilter>().enabled = true;
 
@@ -261,7 +261,7 @@ public class CommandCheckDict : MonoBehaviour
         inputCommand = "";
 
         animPlayer.SetBool("Idle", true);
-        animPlayer.SetBool("isAttack", false);
+        //animPlayer.SetBool("isAttack", false);
 
 
         animPlayer.SetBool("useSkill1_1", false);
