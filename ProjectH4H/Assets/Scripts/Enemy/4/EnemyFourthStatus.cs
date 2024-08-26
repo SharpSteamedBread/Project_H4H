@@ -158,6 +158,7 @@ public class EnemyFourthStatus : BaseGameEntity
         StartCoroutine(RandomWay());
 
         EnemyFourthStatus entity = gameObject.GetComponent<EnemyFourthStatus>();
+
         entity.Setup();
     }
 

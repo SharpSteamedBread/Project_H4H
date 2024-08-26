@@ -32,6 +32,8 @@ public class EnemySecondStatus : BaseGameEntity
 
     [Header("사망")]
     [SerializeField] private GameObject enemyDeadItem;
+    public GameObject objDamageInteractor;
+
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
@@ -79,7 +81,10 @@ public class EnemySecondStatus : BaseGameEntity
 
     public int EnemyHP
     {
-        set => enemyHP = value;
+        set
+        {
+            enemyHP = Mathf.Min(value, 210);
+        }
         get => enemyHP;
     }
 
@@ -125,6 +130,9 @@ public class EnemySecondStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemySecondStatus>();
         stateMachine.Setup(this, states[(int)EnemySecondStates.Enemy_Idle]);
+
+        //데미지 관련
+        objDamageInteractor.GetComponent<DamageInteractor>();
     }
 
     public override void Updated()
@@ -148,6 +156,8 @@ public class EnemySecondStatus : BaseGameEntity
         target = GameObject.FindGameObjectWithTag("Player");
         targetPos = target.GetComponent<Transform>();
 
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+
         EnemySecondStatus entity = gameObject.GetComponent<EnemySecondStatus>();
         entity.Setup();
     }
@@ -157,7 +167,7 @@ public class EnemySecondStatus : BaseGameEntity
         EnemySecondStatus entity = gameObject.GetComponent<EnemySecondStatus>();
         entity.Updated();
 
-        Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
+        //Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
 
         if(enemyHP <= 0)
         {
@@ -195,7 +205,13 @@ public class EnemySecondStatus : BaseGameEntity
     {
         if (collision.CompareTag("PlayerHitbox"))
         {
-            enemyHP = 0;
+            objDamageInteractor.GetComponent<DamageInteractor>();
+
+            Debug.Log("아야!");
+            enemyAnim.SetTrigger("isDamaged");
+            enemyHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
+
+            //onEnemyDamaged.Invoke();
         }
     }
 }

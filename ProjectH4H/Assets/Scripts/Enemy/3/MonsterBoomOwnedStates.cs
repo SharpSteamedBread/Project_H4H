@@ -14,7 +14,7 @@ namespace MonsterBoomOwnedStates
 
         public override void Execute(EnemyThirdStatus entity)
         {
-            Debug.Log("몬스터 대기중");
+            //Debug.Log("몬스터 대기중");
 
             float distance = Vector2.Distance(entity.TargetPos.position, entity.transform.position);
 
@@ -119,8 +119,9 @@ namespace MonsterBoomOwnedStates
         }
 
         public override void Execute(EnemyThirdStatus entity)
-        {
-            throw new System.NotImplementedException();
+        {  
+            entity.EnemyAnim.SetTrigger("isDamaged");
+
         }
 
         public override void Exit(EnemyThirdStatus entity)
@@ -133,8 +134,7 @@ namespace MonsterBoomOwnedStates
     {
         public override void Enter(EnemyThirdStatus entity)
         {
-            Debug.Log("죽었다...");
-            entity.EnemyAnim.SetBool("isDead", true);
+            //entity.EnemyAnim.SetBool("isDead", true);
             entity.EnemyDie();
         }
 

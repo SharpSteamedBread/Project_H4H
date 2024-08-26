@@ -5,6 +5,7 @@ using UnityEngine;
 public class SensorForObject : MonoBehaviour
 {
     [SerializeField] private GameObject objInteractObject;
+    [SerializeField] private Animator animInteractObject;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,7 @@ public class SensorForObject : MonoBehaviour
             else if (objInteractObject.CompareTag("Object_hide"))
             {
                 objInteractObject.SetActive(true);
+                animInteractObject.SetTrigger("isEnabled");
             }
         }
     }

@@ -2,6 +2,7 @@ using Spine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum EnemyThirdStates { Enemy_Idle, Enemy_Move, Enemy_Attack, Enemy_Damaged, Enemy_Die }
 
@@ -26,13 +27,21 @@ public class EnemyThirdStatus : BaseGameEntity
     [SerializeField] private Transform enemySprite;
 
     [Header("스텟")]
-    [SerializeField] private int enemyHP;
+    [SerializeField] private int enemyCurrHP;
+    [SerializeField] private int enemyMaxHP;
     [SerializeField] private int enemyATK;
     [SerializeField] private float attackCooltime = 1.0f;
 
     [Header("사망")]
     [SerializeField] private GameObject enemyDeadItem;
     [SerializeField] private GameObject enemyBoomHitbox;
+
+    [Header("테스트 겸 피격")]
+    [SerializeField] private GameObject criticalShow;
+    [SerializeField] private CommandEnterUI activateCommandSkill;
+    public UnityEvent onEnemyDamaged;
+    public GameObject objDamageInteractor;
+
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
@@ -78,10 +87,19 @@ public class EnemyThirdStatus : BaseGameEntity
         get => targetPos;
     }
 
-    public int EnemyHP
+    public int EnemyCurrHP
     {
-        set => enemyHP = value;
-        get => enemyHP;
+        set
+        {
+            enemyCurrHP = Mathf.Min(value, enemyMaxHP);
+        }
+        get => enemyCurrHP;
+    }
+
+    public int EnemyMaxHP
+    {
+        set => enemyMaxHP = 80;
+        get => enemyMaxHP;
     }
 
     public float AttackCooltime
@@ -129,6 +147,9 @@ public class EnemyThirdStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<EnemyThirdStatus>();
         stateMachine.Setup(this, states[(int)EnemyThirdStates.Enemy_Idle]);
+
+        //데미지 관련
+        objDamageInteractor.GetComponent<DamageInteractor>();
     }
 
     public override void Updated()
@@ -145,7 +166,11 @@ public class EnemyThirdStatus : BaseGameEntity
     private void Awake()
     {
         enemyMove = 20.0f;
-        enemyHP = 100;
+        enemyCurrHP = 80;
+        enemyMaxHP = 80;
+
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
 
         StartCoroutine(RandomWay());
 
@@ -156,11 +181,14 @@ public class EnemyThirdStatus : BaseGameEntity
     private void Update()
     {
         EnemyThirdStatus entity = gameObject.GetComponent<EnemyThirdStatus>();
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
+
         entity.Updated();
 
-        Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
+        //Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
 
-        if(enemyHP <= 0)
+        if (enemyCurrHP <= 0)
         {
             ChangeState(EnemyThirdStates.Enemy_Die);
         }
@@ -188,16 +216,35 @@ public class EnemyThirdStatus : BaseGameEntity
 
     public void EnemyDie()
     {
-        Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
         Instantiate(enemyBoomHitbox, EnemyTransform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerHitbox"))
         {
-            enemyHP = 0;
+            objDamageInteractor.GetComponent<DamageInteractor>();
+
+            enemyAnim.SetTrigger("isDamaged");
+            enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
+
+            //onEnemyDamaged.Invoke();
+            CritRate();
+        }
+    }
+
+    private void CritRate()
+    {
+        int crit = Random.Range(1, 101);
+        Debug.Log($"크리티컬 수치: {crit}");
+
+        if (crit >= 80)
+        {
+            criticalShow.SetActive(true);
+
+            activateCommandSkill.TimeToSkillCommand();
         }
     }
 }

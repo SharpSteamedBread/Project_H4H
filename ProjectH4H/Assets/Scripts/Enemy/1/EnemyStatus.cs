@@ -87,7 +87,10 @@ public class EnemyStatus : BaseGameEntity
 
     public int EnemyCurrHP
     {
-        set => enemyCurrHP = value;
+        set
+        {
+            enemyCurrHP = Mathf.Min(value, enemyMaxHP);
+        }
         get => enemyCurrHP;
     }
 
@@ -161,21 +164,28 @@ public class EnemyStatus : BaseGameEntity
     private void Awake()
     {
         enemyMove = 5.0f;
-        enemyCurrHP = 100;
-        enemyMaxHP = 100;
+        enemyCurrHP = 150;
+        enemyMaxHP = 150;
 
         StartCoroutine(RandomWay());
 
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
+
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
+
         entity.Setup();
     }
 
     private void Update()
     {
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
+
         entity.Updated();
 
-        Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
+        //Debug.Log($"stateMachine: {stateMachine}, enemyStates: {currentState}, move: {enemyMove}");
 
         if(enemyCurrHP <= 0)
         {
@@ -227,7 +237,7 @@ public class EnemyStatus : BaseGameEntity
     private void CritRate()
     {
         int crit = Random.Range(1, 101);
-        Debug.Log($"크리티컬 수치: {crit}");
+        //Debug.Log($"크리티컬 수치: {crit}");
 
         if(crit >= 80)
         {

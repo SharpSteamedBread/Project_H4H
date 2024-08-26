@@ -14,7 +14,7 @@ namespace MonsterNormalOwnedStates
 
         public override void Execute(EnemyStatus entity)
         {
-            Debug.Log("몬스터 대기중");
+            //Debug.Log("몬스터 대기중");
 
             float distance = Vector2.Distance(entity.TargetPos.position, entity.transform.position);
 

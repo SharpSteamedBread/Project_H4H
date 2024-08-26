@@ -13,14 +13,24 @@ public class HPBarSync : MonoBehaviour
 
     private void Awake()
     {
-
+        if(objMonster.CompareTag("Enemy1"))
+        {
             objMonster.GetComponent<EnemyStatus>();
 
             currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
             maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
+        }
 
+        else if(objMonster.CompareTag("Enemy3"))
+        {
+            objMonster.GetComponent<EnemyThirdStatus>();
 
-         if (gameObject.CompareTag("MidBoss"))
+            currHP = objMonster.GetComponent<EnemyThirdStatus>().EnemyCurrHP;
+            maxHP = objMonster.GetComponent<EnemyThirdStatus>().EnemyMaxHP;
+
+        }
+
+        if (objMonster.CompareTag("MidBoss"))
         {
             objMonster.GetComponent<BossStatus>();
 
@@ -35,12 +45,24 @@ public class HPBarSync : MonoBehaviour
     private void Update()
     {
 
+        if (objMonster.CompareTag("Enemy1"))
+        {
             objMonster.GetComponent<EnemyStatus>();
 
             currHP = objMonster.GetComponent<EnemyStatus>().EnemyCurrHP;
             maxHP = objMonster.GetComponent<EnemyStatus>().EnemyMaxHP;
-       
-         if (gameObject.CompareTag("MidBoss"))
+        }
+
+        else if (objMonster.CompareTag("Enemy3"))
+        {
+            objMonster.GetComponent<EnemyThirdStatus>();
+
+            currHP = objMonster.GetComponent<EnemyThirdStatus>().EnemyCurrHP;
+            maxHP = objMonster.GetComponent<EnemyThirdStatus>().EnemyMaxHP;
+
+        }
+
+        if (objMonster.CompareTag("MidBoss"))
         {
             objMonster.GetComponent<BossStatus>();
 
@@ -52,7 +74,7 @@ public class HPBarSync : MonoBehaviour
 
         hpBar.value = currHP / maxHP;
 
-        Debug.Log($"몬스터 현재 피: {currHP} , 슬라이더 value: {hpBar.value}");
+        //Debug.Log($"몬스터 현재 피: {currHP} , 슬라이더 value: {hpBar.value}");
 
         if(hpBar.value <= 0 )
         {

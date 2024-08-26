@@ -36,7 +36,7 @@ public class CommandCheckDict : MonoBehaviour
     {
         // 커맨드와 처리할 메소드 매핑
         commandDictionary.Add("AA", ActivateSkill1_1);
-        commandDictionary.Add("AEQ", ActivateSkill1_2);
+        commandDictionary.Add("AAAEQ", ActivateSkill1_2);
 
         commandDictionary.Add("EE", ActivateSkill2_1);
         commandDictionary.Add("EEQQ", ActivateSkill2_2);
@@ -49,10 +49,10 @@ public class CommandCheckDict : MonoBehaviour
         commandDictionary.Add("DD", ActivateSkill4_1);
         commandDictionary.Add("DDA", ActivateSkill4_2);
 
-        commandDictionary.Add("EEE", ActivateSkill5_1);
+        commandDictionary.Add("EDE", ActivateSkill5_1);
 
         commandDictionary.Add("AD", ActivateSkill6_1);
-        commandDictionary.Add("ADEE", ActivateSkill6_1);
+        commandDictionary.Add("ADEE", ActivateSkill6_2);
 
         commandEnterUI = gameObject.GetComponent<CommandEnterUI>();
         bgm.GetComponent<AudioLowPassFilter>();
@@ -69,6 +69,7 @@ public class CommandCheckDict : MonoBehaviour
 
         ToggleCommandEnterUI();
         ProcessCommand(inputCommand);
+        //Idling();
 
         if (objCommandEnterUI.activeSelf == true)
         {
@@ -217,24 +218,26 @@ public class CommandCheckDict : MonoBehaviour
     private void ActivateSkill4_2()
     {
         animPlayer.SetBool("useSkill4_2", true);
+
         ExitSkill();
     }
 
     private void ActivateSkill5_1()
     {
         animPlayer.SetBool("useSkill5_1", true);
+
         ExitSkill();
     }
 
     private void ActivateSkill6_1()
     {
         animPlayer.SetBool("useSkill6_1", true);
-        ExitSkill();
     }
 
     private void ActivateSkill6_2()
     {
         animPlayer.SetBool("useSkill6_2", true);
+
         ExitSkill();
     }
 
@@ -260,20 +263,37 @@ public class CommandCheckDict : MonoBehaviour
     {
         inputCommand = "";
 
-        animPlayer.SetBool("Idle", true);
+        animPlayer.SetBool("isMoving", false);
         //animPlayer.SetBool("isAttack", false);
 
 
         animPlayer.SetBool("useSkill1_1", false);
 
+
         animPlayer.SetBool("useSkill2_1", false);
         animPlayer.SetBool("useSkill2_2", false);
+
 
         animPlayer.SetBool("useSkill3_1", false);
         animPlayer.SetBool("useSkill3_2", false);
 
+
         animPlayer.SetBool("useSkill4_1", false);
 
         animPlayer.SetBool("useSkill6_1", false);
+
+        StartCoroutine(ResetSkill());
+    }
+
+    private IEnumerator ResetSkill()
+    {
+        yield return new WaitForSeconds(1f);
+
+        animPlayer.SetBool("useSkill1_2", false);
+        animPlayer.SetBool("useSkill2_3", false);
+        animPlayer.SetBool("useSkill3_3", false);
+        animPlayer.SetBool("useSkill4_2", false);
+        animPlayer.SetBool("useSkill5_1", false);
+        animPlayer.SetBool("useSkill6_2", false);
     }
 }

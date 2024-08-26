@@ -36,18 +36,16 @@ public class CommandEnterUI : MonoBehaviour
     public void InitPlayerAnim()
     {
         animPlayer.SetBool("useSkill1_1", false);
-        animPlayer.SetBool("useSkill1_2", false);
 
         animPlayer.SetBool("useSkill2_1", false);
         animPlayer.SetBool("useSkill2_2", false);
-        animPlayer.SetBool("useSkill2_3", false);
 
         animPlayer.SetBool("useSkill3_1", false);
         animPlayer.SetBool("useSkill3_2", false);
-        animPlayer.SetBool("useSkill3_3", false);
 
         animPlayer.SetBool("useSkill4_1", false);
-        animPlayer.SetBool("useSkill4_2", false);
+
+        animPlayer.SetBool("useSkill6_1", false);
 
         animPlayer.SetBool("ZAttackCombo1", false);
         animPlayer.SetBool("ZAttackCombo2", false);
@@ -58,7 +56,6 @@ public class CommandEnterUI : MonoBehaviour
         animPlayer.SetBool("XAttackCombo3", false);
 
         animPlayer.SetBool("isMoving", false);
-        animPlayer.SetBool("Idle", true);
     }
 
     public void TimeToSkillCommand()
@@ -70,6 +67,7 @@ public class CommandEnterUI : MonoBehaviour
 
         objCommandEnterUI.SetActive(isCommandUIOpen);
         InitPlayerAnim();
+        animPlayer.SetTrigger("commandCancelled");
         checkCommandOpenTime = 0;  // Reset the timer
     }
 }

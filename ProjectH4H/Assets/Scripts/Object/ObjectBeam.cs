@@ -25,7 +25,7 @@ public class ObjectBeam : MonoBehaviour
 
             Debug.DrawRay(transform.position, new Vector3(1 * hit.distance, 0, 0), Color.white);
 
-            Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
+            //Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
 
             objBeamGround.position = new Vector2(hit.point.x + locationBeamGroundFlow, objBeamGround.position.y);
             objBeamRound.position = new Vector2(hit.point.x + locationBeamRoundFlow, objBeamGround.position.y);
@@ -37,7 +37,7 @@ public class ObjectBeam : MonoBehaviour
 
             Debug.DrawRay(transform.position, new Vector3(-1 * hit.distance, 0, 0), Color.white);
 
-            Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
+            //Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
 
             objBeamGround.position = new Vector2(hit.point.x + locationBeamGroundFlow, objBeamGround.position.y);
             objBeamRound.position = new Vector2(hit.point.x + locationBeamRoundFlow, objBeamGround.position.y);
@@ -49,7 +49,7 @@ public class ObjectBeam : MonoBehaviour
 
             Debug.DrawRay(transform.position, new Vector3(0, -1 * hit.distance, 0), Color.white);
 
-            Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
+            //Debug.Log($"hit Point: {hit.point}, 芭府: {hit.distance}, hit Point X: {hit.point.x}, hit Point Y: {hit.point.y}");
 
             objBeamGround.position = new Vector2(objBeamGround.position.x, hit.point.y + (objParent.position.y - 11.26f) + locationBeamGroundFlow);
             objBeamRound.position = new Vector2(objBeamRound.position.x, hit.point.y + locationBeamRoundFlow);

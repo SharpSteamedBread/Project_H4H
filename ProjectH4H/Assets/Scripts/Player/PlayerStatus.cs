@@ -14,6 +14,7 @@ public class PlayerStatus : BaseGameEntity
     [SerializeField] private float playerJumpForce = 10.0f;
     [SerializeField] private float h;
     [SerializeField] private bool isJumping = false;
+    [SerializeField] private GameObject objMovingEffect;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Transform playerSprite;
@@ -21,10 +22,9 @@ public class PlayerStatus : BaseGameEntity
 
     [Header("ÆÄÃ÷")]
     [SerializeField] private SpriteRenderer playerImage;
-    [SerializeField] private int playerLAPartHP;
-    [SerializeField] private int playerRAPartHP;
-    [SerializeField] private int playerLLPartHP;
-    [SerializeField] private int playerRLPartHP;
+    [SerializeField] private int playerCurrHP = 600;
+    [SerializeField] private int playerMaxHP = 600;
+
 
     [Header("½ºÅÝ")]
     [SerializeField] private int playerATK;
@@ -70,6 +70,21 @@ public class PlayerStatus : BaseGameEntity
         get => playerRigidbody;
     }
 
+    public int PlayerCurrHP
+    {
+        set
+        {
+            playerCurrHP = Mathf.Min(value, playerMaxHP);
+        }
+        get => playerCurrHP;
+    } 
+
+    public int PlayerMaxHP
+    {
+        set => playerMaxHP = 600;
+        get => playerMaxHP;
+    }
+
     public override void Setup()
     {
         states = new State<PlayerStatus>[3];
@@ -96,6 +111,7 @@ public class PlayerStatus : BaseGameEntity
     private void Awake()
     {
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
+        objMovingEffect.SetActive(false);
         entity.Setup();
     }
 
@@ -130,6 +146,15 @@ public class PlayerStatus : BaseGameEntity
             playerMove = 40;
         }
 
+        if (playerAnim.GetBool("isMoving") == false)
+        {
+            objMovingEffect.SetActive(false);
+        }
+
+        else
+        {
+            objMovingEffect.SetActive(true);
+        }
 
         //Debug.Log($"stateMachine: {stateMachine}, PlayerStates: {currentState}");
     }

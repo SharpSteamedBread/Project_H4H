@@ -20,6 +20,11 @@ TagManager:
   - MidBoss
   - Object_Beam_Left
   - Object_Beam_Right
+  - Wall
+  - Enemy1
+  - Enemy3
+  - Enemy4
+  - CombatController
   layers:
   - Default
   - TransparentFX
@@ -54,6 +59,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1607966251
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

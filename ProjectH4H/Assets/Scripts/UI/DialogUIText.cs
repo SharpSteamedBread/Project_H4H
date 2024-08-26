@@ -21,12 +21,23 @@ public class DialogUIText : MonoBehaviour
     public DialogTextConatiner dialogTextContainer;
     //public List<DialogTextConatiner> DialogTextContainerList = new List<DialogTextConatiner>();
 
+    [SerializeField] private float dialogLifeTime = 10f;
 
     private void Awake()
     {
         objDialogName.text = dialogTextContainer.dialogName;
-        objDialogName.text = dialogTextContainer.dialogName;
+        objDialogSaying.text = dialogTextContainer.dialogSaying;
+
+        StartCoroutine(OffTimer());
     }
+
+    private IEnumerator OffTimer()
+    {
+        yield return new WaitForSeconds(dialogLifeTime);
+
+        gameObject.SetActive(false);
+    }
+
 }
 
 

@@ -183,6 +183,7 @@ MonoBehaviour:
   enemyATK: 0
   attackCooltime: 1
   enemyDeadItem: {fileID: 1018852875426895049, guid: 753a4788f54ebbd4ba37e954e7cfd15a, type: 3}
+  enemySplitObj: {fileID: 0}
   currentState: 0
 --- !u!1 &1567399012200546248
 GameObject:
@@ -195,7 +196,7 @@ GameObject:
   - component: {fileID: 1567399012200546250}
   m_Layer: 7
   m_Name: Enemy4
-  m_TagString: Enemy
+  m_TagString: Enemy4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
