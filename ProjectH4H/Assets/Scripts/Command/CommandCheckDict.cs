@@ -55,6 +55,8 @@ public class CommandCheckDict : MonoBehaviour
         commandDictionary.Add("ADEE", ActivateSkill6_2);
 
         commandEnterUI = gameObject.GetComponent<CommandEnterUI>();
+        
+        bgm = GameObject.FindWithTag("BGM");
         bgm.GetComponent<AudioLowPassFilter>();
     }
 

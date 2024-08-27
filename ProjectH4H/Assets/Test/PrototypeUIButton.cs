@@ -14,7 +14,7 @@ public class PrototypeUIButton : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene(0);
     }
 
    

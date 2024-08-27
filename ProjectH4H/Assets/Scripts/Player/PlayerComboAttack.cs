@@ -31,6 +31,8 @@ public class PlayerComboAttack : MonoBehaviour
         DoComboAttack();
         ConditionControl();
 
+        //Debug.Log($"isAttack: {animator.GetBool("isAttack")}");
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             objButtonZ.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
@@ -136,7 +138,7 @@ public class PlayerComboAttack : MonoBehaviour
             comboStep = 0;
         }
 
-        if (animator.GetBool("isAttack"))
+        if (animator.GetBool("isAttack") == true)
         {
             animator.SetBool("isMoving", false);
         }
@@ -145,7 +147,7 @@ public class PlayerComboAttack : MonoBehaviour
             ResetAllCombos();
         }
 
-        if (animator.GetBool("isJumping"))
+        if (animator.GetBool("isJumping") == true)
         {
             animator.SetBool("isAttack", false);
         }
@@ -155,7 +157,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             ResetAllCombos();
             animator.SetBool("isAttack", false);
         }

@@ -33,6 +33,18 @@ public class PlayerStatus : BaseGameEntity
     [Header("카메라")]
     [SerializeField] private Camera playerCamera;
 
+    [Header("데미지 상호작용")]
+    [SerializeField] private GameObject objDamageInteractor;
+    [SerializeField] private DamageInteractor damageInteractor;
+
+    [Header("스프링 클램핑")]
+    [SerializeField] private float maxVelocity;
+    [SerializeField] private float dampingFactor;
+
+    [Header("SFX")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sfxJump;
+
     //플레이어가 가지고 있는 모든 상태, 현재 상태
     private State<PlayerStatus>[] states;
     private StateMachine<PlayerStatus> stateMachine;
@@ -95,6 +107,8 @@ public class PlayerStatus : BaseGameEntity
         //상태를 관리하는 StateMachine에 메모리를 할당하고 첫 상태를 설정
         stateMachine = new StateMachine<PlayerStatus>();
         stateMachine.Setup(this, states[(int)PlayerStates.Player_Idle]);
+
+        damageInteractor = objDamageInteractor.GetComponent<DamageInteractor>();
     }
 
     public override void Updated()
@@ -113,6 +127,13 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         objMovingEffect.SetActive(false);
         entity.Setup();
+
+        maxVelocity = 70f;
+        dampingFactor = 0.9f;
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        damageInteractor.GetComponent<DamageInteractor>();
     }
 
     private void FixedUpdate()
@@ -125,9 +146,14 @@ public class PlayerStatus : BaseGameEntity
         PlayerStatus entity = gameObject.GetComponent<PlayerStatus>();
         entity.Updated();
 
-        
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+
         PlayerJump();
 
+        if(PlayerCurrHP <= 0)
+        {
+            PlayerCurrHP = 0;
+        }
       
         playerAnim.SetBool("onGround", !isJumping);
 
@@ -151,7 +177,7 @@ public class PlayerStatus : BaseGameEntity
             objMovingEffect.SetActive(false);
         }
 
-        else
+        else if(playerAnim.GetBool("isMoving") == true && playerAnim.GetBool("onGround") == true)
         {
             objMovingEffect.SetActive(true);
         }
@@ -191,14 +217,15 @@ public class PlayerStatus : BaseGameEntity
             if (Input.GetKeyDown(KeyCode.Space) && 
                 isJumping == false && playerAnim.GetBool("onGround") == true)
             {
+                audioSource.clip = sfxJump;
+                audioSource.Play();
+
                 isJumping = true;
                 playerRigidbody.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
                 playerAnim.SetTrigger("isJumping");
             }
         }
     }
-
-
 
     public void PlayerMoveInput()
     {
@@ -211,22 +238,56 @@ public class PlayerStatus : BaseGameEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy_dontmove"))
-        {
-            playerImage.color = Color.red;
-        }
-
-        if(collision.gameObject.CompareTag("Ground") ||
+        if (collision.gameObject.CompareTag("Ground") ||
             collision.gameObject.CompareTag("Enemy_dontmove"))
         {
             isJumping = false;
             playerAnim.SetBool("onGround", true);
         }
+
+        else if (collision.gameObject.CompareTag("Object_spinning"))
+        {
+            damageInteractor.objectDamageType = ObjectDamageType.Object_spinning;
+            PlayerisDamaged();
+        }
+
+        if(collision.gameObject.CompareTag("Object_squish"))
+        {
+            /*
+            Debug.Log($"팅!@ 현재 속도는 {PlayerRigidbody.velocity}");
+            float maxVelocity = 1000f;
+
+            if (PlayerRigidbody.velocity.magnitude >= maxVelocity)
+            {
+                Debug.Log($"속도가 {maxVelocity}를 초과하여 클램핑합니다.");
+                PlayerRigidbody.velocity = PlayerRigidbody.velocity.normalized * maxVelocity;
+            }
+            else
+            {
+                Debug.Log($"속도가 {maxVelocity} 미만입니다.");
+            }
+            */
+
+            PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, maxVelocity);
+
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy_dontmove"))
+        {
+            damageInteractor.enemyDamageType = EnemyDamageType.Enemy2;
+            PlayerisDamaged();
+        }
+
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy_dontmove"))
+        if (collision.gameObject.CompareTag("Enemy_dontmove") ||
+            collision.gameObject.CompareTag("Object_spinning"))
         {
             playerImage.color = Color.white;
         }
@@ -240,19 +301,49 @@ public class PlayerStatus : BaseGameEntity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy3Hitbox") ||
-            collision.gameObject.CompareTag("Enemy4Hitbox") ||
-            collision.gameObject.CompareTag("Object_hide") ||
-            collision.gameObject.CompareTag("Object_falling") ||
-            collision.gameObject.CompareTag("Object_spinning"))
+        if(collision.gameObject.CompareTag("Enemy3Hitbox"))
         {
-            playerImage.color = Color.red;
+            damageInteractor.enemyDamageType = EnemyDamageType.Enemy3;
+            PlayerisDamaged();
         }
 
-        else if(collision.gameObject.CompareTag("EncounterBoundary"))
+        else if (collision.gameObject.CompareTag("Object_spinning"))
         {
-            //StartCoroutine(ZoomCamera());
+            damageInteractor.objectDamageType = ObjectDamageType.Object_spinning;
+            PlayerisDamaged();
         }
+
+        else if (collision.gameObject.CompareTag("Enemy4Hitbox"))
+        {
+            damageInteractor.enemyDamageType = EnemyDamageType.Enemy4;
+            PlayerisDamaged();
+        }
+
+        if (collision.gameObject.CompareTag("Object_hide"))
+        {
+            damageInteractor.objectDamageType = ObjectDamageType.Object_hide;
+            PlayerisDamaged();
+        }
+
+        else if (collision.gameObject.CompareTag("Object_falling"))
+        {
+            damageInteractor.objectDamageType = ObjectDamageType.Object_falling;
+            PlayerisDamaged();
+        }
+
+        else if (collision.gameObject.CompareTag("Object_beam"))
+        {
+            damageInteractor.objectDamageType = ObjectDamageType.Object_Beam;
+            PlayerisDamaged();
+        }
+
+        else if (collision.gameObject.CompareTag("Object_thorn"))
+        {
+            damageInteractor.objectDamageType = ObjectDamageType.Object_thorn;
+            PlayerisDamaged();
+        }
+
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -261,6 +352,8 @@ public class PlayerStatus : BaseGameEntity
             collision.gameObject.CompareTag("Enemy4Hitbox") ||
             collision.gameObject.CompareTag("Object_hide") ||
             collision.gameObject.CompareTag("Object_falling") ||
+            collision.gameObject.CompareTag("Object_beam") ||
+            collision.gameObject.CompareTag("Object_thorn") ||
             collision.gameObject.CompareTag("Object_spinning"))
         {
             playerImage.color = Color.white;
@@ -270,5 +363,16 @@ public class PlayerStatus : BaseGameEntity
         {
             //StartCoroutine(UnzoomCamera());
         }
+    }
+
+    private void PlayerisDamaged()
+    {
+        playerAnim.SetTrigger("isDamaged");
+        playerImage.color = Color.red;
+
+        objDamageInteractor.GetComponent<DamageInteractor>();
+        PlayerCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().GetDamageFromObj();
+
+        //Debug.Log($"플레이어는 {objDamageInteractor.GetComponent<DamageInteractor>().GetDamageFromObj()}만큼의 데미지를 입었다!");
     }
 }

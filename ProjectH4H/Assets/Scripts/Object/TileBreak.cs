@@ -9,7 +9,7 @@ public class TileBreak : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            this.gameObject.GetComponent<TilemapCollider2D>().isTrigger = true;
+            //this.gameObject.GetComponent<TilemapCollider2D>().isTrigger = true;
             this.gameObject.GetComponent<Animator>().enabled = true;
         }
         

@@ -9,6 +9,22 @@ public enum PlayerDamageType
     PlayerSkill1, PlayerSkill2, PlayerSkill3, PlayerSkill4, PlayerSkill5, PlayerSkill6
 }
 
+public enum ObjectDamageType
+{
+    Object_hide, Object_falling, Object_spinning, Object_thorn,
+    Object_Beam
+}
+
+public enum EnemyDamageType
+{
+    Enemy2, Enemy3, Enemy4
+}
+
+public enum MidbossDamageType
+{
+    Pattern1, Pattern2, Pattern3, Pattern4, Pattern5
+}
+
 public class DamageInteractor : MonoBehaviour
 {
     public int baseDamage;
@@ -18,6 +34,10 @@ public class DamageInteractor : MonoBehaviour
     public int randomCritical;
 
     public PlayerDamageType playerDamageType;
+    public ObjectDamageType objectDamageType;
+    public EnemyDamageType enemyDamageType;
+    public MidbossDamageType midbossDamageType;
+
 
     public int CalculateDamage()
     {
@@ -65,6 +85,84 @@ public class DamageInteractor : MonoBehaviour
         }
 
         //Debug.Log($"가한 피해는 {damageResult}!");
+        return damageResult;
+    }
+
+    public int GetDamageFromObj()
+    {
+        switch(objectDamageType)
+        {
+            case ObjectDamageType.Object_hide:
+                baseDamage = 30;
+                break;
+            case ObjectDamageType.Object_falling:
+                baseDamage = 25;
+                break;
+            case ObjectDamageType.Object_spinning:
+                baseDamage = 20;
+                break;
+            case ObjectDamageType.Object_Beam:
+                baseDamage = 40;
+                break;
+            case ObjectDamageType.Object_thorn:
+                baseDamage = 7;
+                break;
+            default:
+                baseDamage = 10;
+                break;
+        }
+
+        damageResult = baseDamage;
+        return damageResult;
+    }
+
+    public int GetDamageFromEnemy()
+    {
+        switch(enemyDamageType)
+        {
+            case EnemyDamageType.Enemy2:
+                baseDamage = 3;
+                break;
+            case EnemyDamageType.Enemy3:
+                baseDamage = 140;
+                break;
+            case EnemyDamageType.Enemy4:
+                baseDamage = 120;
+                break;
+            default:
+                baseDamage = 50;
+                break;
+
+        }
+
+        damageResult = baseDamage;
+        return damageResult;
+    }
+
+    public int GetDamageFromMidboss()
+    {
+        switch(midbossDamageType)
+        {
+            case MidbossDamageType.Pattern1:
+                baseDamage = 100;
+                break;
+            case MidbossDamageType.Pattern2:
+                baseDamage = 60;
+                break;
+            case MidbossDamageType.Pattern3:
+                baseDamage = 60;
+                break;
+            case MidbossDamageType.Pattern4:
+                baseDamage = 60;
+                break;
+            case MidbossDamageType.Pattern5:
+                baseDamage = 60;
+                break;
+            default:
+                baseDamage = 60;
+                break;
+        }
+        damageResult = baseDamage;
         return damageResult;
     }
 

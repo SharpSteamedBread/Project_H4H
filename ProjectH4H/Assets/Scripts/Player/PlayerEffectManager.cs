@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerEffectManager : MonoBehaviour
 {
     [SerializeField] private Transform playerFlip;
+    [SerializeField] private AudioSource audioSource;
 
     [Header("¿Ã∆Â∆Æ")]
     [SerializeField] private Transform objVFXLocationZ1;
@@ -13,6 +14,11 @@ public class PlayerEffectManager : MonoBehaviour
     [SerializeField] private GameObject objVFXZ2;
     [SerializeField] private Transform objVFXLocationZ3;
     [SerializeField] private GameObject objVFXZ3;
+
+    [SerializeField] private AudioClip objSFX_X1;
+    [SerializeField] private AudioClip objSFX_X2;
+    [SerializeField] private AudioClip objSFX_X3;
+
 
     [SerializeField] private Transform objVFXLocationSkill5;
     [SerializeField] private GameObject objVFXSkill5;
@@ -26,6 +32,7 @@ public class PlayerEffectManager : MonoBehaviour
     private void Awake()
     {
         playerFlip = gameObject.GetComponent<Transform>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         damageInteractor.GetComponent<DamageInteractor>();
     }
 
@@ -57,16 +64,22 @@ public class PlayerEffectManager : MonoBehaviour
     public void XAttackCombo1()
     {
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
+        audioSource.clip = objSFX_X1;
+        audioSource.Play();
     }
 
     public void XAttackCombo2()
     {
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
+        audioSource.clip = objSFX_X2;
+        audioSource.Play();
     }
 
     public void XAttackCombo3()
     {
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
+        audioSource.clip = objSFX_X3;
+        audioSource.Play();
     }
 
 

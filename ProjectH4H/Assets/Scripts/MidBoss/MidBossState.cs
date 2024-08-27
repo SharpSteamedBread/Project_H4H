@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class MidBossState : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class MidBossState : MonoBehaviour
     [Header("패턴 2 조건 변수")]
     private float pattern2Dur = 10.0f;
     [SerializeField] private int pattern2Phase = 0;
+    [SerializeField] private GameObject objEffectPattern2;
 
 
     [Header("패턴 4 조건 변수")]
@@ -43,6 +45,11 @@ public class MidBossState : MonoBehaviour
     [SerializeField] private Rigidbody2D bossRigidbody2D;
     [SerializeField] private float bossJumpForce = 20;
 
+    [Header("데미지 관리")]
+    public UnityEvent onEnemyDamaged;
+    public GameObject objDamageInteractor;
+
+    [SerializeField] private CommandEnterUI activateCommandSkill;
 
 
     private Transform bossTransform;
@@ -74,10 +81,18 @@ public class MidBossState : MonoBehaviour
 
         bossTransform = GetComponent<Transform>();
         transform.position = bossTransform.transform.position;
+
+        //데미지 관련
+        objDamageInteractor.GetComponent<DamageInteractor>();
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
     }
 
     private void Update()
     {
+        objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
+        activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
+
         ReadyToDie();
         Debug.Log(bossState);
 
@@ -185,9 +200,12 @@ public class MidBossState : MonoBehaviour
             animator.SetBool("midBossPattern2", true);
             StartCoroutine(Move());
 
+            objEffectPattern2.SetActive(true);
+
             yield return null;
         }
 
+        objEffectPattern2.SetActive(false);
         StateChange(Boss1State.IDLE);
     }
 
@@ -364,5 +382,31 @@ public class MidBossState : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, pattern4PlayerDetectArea);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerHitbox"))
+        {
+            objDamageInteractor.GetComponent<DamageInteractor>();
+
+            valueBossHP = gameObject.GetComponent<BossStatus>().currHP;
+            gameObject.GetComponent<BossStatus>().currHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
+
+
+            //onEnemyDamaged.Invoke();
+            CritRate();
+        }
+    }
+
+    private void CritRate()
+    {
+        int crit = Random.Range(1, 101);
+        //Debug.Log($"크리티컬 수치: {crit}");
+
+        if (crit >= 80)
+        {
+            activateCommandSkill.TimeToSkillCommand();
+        }
     }
 }

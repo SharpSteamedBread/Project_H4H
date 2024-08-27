@@ -25,6 +25,12 @@ TagManager:
   - Enemy3
   - Enemy4
   - CombatController
+  - Object_beam
+  - Object_thorn
+  - Object_squish
+  - MidBossHitbox
+  - EnemyBoundary
+  - BGM
   layers:
   - Default
   - TransparentFX
@@ -40,7 +46,7 @@ TagManager:
   - Object_squish
   - MidBoss
   - Ground
-  - 
+  - EnemyBoundary
   - 
   - 
   - 

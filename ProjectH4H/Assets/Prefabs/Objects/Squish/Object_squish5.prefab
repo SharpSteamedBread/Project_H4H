@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2857912677107506294}
   m_Layer: 11
   m_Name: Sprite_Object_squish
-  m_TagString: Untagged
+  m_TagString: Object_squish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 2857912677212308492}
   m_Layer: 0
   m_Name: Object_squish5
-  m_TagString: Untagged
+  m_TagString: Object_squish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

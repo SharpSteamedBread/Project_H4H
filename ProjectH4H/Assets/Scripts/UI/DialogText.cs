@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogTextEnter
@@ -19,22 +20,48 @@ public class DialogText : MonoBehaviour
     public GameObject objDialogUI;
     public GameObject objDialogParent;
 
-    [SerializeField] private float pauseTime = 7.0f;
+    [SerializeField] private float pauseTime = 3.0f;
+
+    public int dialogStartPoint;
+    public int dialogEndPoint;
+
+    [Header("튜토리얼 옵션")]
+    [SerializeField] private GameObject objBlock;
+    //[SerializeField] private bool isTutStopped;
 
     private void Awake()
     {
-        
+        dialogStartPoint = 0;
+        dialogEndPoint = 5;
+        //isTutStopped = false;
     }
 
     private void Start()
     {
         StartCoroutine(TutorialDialog());
+
+        /*
+        if(SceneManager.GetActiveScene().name == "Map_Tutorial")
+        {
+            StartCoroutine(TutorialDialog());
+        }
+        */
     }
 
-    private IEnumerator TutorialDialog()
+    private void Update()
+    {
+        /*
+        if (isTutStopped = true && SceneManager.GetActiveScene().name == "Map_Tutorial")
+        {
+            objBlock.SetActive(false);
+        }
+        */
+    }
+
+    public IEnumerator TutorialDialog()
     {
 
-        for(int i = 0; i < DialogTextTutorialList.Count; i++)
+        for(int i = dialogStartPoint; i <= dialogEndPoint; i++)
         {
             GameObject cloneDialog = Instantiate(objDialogUI, objDialogUI.transform.position, objDialogUI.transform.rotation);
             cloneDialog.transform.SetParent(objDialogParent.transform);
@@ -50,6 +77,8 @@ public class DialogText : MonoBehaviour
 
             yield return new WaitForSeconds(pauseTime);
         }
+
+        //isTutStopped = true;
 
     }
 }

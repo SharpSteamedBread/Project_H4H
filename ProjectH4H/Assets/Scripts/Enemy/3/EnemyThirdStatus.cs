@@ -238,7 +238,7 @@ public class EnemyThirdStatus : BaseGameEntity
     private void CritRate()
     {
         int crit = Random.Range(1, 101);
-        Debug.Log($"크리티컬 수치: {crit}");
+        //Debug.Log($"크리티컬 수치: {crit}");
 
         if (crit >= 80)
         {

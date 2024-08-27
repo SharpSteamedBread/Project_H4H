@@ -25,11 +25,11 @@ public class MonsterItemAbsorbing : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"회복 전: {collision.GetComponent<PlayerStatus>().PlayerCurrHP}");
+            //Debug.Log($"회복 전: {collision.GetComponent<PlayerStatus>().PlayerCurrHP}");
 
             collision.GetComponent<PlayerStatus>().PlayerCurrHP += healAmount;
 
-            Debug.Log($"회복된다~ / 회복 후: {collision.GetComponent<PlayerStatus>().PlayerCurrHP}");
+            //Debug.Log($"회복된다~ / 회복 후: {collision.GetComponent<PlayerStatus>().PlayerCurrHP}");
             Destroy(gameObject);
         }
     }

@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLocation: {fileID: 0}
-  objSpeed: 40
-  healAmount: 40
+  objSpeed: 20
+  healAmount: 80
 --- !u!1001 &1757712034
 PrefabInstance:
   m_ObjectHideFlags: 0

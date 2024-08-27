@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7756414977854551173}
   - component: {fileID: 7756414977854551175}
   - component: {fileID: 7756414977854551174}
+  - component: {fileID: 3830922474006890241}
   m_Layer: 5
   m_Name: DialogObject
   m_TagString: Untagged
@@ -56,6 +57,10 @@ MonoBehaviour:
   dialogTextContainer:
     dialogName: 
     dialogSaying: 
+  dialogLifeTime: 10
+  objImageBackground: {fileID: 7756414978487546268}
+  imgOs: {fileID: 21300000, guid: e2b23b9f30dea4943914e86784a40df0, type: 3}
+  imgMos: {fileID: 21300000, guid: 5ef252627e491e440a45c47ef9a5af31, type: 3}
 --- !u!95 &7756414977854551174
 Animator:
   serializedVersion: 5
@@ -77,6 +82,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &3830922474006890241
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756414977854551172}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3ce01e74df593ab4aa9dfd8187c95533, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7756414977883876884
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,8 +250,8 @@ MonoBehaviour:
     \uC785\uB825\uD569\uC2DC\uB2E4. \uD14D\uC2A4\uD2B8\uB97C \uC785\uB825\uD569\uC2DC\uB2E4.
     \uD14D\uC2A4\uD2B8\uB97C \uC785\uB825\uD569\uC2DC\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 644ce40b8b380b84a9eda4687a90becd, type: 2}
-  m_sharedMaterial: {fileID: 348229881266718251, guid: 644ce40b8b380b84a9eda4687a90becd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1f733edf330cf1c42b1020ad57499e2c, type: 2}
+  m_sharedMaterial: {fileID: 2451672772172537918, guid: 1f733edf330cf1c42b1020ad57499e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -284,8 +385,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC624\uC2A4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 644ce40b8b380b84a9eda4687a90becd, type: 2}
-  m_sharedMaterial: {fileID: 348229881266718251, guid: 644ce40b8b380b84a9eda4687a90becd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1f733edf330cf1c42b1020ad57499e2c, type: 2}
+  m_sharedMaterial: {fileID: 2451672772172537918, guid: 1f733edf330cf1c42b1020ad57499e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3951022658199059863}
   m_Layer: 10
   m_Name: Sprite_Object_Thorn
-  m_TagString: Object_falling
+  m_TagString: Object_thorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 3951022658859093459}
   m_Layer: 0
   m_Name: Object_Thorn1
-  m_TagString: Object_falling
+  m_TagString: Object_thorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

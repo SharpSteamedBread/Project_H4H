@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum EnemyStates { EnemyNormal_Idle, EnemyNormal_Move, EnemyNormal_Attack, EnemyNormal_Damaged, EnemyNormal_Die }
 
@@ -225,7 +226,6 @@ public class EnemyStatus : BaseGameEntity
         {
             objDamageInteractor.GetComponent<DamageInteractor>();
 
-            Debug.Log("아야!");
             enemyAnim.SetTrigger("isDamaged");
             enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
 
@@ -239,7 +239,7 @@ public class EnemyStatus : BaseGameEntity
         int crit = Random.Range(1, 101);
         //Debug.Log($"크리티컬 수치: {crit}");
 
-        if(crit >= 80)
+        if(crit >= 80 && SceneManager.GetActiveScene().name == "Map_Tutorial")
         {
             criticalShow.SetActive(true);
 

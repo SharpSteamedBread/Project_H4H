@@ -23,12 +23,30 @@ public class DialogUIText : MonoBehaviour
 
     [SerializeField] private float dialogLifeTime = 10f;
 
+    [Header("스프라이트 교환")]
+    [SerializeField] private Image objImageBackground;
+    [SerializeField] private Sprite imgOs;
+    [SerializeField] private Sprite imgMos;
+
     private void Awake()
     {
         objDialogName.text = dialogTextContainer.dialogName;
         objDialogSaying.text = dialogTextContainer.dialogSaying;
 
         StartCoroutine(OffTimer());
+    }
+
+    private void Update()
+    {
+        if(objDialogName.text == "오스")
+        {
+            objImageBackground.sprite = imgOs;
+        }
+
+        else if (objDialogName.text == "모스")
+        {
+            objImageBackground.sprite = imgMos;
+        }
     }
 
     private IEnumerator OffTimer()
