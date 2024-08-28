@@ -198,7 +198,7 @@ public class EnemySecondStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

@@ -239,7 +239,7 @@ public class EnemyStatus : BaseGameEntity
         int crit = Random.Range(1, 101);
         //Debug.Log($"크리티컬 수치: {crit}");
 
-        if(crit >= 80 && SceneManager.GetActiveScene().name == "Map_Tutorial")
+        if(crit >= 80 && SceneManager.GetActiveScene().name != "Map_Tutorial")
         {
             criticalShow.SetActive(true);
 

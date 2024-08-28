@@ -57,7 +57,7 @@ MonoBehaviour:
   dialogTextContainer:
     dialogName: 
     dialogSaying: 
-  dialogLifeTime: 10
+  dialogLifeTime: 6
   objImageBackground: {fileID: 7756414978487546268}
   imgOs: {fileID: 21300000, guid: e2b23b9f30dea4943914e86784a40df0, type: 3}
   imgMos: {fileID: 21300000, guid: 5ef252627e491e440a45c47ef9a5af31, type: 3}

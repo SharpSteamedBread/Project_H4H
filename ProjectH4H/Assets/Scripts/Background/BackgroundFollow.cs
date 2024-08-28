@@ -9,7 +9,7 @@ public class BackgroundFollow : MonoBehaviour
 
     private void Awake()
     {
-        moveSpeed = 10f;
+        moveSpeed = 5f;
     }
 
     void Update()

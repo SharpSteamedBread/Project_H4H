@@ -30,8 +30,8 @@ public class MidBossEffectManager : MonoBehaviour
 
     public void Pattern2EFF()
     {
-        GameObject cloneVFXLocationPTN2 = Instantiate(objVFXPattern2, objVFXLocationPattern2.transform.position, objVFXLocationPattern2.transform.rotation);
-        cloneVFXLocationPTN2.transform.localScale = midbossFlip.transform.localScale;
+        objVFXPattern2.SetActive(true);
+        objVFXPattern2.transform.localScale = midbossFlip.transform.localScale;
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern2;
     }
 

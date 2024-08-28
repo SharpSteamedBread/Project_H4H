@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerStates { Player_Idle, Player_Run, Player_Attack }
 

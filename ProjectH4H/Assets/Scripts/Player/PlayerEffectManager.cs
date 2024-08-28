@@ -38,6 +38,8 @@ public class PlayerEffectManager : MonoBehaviour
 
     private void Update()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         damageInteractor.GetComponent<DamageInteractor>();
     }
 
