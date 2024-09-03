@@ -18,6 +18,7 @@ TagManager:
   - Object_hide
   - Object_spinning
   - MidBoss
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3738763465
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -101,18 +101,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -120,40 +108,19 @@ TextureImporter:
       name: spring_mushroom_001_0
       rect:
         serializedVersion: 2
-        x: 527
-        y: 593
-        width: 214
-        height: 373
+        x: 1053
+        y: 1195
+        width: 445
+        height: 769
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dd3a53d81b310445a4531a75f6475b5
-      internalID: 1468808869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spring_mushroom_001_1
-      rect:
-        serializedVersion: 2
-        x: 866
-        y: 930
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da8a3be37c928734186c86ff2076c9d4
-      internalID: -1410247223
+      spriteID: 28374b07c10c3f34eb97955471af05f4
+      internalID: 1678504359
       vertices: []
       indices: 
       edges: []
@@ -162,19 +129,19 @@ TextureImporter:
       name: spring_mushroom_001_2
       rect:
         serializedVersion: 2
-        x: 526
-        y: 919
-        width: 5
-        height: 5
+        x: 46
+        y: 1209
+        width: 431
+        height: 594
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70aba12a4d5d116419a556019bf6ba12
-      internalID: -164942829
+      spriteID: 69b4e19064a1b47448be9d88af22e354
+      internalID: -22827338
       vertices: []
       indices: 
       edges: []
@@ -183,19 +150,19 @@ TextureImporter:
       name: spring_mushroom_001_3
       rect:
         serializedVersion: 2
-        x: 525
-        y: 901
-        width: 7
-        height: 6
+        x: 537
+        y: 1205
+        width: 415
+        height: 566
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c77ffcdba35c0f45ab2f08ebcf99029
-      internalID: 1916718234
+      spriteID: 97f63eea83492124ba6fcdc37ca3f3d9
+      internalID: -1677060499
       vertices: []
       indices: 
       edges: []
@@ -204,19 +171,19 @@ TextureImporter:
       name: spring_mushroom_001_4
       rect:
         serializedVersion: 2
-        x: 760
-        y: 595
-        width: 223
-        height: 319
+        x: 1577
+        y: 1199
+        width: 428
+        height: 653
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60e6bc048b51fe7488f177b7e8d7ee1d
-      internalID: -396484368
+      spriteID: 78a0f781b5d2e774381b2b65d1238262
+      internalID: 1686897722
       vertices: []
       indices: 
       edges: []
@@ -225,19 +192,19 @@ TextureImporter:
       name: spring_mushroom_001_5
       rect:
         serializedVersion: 2
-        x: 41
-        y: 601
-        width: 208
-        height: 285
+        x: 95
+        y: 75
+        width: 759
+        height: 1002
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f20fdf9299299d4f902ca14394fad5b
-      internalID: -2079322518
+      spriteID: 3fbef867361237848b9405c4c9225c38
+      internalID: -1322102928
       vertices: []
       indices: 
       edges: []
@@ -246,103 +213,19 @@ TextureImporter:
       name: spring_mushroom_001_6
       rect:
         serializedVersion: 2
-        x: 373
-        y: 869
-        width: 17
-        height: 21
+        x: 1046
+        y: 76
+        width: 762
+        height: 908
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7df000f6f0c3c97418f5d8d1b53ee45c
-      internalID: -589714358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spring_mushroom_001_7
-      rect:
-        serializedVersion: 2
-        x: 277
-        y: 779
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 446d9b9868adcc04783fc6e991693a10
-      internalID: -1500417296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spring_mushroom_001_8
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 599
-        width: 201
-        height: 255
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c18eb7a2461a15d47b4ec25ce4f84a6f
-      internalID: 932285597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spring_mushroom_001_9
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 51
-        width: 367
-        height: 488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8db6482ece61c77459725bc4716eb3c5
-      internalID: -504769590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spring_mushroom_001_10
-      rect:
-        serializedVersion: 2
-        x: 523
-        y: 53
-        width: 366
-        height: 442
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8de9fb98fc6255048aa36ad3dad66749
-      internalID: -1741706070
+      spriteID: d346d52f44d5ca84fa4609c47e97ce9e
+      internalID: 1446388473
       vertices: []
       indices: 
       edges: []
@@ -350,7 +233,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 6d4f1843cc2031f44bd3c02697488e36
     internalID: 0
     vertices: []
     indices: 
@@ -358,17 +241,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spring_mushroom_001_0: 1468808869
-      spring_mushroom_001_1: -1410247223
-      spring_mushroom_001_10: -1741706070
-      spring_mushroom_001_2: -164942829
-      spring_mushroom_001_3: 1916718234
-      spring_mushroom_001_4: -396484368
-      spring_mushroom_001_5: -2079322518
-      spring_mushroom_001_6: -589714358
-      spring_mushroom_001_7: -1500417296
-      spring_mushroom_001_8: 932285597
-      spring_mushroom_001_9: -504769590
+      spring_mushroom_001_0: 1678504359
+      spring_mushroom_001_1: 302565309
+      spring_mushroom_001_2: -22827338
+      spring_mushroom_001_3: -1677060499
+      spring_mushroom_001_4: 1686897722
+      spring_mushroom_001_5: -1322102928
+      spring_mushroom_001_6: 1446388473
+      spring_mushroom_001_7: -1522532472
+      spring_mushroom_001_8: -1618160555
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

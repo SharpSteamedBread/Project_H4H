@@ -35,7 +35,7 @@ public class CommandCheckDict : MonoBehaviour
     private void Awake()
     {
         // 커맨드와 처리할 메소드 매핑
-        commandDictionary.Add("A", ActivateSkill1_1);
+        commandDictionary.Add("AA", ActivateSkill1_1);
         commandDictionary.Add("AEQ", ActivateSkill1_2);
 
         commandDictionary.Add("EE", ActivateSkill2_1);
@@ -48,6 +48,11 @@ public class CommandCheckDict : MonoBehaviour
 
         commandDictionary.Add("DD", ActivateSkill4_1);
         commandDictionary.Add("DDA", ActivateSkill4_2);
+
+        commandDictionary.Add("EEE", ActivateSkill5_1);
+
+        commandDictionary.Add("AD", ActivateSkill6_1);
+        commandDictionary.Add("ADEE", ActivateSkill6_1);
 
         commandEnterUI = gameObject.GetComponent<CommandEnterUI>();
         bgm.GetComponent<AudioLowPassFilter>();
@@ -69,6 +74,7 @@ public class CommandCheckDict : MonoBehaviour
         {
             Time.timeScale = bulletTime;
             isCommandSystemOpened = true;
+            //InitAnimation();
 
             bgm.GetComponent<AudioLowPassFilter>().enabled = true;
 
@@ -214,6 +220,24 @@ public class CommandCheckDict : MonoBehaviour
         ExitSkill();
     }
 
+    private void ActivateSkill5_1()
+    {
+        animPlayer.SetBool("useSkill5_1", true);
+        ExitSkill();
+    }
+
+    private void ActivateSkill6_1()
+    {
+        animPlayer.SetBool("useSkill6_1", true);
+        ExitSkill();
+    }
+
+    private void ActivateSkill6_2()
+    {
+        animPlayer.SetBool("useSkill6_2", true);
+        ExitSkill();
+    }
+
 
     //스킬 시전 후 초기화
     private void ExitSkill()
@@ -236,6 +260,9 @@ public class CommandCheckDict : MonoBehaviour
     {
         inputCommand = "";
 
+        animPlayer.SetBool("Idle", true);
+        //animPlayer.SetBool("isAttack", false);
+
 
         animPlayer.SetBool("useSkill1_1", false);
 
@@ -246,5 +273,7 @@ public class CommandCheckDict : MonoBehaviour
         animPlayer.SetBool("useSkill3_2", false);
 
         animPlayer.SetBool("useSkill4_1", false);
+
+        animPlayer.SetBool("useSkill6_1", false);
     }
 }

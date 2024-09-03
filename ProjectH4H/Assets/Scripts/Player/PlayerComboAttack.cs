@@ -11,6 +11,16 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private float lastInputTime = 0f;
     [SerializeField] private float maxComboDelay = 1.0f;
 
+    [Header("¿Ã∆Â∆Æ")]
+    [SerializeField] private Transform objVFXLocationZ1;
+    [SerializeField] private GameObject objVFXZ1;
+    [SerializeField] private Transform objVFXLocationZ2;
+    [SerializeField] private GameObject objVFXZ2;
+    [SerializeField] private Transform objVFXLocationZ3;
+    [SerializeField] private GameObject objVFXZ3;
+
+
+
     [Header("UI πˆ∆∞")]
     [SerializeField] private Button objButtonZ;
     [SerializeField] private Button objButtonX;
@@ -72,10 +82,28 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (keyCode == KeyCode.Z)
         {
-            if (step == 1) animator.SetBool("ZAttackCombo1", true);
-            else if (step == 2) animator.SetBool("ZAttackCombo2", true);
-            else if (step == 3) animator.SetBool("ZAttackCombo3", true);
+            if (step == 1)
+            {
+                animator.SetBool("ZAttackCombo1", true);
+                GameObject cloneVFXLocationZ1 = Instantiate(objVFXZ1, objVFXLocationZ1.transform.position, objVFXZ1.transform.rotation);
+            }
+
+            else if (step == 2)
+            {
+                animator.SetBool("ZAttackCombo2", true);
+                GameObject cloneVFXLocationZ2 = Instantiate(objVFXZ2, objVFXLocationZ1.transform.position, objVFXZ2.transform.rotation);
+
+            }
+
+            else if (step == 3)
+            {
+                animator.SetBool("ZAttackCombo3", true);
+                GameObject cloneVFXLocationZ3 = Instantiate(objVFXZ3, objVFXLocationZ1.transform.position, objVFXZ3.transform.rotation);
+
+            }
+
         }
+
         else if (keyCode == KeyCode.X)
         {
             if (step == 1) animator.SetBool("XAttackCombo1", true);
