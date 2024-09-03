@@ -46,7 +46,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.083333336
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -82,13 +82,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 412891687, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
+      value: {fileID: -192603596, guid: 258620890f414694598fec2446dbfe44, type: 3}
     - time: 0.28333333
-      value: {fileID: -1363182051, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
+      value: {fileID: 929962894, guid: 258620890f414694598fec2446dbfe44, type: 3}
     - time: 0.6333333
-      value: {fileID: 551132929, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
+      value: {fileID: 391774653, guid: 258620890f414694598fec2446dbfe44, type: 3}
     - time: 0.75
-      value: {fileID: -1576471785, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
+      value: {fileID: -2021459591, guid: 258620890f414694598fec2446dbfe44, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -122,10 +122,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 412891687, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
-    - {fileID: -1363182051, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
-    - {fileID: 551132929, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
-    - {fileID: -1576471785, guid: ca40180e6d16ae04da3f530619f2d830, type: 3}
+    - {fileID: -192603596, guid: 258620890f414694598fec2446dbfe44, type: 3}
+    - {fileID: 929962894, guid: 258620890f414694598fec2446dbfe44, type: 3}
+    - {fileID: 391774653, guid: 258620890f414694598fec2446dbfe44, type: 3}
+    - {fileID: -2021459591, guid: 258620890f414694598fec2446dbfe44, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -235,7 +235,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.083333336
         value: 0
         inSlope: Infinity
         outSlope: Infinity

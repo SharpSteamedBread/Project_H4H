@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2857912677107506292}
   - component: {fileID: 2857912677107506295}
   - component: {fileID: 2857912677107506294}
+  - component: {fileID: 6611282963016313922}
   m_Layer: 11
   m_Name: Sprite_Object_squish
   m_TagString: Object_squish
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2857912677107506288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 47, y: 62.04, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2857912677212308492}
   m_RootOrder: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
-  m_Sprite: {fileID: -504769590, guid: c5ec1e0db0920f147824cd641cb34783, type: 3}
+  m_SortingOrder: -20
+  m_Sprite: {fileID: 443536509, guid: 3cd2afbf4e4462644bbfc1672b7a086f, type: 3}
   m_Color: {r: 0.5235849, g: 1, b: 0.9396967, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,19 +121,34 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029031515, y: 1.7057692}
+  m_Offset: {x: -0.011030197, y: 3.2948837}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.67, y: 4.88}
+    oldSize: {x: 7.59, y: 10.02}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5089355, y: 1.0602038}
+  m_Size: {x: 7.4883995, y: 2.2620544}
   m_EdgeRadius: 0
+--- !u!114 &6611282963016313922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857912677107506288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b02cc2ac3ae69439bb07b8ce4ba632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objSpriteNormal: {fileID: 443536509, guid: 3cd2afbf4e4462644bbfc1672b7a086f, type: 3}
+  objSpriteSquished: {fileID: 1583019085, guid: 3cd2afbf4e4462644bbfc1672b7a086f, type: 3}
+  objSquish: {fileID: 2857912677107506292}
 --- !u!1 &2857912677212308495
 GameObject:
   m_ObjectHideFlags: 0
