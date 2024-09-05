@@ -14492,7 +14492,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.43095052
+          time: 0.2812618
           value: 1
           inSlope: 0
           outSlope: 0
@@ -14501,7 +14501,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.11304459
         - serializedVersion: 3
-          time: 0.454911
+          time: 0.5941932
           value: 0.4454491
           inSlope: -0.22653732
           outSlope: -0.22653732
@@ -16043,7 +16043,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 0.03
+      time: 0.02
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -19639,7 +19639,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.43095052
+          time: 0.33531642
           value: 1
           inSlope: 0
           outSlope: 0
@@ -19648,7 +19648,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.11304459
         - serializedVersion: 3
-          time: 0.454911
+          time: 0.5817301
           value: 0.4454491
           inSlope: -0.22653732
           outSlope: -0.22653732
@@ -44036,7 +44036,7 @@ ParticleSystem:
     vector0_2:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 20
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -44051,17 +44051,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.16171901
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.11304459
-        - serializedVersion: 3
-          time: 0.17211154
-          value: 0.17270169
+          time: 0.18250278
+          value: 0.41513333
           inSlope: -0.22653732
           outSlope: -0.22653732
           tangentMode: 0
