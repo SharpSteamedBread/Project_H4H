@@ -49,6 +49,9 @@ public class MidBossState : MonoBehaviour
     public UnityEvent onEnemyDamaged;
     public GameObject objDamageInteractor;
 
+    [Header("Scale 조정")]
+    private float bossScale = 1.1f;
+
     [SerializeField] private CommandEnterUI activateCommandSkill;
 
 
@@ -350,12 +353,12 @@ public class MidBossState : MonoBehaviour
     {
         if (targetRange.position.x - transform.position.x < 0) // 타겟이 왼쪽에 있을 때
         {
-            bossTransform.transform.localScale = new Vector3(1.1f, transform.localScale.y, transform.localScale.z);
+            bossTransform.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
 
         else // 타겟이 오른쪽에 있을 때
         {
-            bossTransform.transform.localScale = new Vector3(-1.1f, transform.localScale.y, transform.localScale.z);
+            bossTransform.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }
 
