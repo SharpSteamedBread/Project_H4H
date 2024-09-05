@@ -6,6 +6,7 @@ public class PlayerEffectManager : MonoBehaviour
 {
     [SerializeField] private Transform playerFlip;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
     [Header("이펙트")]
     [SerializeField] private Transform objVFXLocationZ1;
@@ -15,15 +16,21 @@ public class PlayerEffectManager : MonoBehaviour
     [SerializeField] private Transform objVFXLocationZ3;
     [SerializeField] private GameObject objVFXZ3;
 
-    [SerializeField] private AudioClip objSFX_X1;
-    [SerializeField] private AudioClip objSFX_X2;
-    [SerializeField] private AudioClip objSFX_X3;
+    [SerializeField] private Transform objVFXLocationX1;
+    [SerializeField] private GameObject objVFXX1;
+    [SerializeField] private Transform objVFXLocationX2;
+    [SerializeField] private GameObject objVFXX2;
+    [SerializeField] private Transform objVFXLocationX3;
+    [SerializeField] private GameObject objVFXX3;
 
 
     [SerializeField] private Transform objVFXLocationSkill5;
     [SerializeField] private GameObject objVFXSkill5;
+
+    [Header("패턴 6")]
     [SerializeField] private Transform objVFXLocationSkill6;
     [SerializeField] private GameObject objVFXSkill6;
+    [SerializeField] private float skill6JumpForce = 10f;
 
     [Header("히트박스")]
     [SerializeField] private DamageInteractor damageInteractor;
@@ -34,6 +41,7 @@ public class PlayerEffectManager : MonoBehaviour
         playerFlip = gameObject.GetComponent<Transform>();
         audioSource = gameObject.GetComponent<AudioSource>();
         damageInteractor.GetComponent<DamageInteractor>();
+        playerRigidbody = transform.parent.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -65,23 +73,23 @@ public class PlayerEffectManager : MonoBehaviour
 
     public void XAttackCombo1()
     {
+        GameObject cloneVFXLocationX1 = Instantiate(objVFXX1, objVFXLocationX1.transform.position, objVFXX1.transform.rotation);
+        cloneVFXLocationX1.transform.localScale = playerFlip.transform.localScale;
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
-        audioSource.clip = objSFX_X1;
-        audioSource.Play();
     }
 
     public void XAttackCombo2()
     {
+        GameObject cloneVFXLocationX2 = Instantiate(objVFXX2, objVFXLocationX2.transform.position, objVFXX2.transform.rotation);
+        cloneVFXLocationX2.transform.localScale = playerFlip.transform.localScale;
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
-        audioSource.clip = objSFX_X2;
-        audioSource.Play();
     }
 
     public void XAttackCombo3()
     {
+        GameObject cloneVFXLocationX3 = Instantiate(objVFXX3, objVFXLocationX3.transform.position, objVFXX3.transform.rotation);
+        cloneVFXLocationX3.transform.localScale = playerFlip.transform.localScale;
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackX;
-        audioSource.clip = objSFX_X3;
-        audioSource.Play();
     }
 
 
@@ -95,7 +103,14 @@ public class PlayerEffectManager : MonoBehaviour
     public void PlayerSkill6()
     {
         GameObject cloneVFXLocationSkill6 = Instantiate(objVFXSkill6, objVFXLocationSkill6.transform.position, objVFXLocationSkill6.transform.rotation);
-        cloneVFXLocationSkill6.transform.localScale = playerFlip.transform.localScale;
+        //cloneVFXLocationSkill6.transform.localScale = playerFlip.transform.localScale;
         damageInteractor.playerDamageType = PlayerDamageType.PlayerSkill6;
+    }
+
+    public void PlayerSkill6Jump()
+    {
+        playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, skill6JumpForce * Time.unscaledDeltaTime);
+        playerRigidbody.AddForce(Vector2.up * skill6JumpForce, ForceMode2D.Impulse);
+
     }
 }
