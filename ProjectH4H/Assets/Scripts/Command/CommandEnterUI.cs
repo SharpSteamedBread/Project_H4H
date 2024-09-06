@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CommandEnterUI : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CommandEnterUI : MonoBehaviour
 
     public float checkCommandOpenTime;
     public float commandUIEnableTime = 3.0f;
+
+    [Header("커맨드 시간 체크 슬라이더")]
+    [SerializeField] private Slider objTimeSlider;
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class CommandEnterUI : MonoBehaviour
         if (isCommandUIOpen)
         {
             checkCommandOpenTime += Time.unscaledDeltaTime;
+            objTimeSlider.value = (checkCommandOpenTime / commandUIEnableTime);
 
             if (checkCommandOpenTime >= commandUIEnableTime)
             {

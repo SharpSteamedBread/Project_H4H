@@ -60,7 +60,7 @@ public class MidBossState : MonoBehaviour
     private float runTime = 0.0f;
 
 
-    private int valueBossHP;
+    public int valueBossHP;
     private SpriteRenderer bossSpriteRenderer;
 
 
@@ -95,6 +95,8 @@ public class MidBossState : MonoBehaviour
     {
         objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
         activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
+
+        valueBossHP = gameObject.GetComponent<BossStatus>().currHP;
 
         ReadyToDie();
         Debug.Log(bossState);
@@ -319,8 +321,9 @@ public class MidBossState : MonoBehaviour
 
     private IEnumerator DIE()
     {
+        Debug.Log("보스 진짜 끝!");
         StartCoroutine(StopMove());
-        animator.SetBool("isDie", true);
+        animator.SetBool("isDead", true);
 
         //objUITheEnd.SetActive(true);
 
@@ -346,6 +349,8 @@ public class MidBossState : MonoBehaviour
         if (valueBossHP <= 0)
         {
             StateChange(Boss1State.DIE);
+
+            Debug.Log("보스 끝");
         }
     }
 

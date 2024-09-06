@@ -31,15 +31,12 @@ public class MidBossEffectManager : MonoBehaviour
     public void Pattern2EFF()
     {
         objVFXPattern2.SetActive(true);
-        objVFXPattern2.transform.localScale = new Vector3(midbossFlip.transform.localScale.x, 
-            objVFXLocationPattern2.transform.localScale.y, objVFXLocationPattern2.transform.localScale.z);
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern2;
     }
 
     public void Pattern4EFF()
     {
         GameObject cloneVFXLocationPTN4 = Instantiate(objVFXPattern4, objVFXLocationPattern4.transform.position, objVFXLocationPattern4.transform.rotation);
-        cloneVFXLocationPTN4.transform.localScale = midbossFlip.transform.localScale;
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern4;
     }
 }
