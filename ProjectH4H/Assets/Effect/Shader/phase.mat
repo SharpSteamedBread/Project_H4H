@@ -56,10 +56,13 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Glow_size: 0.25
-    - _Split_Value: -1.64
+    - _Split_Value: -6.66
     - _noise_scale: 51.5
     - _step: 0.39
     m_Colors:
+    - _Base_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _Base_Tile: {r: 1, g: 1, b: 0, a: 0}
+    - _Base_UV_Flow: {r: -5.38, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _Glow_color: {r: 0, g: 3.5073009, b: 15.999998, a: 0}

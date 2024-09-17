@@ -92,14 +92,14 @@ Material:
     - _Depthpower: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Emission: 3
+    - _Emission: 5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 2
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -113,7 +113,7 @@ Material:
     - _Base_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _Base_Tile: {r: 1, g: 1, b: 0, a: 0}
     - _Base_UV_Flow: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.6650944, b: 0.6650944, a: 1}
+    - _Color: {r: 1, g: 0.6839622, b: 0.6839622, a: 1}
     - _DistortionSpeedXYPowerZ: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: 0}
