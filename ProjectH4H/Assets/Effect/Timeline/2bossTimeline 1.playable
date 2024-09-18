@@ -22,7 +22,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.6166666666666667
+    m_Start: 0.7
     m_ClipIn: 2.7294278591560817
     m_Asset: {fileID: 3982334239606817749}
     m_Duration: 1.6166666666666667
@@ -502,7 +502,7 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   prefabGameObject: {fileID: 0}
   updateParticle: 1
-  particleRandomSeed: 1984
+  particleRandomSeed: 565182824
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
