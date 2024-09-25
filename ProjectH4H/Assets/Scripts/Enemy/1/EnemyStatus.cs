@@ -217,6 +217,7 @@ public class EnemyStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
+        enemyAnim.SetBool("IsDead", true);
         Destroy(gameObject);
     }
 
