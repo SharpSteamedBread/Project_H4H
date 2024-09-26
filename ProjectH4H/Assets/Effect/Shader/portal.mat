@@ -9,8 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: portal
   m_Shader: {fileID: 4800000, guid: 3e5e2a07815ceb241944e3f726233ae6, type: 3}
-  m_ValidKeywords:
-  - _KEYWORD0_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex1_MaskT:
-        m_Texture: {fileID: 2800000, guid: ece85a2ca6b72524285b7bd536bd41f9, type: 3}
+        m_Texture: {fileID: 2800000, guid: aaf131f15191d1946b8a49edb43d2ad0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex1_noiseT:
@@ -100,8 +99,8 @@ Material:
     - _DrawOrder: 0
     - _EnableExternalAlpha: 0
     - _Float0: 0.1
-    - _Float1: 0.15
-    - _Keyword0: 1
+    - _Float1: 0.03
+    - _Keyword0: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

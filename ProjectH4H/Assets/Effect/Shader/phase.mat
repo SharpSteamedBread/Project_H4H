@@ -56,7 +56,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Glow_size: 0.25
-    - _Split_Value: -2.48
+    - _Split_Value: -3.42
     - _noise_scale: 51.5
     - _step: 0.39
     m_Colors:
