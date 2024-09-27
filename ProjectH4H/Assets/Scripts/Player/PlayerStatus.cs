@@ -12,6 +12,8 @@ public class PlayerStatus : BaseGameEntity
 {
     [Header("플레이어 움직임")]
     [SerializeField] private float playerMove = 10.0f;
+    [SerializeField] private float playerMoveSlowDown = 6.0f;
+    [SerializeField] private float playerMoveBefore = 10.0f;
     [SerializeField] private float playerJumpForce = 10.0f;
     [SerializeField] private float h;
     [SerializeField] private bool isJumping = false;
@@ -135,6 +137,8 @@ public class PlayerStatus : BaseGameEntity
 
         audioSource = gameObject.GetComponent<AudioSource>();
         damageInteractor.GetComponent<DamageInteractor>();
+
+        playerMoveBefore = playerMove;
     }
 
     private void FixedUpdate()
@@ -254,23 +258,7 @@ public class PlayerStatus : BaseGameEntity
 
         if(collision.gameObject.CompareTag("Object_squish"))
         {
-            /*
-            Debug.Log($"팅!@ 현재 속도는 {PlayerRigidbody.velocity}");
-            float maxVelocity = 1000f;
-
-            if (PlayerRigidbody.velocity.magnitude >= maxVelocity)
-            {
-                Debug.Log($"속도가 {maxVelocity}를 초과하여 클램핑합니다.");
-                PlayerRigidbody.velocity = PlayerRigidbody.velocity.normalized * maxVelocity;
-            }
-            else
-            {
-                Debug.Log($"속도가 {maxVelocity} 미만입니다.");
-            }
-            */
-
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, maxVelocity);
-
         }
     }
 
@@ -281,8 +269,6 @@ public class PlayerStatus : BaseGameEntity
             damageInteractor.enemyDamageType = EnemyDamageType.Enemy2;
             PlayerisDamaged();
         }
-
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -347,6 +333,15 @@ public class PlayerStatus : BaseGameEntity
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SlowArea"))
+        {
+            playerMove = playerMoveSlowDown;
+            //Debug.Log($"느려진다! 원래 속도: {playerMove}, 지금 속도: {playerMoveSlowDown}");
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy3Hitbox") ||
@@ -363,6 +358,12 @@ public class PlayerStatus : BaseGameEntity
         else if (collision.gameObject.CompareTag("EncounterBoundary"))
         {
             //StartCoroutine(UnzoomCamera());
+        }
+
+        else if (collision.gameObject.CompareTag("SlowArea"))
+        {
+            playerMove = playerMoveBefore;
+            //Debug.Log($"돌아왔다! 원래 속도: {playerMove}, 지금 속도: {playerMoveBefore}");
         }
     }
 
