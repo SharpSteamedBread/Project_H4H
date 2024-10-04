@@ -23,6 +23,9 @@ public class PlayerStatus : BaseGameEntity
     [SerializeField] private Transform playerSprite;
     [SerializeField] private Rigidbody2D playerRigidbody;
 
+    [Space(20)]
+    [SerializeField] private GameObject effSlowDown;
+
     [Header("파츠")]
     [SerializeField] private SpriteRenderer playerImage;
     [SerializeField] private int playerCurrHP = 600;
@@ -338,6 +341,7 @@ public class PlayerStatus : BaseGameEntity
         if (collision.gameObject.CompareTag("SlowArea"))
         {
             playerMove = playerMoveSlowDown;
+            effSlowDown.SetActive(true);
             //Debug.Log($"느려진다! 원래 속도: {playerMove}, 지금 속도: {playerMoveSlowDown}");
         }
     }
@@ -363,6 +367,7 @@ public class PlayerStatus : BaseGameEntity
         else if (collision.gameObject.CompareTag("SlowArea"))
         {
             playerMove = playerMoveBefore;
+            effSlowDown.SetActive(false);
             //Debug.Log($"돌아왔다! 원래 속도: {playerMove}, 지금 속도: {playerMoveBefore}");
         }
     }
