@@ -14631,6 +14631,7 @@ GameObject:
   - component: {fileID: 2777492399989663398}
   - component: {fileID: 2777492399989663396}
   - component: {fileID: 2777492399989663399}
+  - component: {fileID: -3418404810335150020}
   m_Layer: 0
   m_Name: Laser_start_3
   m_TagString: Untagged
@@ -19496,6 +19497,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-3418404810335150020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2777492399989663401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485ee09c197d04f418b9efd1c1bcf5b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2777492400579000481
 GameObject:
   m_ObjectHideFlags: 0

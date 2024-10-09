@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map_Stage.unity
     guid: ce094afc4286d824799738fb7b85f44a
+  - enabled: 1
+    path: Assets/Scenes/Map_DialogBeforeBoss.unity
+    guid: 3d6f9b3523ed34a4d80418f09ca52cae
+  - enabled: 1
+    path: Assets/Scenes/Map_Midboss.unity
+    guid: 0dc529d1f4a8e2d479a22e38c024ccbf
   m_configObjects: {}
