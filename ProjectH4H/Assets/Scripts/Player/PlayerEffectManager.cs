@@ -23,12 +23,12 @@ public class PlayerEffectManager : MonoBehaviour
     [SerializeField] private Transform objVFXLocationX3;
     [SerializeField] private GameObject objVFXX3;
 
-    [Header("패턴 5")]
+    [Header("스킬 5")]
     [SerializeField] private Transform objVFXLocationSkill5;
     [SerializeField] private GameObject objVFXSkill5Left;
     [SerializeField] private GameObject objVFXSkill5Right;
 
-    [Header("패턴 6")]
+    [Header("스킬 6")]
     [SerializeField] private Transform objVFXLocationSkill6;
     [SerializeField] private GameObject objVFXSkill6;
     [SerializeField] private float skill6JumpForce = 10f;
