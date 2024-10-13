@@ -34,6 +34,10 @@ public class EnemySecondStatus : BaseGameEntity
     [SerializeField] private GameObject enemyDeadItem;
     public GameObject objDamageInteractor;
 
+    [Header("SFX")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip soundHitted;
+
 
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
@@ -159,6 +163,7 @@ public class EnemySecondStatus : BaseGameEntity
         objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
 
         EnemySecondStatus entity = gameObject.GetComponent<EnemySecondStatus>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         entity.Setup();
     }
 
@@ -209,6 +214,15 @@ public class EnemySecondStatus : BaseGameEntity
 
             Debug.Log("아야!");
             enemyAnim.SetTrigger("isDamaged");
+
+            int percent = Random.Range(0, 101);
+
+            if (percent > 60)
+            {
+                audioSource.clip = soundHitted;
+                audioSource.PlayOneShot(soundHitted);
+            }
+
             enemyHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();
 
             //onEnemyDamaged.Invoke();

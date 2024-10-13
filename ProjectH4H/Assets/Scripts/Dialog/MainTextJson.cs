@@ -13,9 +13,6 @@ public class DialogMidboss
     public int dialogNumber;
     public string charName;
     public string charDialog;
-    public int animEvent;
-    public string enableDialog;
-    public string disableDialog;
 }
 
 [System.Serializable]

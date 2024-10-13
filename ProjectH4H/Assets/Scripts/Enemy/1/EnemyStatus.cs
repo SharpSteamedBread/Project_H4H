@@ -42,6 +42,10 @@ public class EnemyStatus : BaseGameEntity
     public UnityEvent onEnemyDamaged;
     public GameObject objDamageInteractor;
 
+    [Header("SFX")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip soundHitted;
+
 
     //몬스터가 가지고 있는 모든 상태, 현재 상태
     private State<EnemyStatus>[] states;
@@ -171,6 +175,7 @@ public class EnemyStatus : BaseGameEntity
         StartCoroutine(RandomWay());
 
         EnemyStatus entity = gameObject.GetComponent<EnemyStatus>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         objDamageInteractor = GameObject.FindGameObjectWithTag("CombatController");
         activateCommandSkill = GameObject.FindGameObjectWithTag("CombatController").GetComponent<CommandEnterUI>();
@@ -225,7 +230,15 @@ public class EnemyStatus : BaseGameEntity
     {
         if(collision.CompareTag("PlayerHitbox"))
         {
+            int percent = Random.Range(0, 101);
+
             objDamageInteractor.GetComponent<DamageInteractor>();
+
+            if(percent > 60)
+            {
+                audioSource.clip = soundHitted;
+                audioSource.PlayOneShot(soundHitted);
+            }
 
             enemyAnim.SetTrigger("isDamaged");
             enemyCurrHP -= objDamageInteractor.GetComponent<DamageInteractor>().CalculateDamage();

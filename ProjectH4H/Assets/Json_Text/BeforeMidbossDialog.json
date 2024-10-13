@@ -2,161 +2,156 @@
   {
     "dialogNumber": 0,
     "charName": "오스",
-    "charDialog": "어, 이 사람 아군 아니야? 옷차림을 보아하니 우리 POAS쪽 사람 같고…… 옷이 너덜너덜한 걸 보아 이 불타는 숲에서 고립된 연구 인원 아닐까?",
-    "animEvent": 0,
-    "enableDialog": "오스",
-    "disableDialog": "오스"
+    "charDialog": "어, 이 사람 아군 아니야?"
   },
   {
     "dialogNumber": 1,
-    "charName": "모스",
-    "charDialog": "전방에 생물체 반응 확인. 식별 작업 진행중…… 대상 판별: 임무 목표, 신. 확인 완료.",
-    "animEvent": 0,
-    "enableDialog": "모스",
-    "disableDialog": "오스"
+    "charName": "오스",
+    "charDialog": "옷차림을 보아하니 우리 POAS쪽 사람 같고……"
   },
   {
     "dialogNumber": 2,
-    "charName": "신",
-    "charDialog": "개가 주인을 제 발로 찾아왔군.",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "모스"
+    "charName": "오스",
+    "charDialog": "옷이 너덜너덜한 걸 보아 이 불타는 숲에서 고립된 연구 인원 아닐까?"
   },
   {
     "dialogNumber": 3,
-    "charName": "오스",
-    "charDialog": "난 개가 아니라 멀쩡한 사람이야. 그리고 당신 옷 상태를 보아 당신은 주인처럼 보이지도 않는다고.",
-    "animEvent": 0,
-    "enableDialog": "오스",
-    "disableDialog": "신"
+    "charName": "모스",
+    "charDialog": "전방에 생물체 반응 확인. 식별 작업 진행중……"
   },
   {
     "dialogNumber": 4,
-    "charName": "신",
-    "charDialog": "당연히 그렇겠지. 넌 목줄을 매지 않았으니 우리는 그 아무 관계도 아니야.",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "오스"
+    "charName": "모스",
+    "charDialog": "대상 판별: 임무 목표, 신. 확인 완료."
   },
   {
     "dialogNumber": 5,
-    "charName": "모스",
-    "charDialog": "오스, 후퇴 준비.",
-    "animEvent": 1,
-    "enableDialog": "모스",
-    "disableDialog": "신"
+    "charName": "신",
+    "charDialog": "개가 주인을 제 발로 찾아왔군."
   },
   {
     "dialogNumber": 6,
-    "charName": "모스",
-    "charDialog": "안에 사람을 가둬둔 건가?! 오스, 확인할 수 있어?",
-    "animEvent": 0,
-    "enableDialog": "모스",
-    "disableDialog": "모스"
+    "charName": "오스",
+    "charDialog": "난 개가 아니라 멀쩡한 사람이야."
   },
   {
     "dialogNumber": 7,
-    "charName": "신",
-    "charDialog": "사람을 가두다니, 왜 그리 모멸적인 표현을 쓰는가!",
-    "animEvent": 2,
-    "enableDialog": "신",
-    "disableDialog": "모스"
+    "charName": "오스",
+    "charDialog": "그리고 당신 옷 상태를 보아 당신은 주인처럼 보이지도 않는다고."
   },
   {
     "dialogNumber": 8,
     "charName": "신",
-    "charDialog": "이것은 오히려 근원을 보호해주는 안식처와 같지. ",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "신"
+    "charDialog": "당연히 그렇겠지. 넌 목줄을 매지 않았으니 우리는 그 아무 관계도 아니야."
   },
   {
     "dialogNumber": 9,
-    "charName": "신",
-    "charDialog": "육체에 흠이 날 수도 있지만, 이 수트는, 이 옷은, 이 피부는 용맹한 전사의 그 노력과 인내, 용기, 초심, 희망을 모두 보존한다. 이 영웅들을 보아라!",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "신"
+    "charName": "모스",
+    "charDialog": "오스, 후퇴 준비."
   },
   {
     "dialogNumber": 10,
-    "charName": "오스",
-    "charDialog": "뭐하는 거야! 저걸 지켜보고만 있었어?!",
-    "animEvent": 0,
-    "enableDialog": "오스",
-    "disableDialog": "신"
+    "charName": "모스",
+    "charDialog": "안에 사람을 가둬둔 건가?! 오스, 확인할 수 있어?"
   },
   {
     "dialogNumber": 11,
     "charName": "신",
-    "charDialog": "초라한 나는 감히 그들에게 다가갈 수 없다. 봐라, 걷지 못하여 기어서라도 자신의 의지에 따라 의무를 다하는 모습을!",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "오스"
+    "charDialog": "사람을 가두다니, 왜 그리 모멸적인 표현을 쓰는가!"
   },
   {
     "dialogNumber": 12,
-    "charName": "오스",
-    "charDialog": "헛소리, 애초에 이렇게까지 악화되기 전에 도와줘야 하는 게 더 정당한 거라고!",
-    "animEvent": 0,
-    "enableDialog": "오스",
-    "disableDialog": "신"
+    "charName": "신",
+    "charDialog": "이것은 오히려 근원을 보호해주는 안식처와 같지."
   },
   {
     "dialogNumber": 13,
     "charName": "신",
-    "charDialog": "너는 아직 일부만 알고, 일부는 모르는 것 같군. 나 같은 자는 제 발로 선 영웅들과 나란히 할 수 없다.",
-    "animEvent": 3,
-    "enableDialog": "신",
-    "disableDialog": "오스"
+    "charDialog": "육체에 흠이 날 수도 있지만, 이 수트는, 이 옷은,"
   },
   {
     "dialogNumber": 14,
     "charName": "신",
-    "charDialog": "너의 결핍은 이 옷이 메꿔줄 것이다. 걱정하지 마라, ‘신입’은 모르는 것이 당연하다. 그러니 무지 속에서도 초심을 잃지 않을 수 있지.",
-    "animEvent": 4,
-    "enableDialog": "신",
-    "disableDialog": "신"
+    "charDialog": "이 피부는 용맹한 전사의 그 노력과 인내, 용기, 초심, 희망을 모두 보존한다."
   },
   {
     "dialogNumber": 15,
-    "charName": "모스",
-    "charDialog": "당신의 진술은 그 행위를 미화하는 것에 불과합니다. 당신의 그 수트 실험으로 신념에 조종되어 스스로를 내던지고 불길에 뛰어든 대원으로만 명부 하나를 채울 수 있습니다.",
-    "animEvent": 0,
-    "enableDialog": "모스",
-    "disableDialog": "신"
+    "charName": "신",
+    "charDialog": "이 영웅들을 보아라!"
   },
   {
     "dialogNumber": 16,
-    "charName": "모스",
-    "charDialog": "그 결과는 희생이죠. 희생을 좋게 포장하려는 시도는 신박하군요.",
-    "animEvent": 0,
-    "enableDialog": "모스",
-    "disableDialog": "모스"
+    "charName": "오스",
+    "charDialog": "뭐하는 거야! 저걸 지켜보고만 있었어?!"
   },
   {
     "dialogNumber": 17,
     "charName": "신",
-    "charDialog": "그래? 그러면 나는 더 진솔하게 대화해야겠어. 이건 미화가 아니라 찬미라는걸. 어떻게 해야 나의 말을 들어줄 텐가? ‘말하는 방식’을 바꿔볼까?",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "모스"
+    "charDialog": "초라한 나는 감히 그들에게 다가갈 수 없다."
   },
   {
     "dialogNumber": 18,
     "charName": "신",
-    "charDialog": "그래? 그러면 나는 더 진솔하게 대화해야겠어. 이건 미화가 아니라 찬미라는걸. 어떻게 해야 나의 말을 들어줄 텐가? ‘말하는 방식’을 바꿔볼까?",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "모스"
+    "charDialog": "봐라, 걷지 못하여 기어서라도 자신의 의지에 따라 의무를 다하는 모습을!"
   },
   {
     "dialogNumber": 19,
+    "charName": "오스",
+    "charDialog": "헛소리, 애초에 이렇게까지 악화되기 전에 도와줘야 하는 게 더 정당한 거라고!"
+  },
+  {
+    "dialogNumber": 20,
     "charName": "신",
-    "charDialog": "그래? 그러면 나는 더 진솔하게 대화해야겠어. 이건 미화가 아니라 찬미라는걸. 어떻게 해야 나의 말을 들어줄 텐가? ‘말하는 방식’을 바꿔볼까?",
-    "animEvent": 0,
-    "enableDialog": "신",
-    "disableDialog": "모스"
+    "charDialog": "너는 아직 일부만 알고, 일부는 모르는 것 같군."
+  },
+  {
+    "dialogNumber": 21,
+    "charName": "신",
+    "charDialog": "나 같은 자는 제 발로 선 영웅들과 나란히 할 수 없다."
+  },
+  {
+    "dialogNumber": 22,
+    "charName": "신",
+    "charDialog": "너의 결핍은 이 옷이 메꿔줄 것이다. "
+  },
+  {
+    "dialogNumber": 23,
+    "charName": "신",
+    "charDialog": "걱정하지 마라, ‘신입’은 모르는 것이 당연하다."
+  },
+  {
+    "dialogNumber": 24,
+    "charName": "신",
+    "charDialog": "그러니 무지 속에서도 초심을 잃지 않을 수 있지."
+  },
+  {
+    "dialogNumber": 25,
+    "charName": "모스",
+    "charDialog": "당신의 진술은 그 행위를 미화하는 것에 불과합니다."
+  },
+  {
+    "dialogNumber": 26,
+    "charName": "모스",
+    "charDialog": "당신의 그 수트 실험으로 신념에 조종되어 스스로를 내던지고 불길에 뛰어든 대원으로만 명부 하나를 채울 수 있습니다."
+  },
+  {
+    "dialogNumber": 27,
+    "charName": "모스",
+    "charDialog": "그 결과는 희생이죠. 희생을 좋게 포장하려는 시도는 신박하군요."
+  },
+  {
+    "dialogNumber": 28,
+    "charName": "신",
+    "charDialog": "그래? 그러면 나는 더 진솔하게 대화해야겠어. 이건 미화가 아니라 찬미라는걸."
+  },
+  {
+    "dialogNumber": 29,
+    "charName": "신",
+    "charDialog": "어떻게 해야 나의 말을 들어줄 텐가? ‘말하는 방식’을 바꿔볼까?"
+  },
+  {
+    "dialogNumber": 30,
+    "charName": "신",
+    "charDialog": "어떻게 해야 나의 말을 들어줄 텐가? ‘말하는 방식’을 바꿔볼까?"
   }
 ]
