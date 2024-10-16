@@ -7,9 +7,14 @@ public class MidBossEffectManager : MonoBehaviour
     [SerializeField] private Transform midbossFlip;
 
     [Header("¿Ã∆Â∆Æ")]
+    [SerializeField] private Transform objVFXLocationPattern1;
+    [SerializeField] private GameObject objVFXPattern1;
+
+    [Space(10)]
     [SerializeField] private Transform objVFXLocationPattern2;
     [SerializeField] private GameObject objVFXPattern2;
 
+    [Space(10)]
     [SerializeField] private Transform objVFXLocationPattern4;
     [SerializeField] private GameObject objVFXPattern4;
 
@@ -26,6 +31,12 @@ public class MidBossEffectManager : MonoBehaviour
     void Update()
     {
         damageInteractor.GetComponent<DamageInteractor>();
+    }
+
+    public void Pattern1EFF()
+    {
+        GameObject cloneVFXLocationPTN1 = Instantiate(objVFXPattern1, objVFXLocationPattern1.transform.position, objVFXLocationPattern1.transform.rotation);
+        damageInteractor.midbossDamageType = MidbossDamageType.Pattern1;
     }
 
     public void Pattern2EFF()
