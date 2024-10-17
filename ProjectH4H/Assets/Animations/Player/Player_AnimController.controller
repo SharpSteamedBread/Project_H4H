@@ -108,7 +108,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: playerSkill2_1
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6150814172436362099}
@@ -121,7 +121,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8111854445c91714494bb24c4e59802f, type: 2}
+  m_Motion: {fileID: 7400000, guid: dd212bae6a8dcd54f943cf4a777e7dab, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1600,7 +1600,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: playerSkill2_3
-  m_Speed: 1.5
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2818807334922206679}
@@ -1613,7 +1613,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 84b69825e7f32c14dbbb914dd43753d4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 54db91cbbf4d4094b8f9aaa6f76d480b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1704,14 +1704,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: commandCancelled
-    m_Type: 9
+  - m_Name: onGround
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: onGround
-    m_Type: 4
+  - m_Name: commandCancelled
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -2051,7 +2051,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1e9a6c3e411d0b74b954603802034c7e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3d9ce39472b24794ba53fe72a2fe4a20, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

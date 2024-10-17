@@ -33,6 +33,18 @@ public class PlayerEffectManager : MonoBehaviour
     [SerializeField] private GameObject objVFXSkill6;
     [SerializeField] private float skill6JumpForce = 10f;
 
+    [Header("스킬 7")]
+    [SerializeField] private Transform objVFXLocationSkill7_1;
+    [SerializeField] private GameObject objVFXSkill7_front;
+
+    [SerializeField] private Transform objVFXLocationSkill7_2;
+    [SerializeField] private GameObject objVFXSkill7_back;
+
+    [SerializeField] private Transform objVFXLocationSkill7_3;
+    [SerializeField] private GameObject objVFXSkill7_projectile;
+
+
+
     [Header("히트박스")]
     [SerializeField] private DamageInteractor damageInteractor;
 
@@ -68,7 +80,6 @@ public class PlayerEffectManager : MonoBehaviour
 
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackZ;
     }
-
     public void ZAttackCombo2()
     {
         GameObject cloneVFXLocationZ2 = Instantiate(objVFXZ2, objVFXLocationZ2.transform.position, objVFXZ2.transform.rotation);
@@ -101,6 +112,7 @@ public class PlayerEffectManager : MonoBehaviour
 
         damageInteractor.playerDamageType = PlayerDamageType.ComboAttackZ;
     }
+
 
     public void XAttackCombo1()
     {
@@ -181,6 +193,27 @@ public class PlayerEffectManager : MonoBehaviour
     {
         playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, skill6JumpForce * Time.unscaledDeltaTime);
         playerRigidbody.AddForce(Vector2.up * skill6JumpForce, ForceMode2D.Impulse);
+    }
 
+    public void PlayerSkill7()
+    {
+        GameObject cloneVFXLocationSkill7_1 = Instantiate(objVFXSkill7_back, objVFXLocationSkill7_1.transform.position, objVFXLocationSkill7_1.transform.rotation);
+        GameObject cloneVFXLocationSkill7_2 = Instantiate(objVFXSkill7_front, objVFXLocationSkill7_2.transform.position, objVFXLocationSkill7_2.transform.rotation);
+        GameObject cloneVFXLocationSkill7_3 = Instantiate(objVFXSkill7_projectile, objVFXLocationSkill7_3.transform.position, objVFXLocationSkill7_3.transform.rotation);
+
+
+        if (playerFlip.transform.localScale.x < 0)
+        {
+            cloneVFXLocationSkill7_1.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+            cloneVFXLocationSkill7_2.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+            cloneVFXLocationSkill7_3.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+        }
+
+        else
+        {
+            cloneVFXLocationSkill7_1.transform.rotation = objVFXLocationSkill7_1.transform.rotation;
+            cloneVFXLocationSkill7_2.transform.rotation = objVFXLocationSkill7_2.transform.rotation;
+            cloneVFXLocationSkill7_3.transform.rotation = objVFXLocationSkill7_3.transform.rotation;
+        }
     }
 }
