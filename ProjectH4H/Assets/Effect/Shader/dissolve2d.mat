@@ -62,7 +62,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _Noise_tiling: 2
     - _noise_scale: 10
-    - _step: 0.609
+    - _step: 0.481
     - _value: 0.2
     m_Colors:
     - _Color: {r: 16, g: 0, b: 0, a: 1}
