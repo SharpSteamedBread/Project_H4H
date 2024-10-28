@@ -33,7 +33,8 @@ public class SoundEffectFloater : MonoBehaviour
         float rangeX = Random.Range(-soundVFXArea.x, soundVFXArea.x);
         float rangeY = Random.Range(0, soundVFXArea.y);
 
-        GameObject clone = Instantiate(vfx_bang, new Vector2(rangeX, rangeY), Quaternion.identity);
+        GameObject clone = Instantiate(vfx_bang, new Vector2((gameObject.transform.parent.position.x - rangeX), 
+                                                             (gameObject.transform.parent.position.y - rangeY)), Quaternion.identity);
         clone.GetComponent<ParticleSystem>().Play();
     }
 

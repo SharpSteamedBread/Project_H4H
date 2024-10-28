@@ -35,12 +35,9 @@ public class PlayerEffectManager : MonoBehaviour
 
     [Header("½ºÅ³ 7")]
     [SerializeField] private Transform objVFXLocationSkill7_1;
-    [SerializeField] private GameObject objVFXSkill7_front;
-
-    [SerializeField] private Transform objVFXLocationSkill7_2;
     [SerializeField] private GameObject objVFXSkill7_back;
 
-    [SerializeField] private Transform objVFXLocationSkill7_3;
+    [SerializeField] private Transform objVFXLocationSkill7_2;
     [SerializeField] private GameObject objVFXSkill7_projectile;
 
 
@@ -198,22 +195,19 @@ public class PlayerEffectManager : MonoBehaviour
     public void PlayerSkill7()
     {
         GameObject cloneVFXLocationSkill7_1 = Instantiate(objVFXSkill7_back, objVFXLocationSkill7_1.transform.position, objVFXLocationSkill7_1.transform.rotation);
-        GameObject cloneVFXLocationSkill7_2 = Instantiate(objVFXSkill7_front, objVFXLocationSkill7_2.transform.position, objVFXLocationSkill7_2.transform.rotation);
-        GameObject cloneVFXLocationSkill7_3 = Instantiate(objVFXSkill7_projectile, objVFXLocationSkill7_3.transform.position, objVFXLocationSkill7_3.transform.rotation);
+        GameObject cloneVFXLocationSkill7_2 = Instantiate(objVFXSkill7_projectile, objVFXLocationSkill7_2.transform.position, objVFXLocationSkill7_2.transform.rotation);
 
 
         if (playerFlip.transform.localScale.x < 0)
         {
             cloneVFXLocationSkill7_1.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
             cloneVFXLocationSkill7_2.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
-            cloneVFXLocationSkill7_3.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         }
 
         else
         {
             cloneVFXLocationSkill7_1.transform.rotation = objVFXLocationSkill7_1.transform.rotation;
             cloneVFXLocationSkill7_2.transform.rotation = objVFXLocationSkill7_2.transform.rotation;
-            cloneVFXLocationSkill7_3.transform.rotation = objVFXLocationSkill7_3.transform.rotation;
         }
     }
 }

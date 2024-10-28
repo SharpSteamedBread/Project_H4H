@@ -45,6 +45,10 @@ public class MidBossState : MonoBehaviour
     [SerializeField] private Rigidbody2D bossRigidbody2D;
     [SerializeField] private float bossJumpForce = 20;
 
+    [Header("패턴 5 조건 변수")]
+    [SerializeField] private Transform pattern5Pos;
+    [SerializeField] private GameObject VFXPattern5;
+
     [Header("데미지 관리")]
     public UnityEvent onEnemyDamaged;
     public GameObject objDamageInteractor;
@@ -162,7 +166,7 @@ public class MidBossState : MonoBehaviour
                     break;
 
                 case (5):
-                    StateChange(Boss1State.IDLE);
+                    StateChange(Boss1State.PATTERN5);
                     break;
             }
         }
@@ -308,13 +312,10 @@ public class MidBossState : MonoBehaviour
 
     private IEnumerator PATTERN5()
     {
-        animator.SetBool("bossPattern5", true);
-
-        //AudioManager.instance.PlaySFX("Boss_Pattern5_thunder_Voice");
-
         yield return new WaitForSeconds(0.2f);
 
-        animator.SetBool("bossPattern5", false);
+        GameObject cloneVFXPattern5 = Instantiate(VFXPattern5, pattern5Pos.transform.position, pattern5Pos.transform.rotation);
+
         StateChange(Boss1State.IDLE);
 
     }
