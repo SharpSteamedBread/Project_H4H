@@ -6,6 +6,7 @@ public class MonsterItemAbsorbing : MonoBehaviour
 {
     [SerializeField] private Transform playerLocation;
     [SerializeField] private float objSpeed = 7.0f;
+    [SerializeField] private ParticleSystem vfxHPBead;
 
     [Header("È¸º¹·®")]
     [SerializeField] private int healAmount = 40;
@@ -13,6 +14,7 @@ public class MonsterItemAbsorbing : MonoBehaviour
     private void Awake()
     {
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        vfxHPBead.Play();
     }
 
     // Update is called once per frame

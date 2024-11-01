@@ -19,7 +19,7 @@ public class PlayerSkill7Projectile : MonoBehaviour
     }
     private void Update()
     {
-        if(gameObject.transform.rotation.y == 0)
+        if (gameObject.transform.rotation.y == 0)
         {
             rigidBody.AddForce(Vector3.right * shootingSpeed * Time.deltaTime, ForceMode2D.Impulse);
         }
@@ -39,21 +39,24 @@ public class PlayerSkill7Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemy1") || collision.CompareTag("Enemy2") ||
-            collision.CompareTag("Enemy3"))
+        if (collision.CompareTag("Enemy1") || collision.CompareTag("Enemy3") ||
+            collision.CompareTag("Enemy4") || collision.CompareTag("MidBoss"))
         {
+            Debug.Log("타겟 인식 성공!");
             Transform hitEffectLocation = collision.GetComponent<Transform>();
 
             if (hitEffectLocation.localScale.x > 0)
             {
                 GameObject cloneHitVFX = Instantiate(objHitVFXRight,
                          new Vector3(hitEffectLocation.position.x, hitEffectLocation.position.y, hitEffectLocation.position.z), Quaternion.identity);
+                cloneHitVFX.GetComponent<ParticleSystem>().Play();
             }
 
             else if(hitEffectLocation.localScale.x < 0)
             {
                 GameObject cloneHitVFX = Instantiate(objHitVFXLeft,
                          new Vector3(-hitEffectLocation.position.x, hitEffectLocation.position.y, hitEffectLocation.position.z), Quaternion.identity);
+                cloneHitVFX.GetComponent<ParticleSystem>().Play();
             }
         }
     }

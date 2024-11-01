@@ -9,6 +9,10 @@ public class MidBossEffectManager : MonoBehaviour
     [Header("¿Ã∆Â∆Æ")]
     [SerializeField] private Transform objVFXLocationPattern1;
     [SerializeField] private GameObject objVFXPattern1;
+    [SerializeField] private BoxCollider2D fallingRange;
+    [SerializeField] private int fallingCount = 7;
+    [SerializeField] private float fallingTerm = 0.3f;
+    [SerializeField] private GameObject objVFXPattern1Falling;
 
     [Space(10)]
     [SerializeField] private Transform objVFXLocationPattern2;
@@ -26,6 +30,8 @@ public class MidBossEffectManager : MonoBehaviour
     {
         midbossFlip = gameObject.GetComponent<Transform>();
         damageInteractor.GetComponent<DamageInteractor>();
+
+        
     }
 
     void Update()
@@ -39,6 +45,11 @@ public class MidBossEffectManager : MonoBehaviour
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern1;
     }
 
+    public void Pattern1Falling()
+    {
+        StartCoroutine(Pattern1FallingObj());
+    }
+
     public void Pattern2EFF()
     {
         objVFXPattern2.SetActive(true);
@@ -49,5 +60,22 @@ public class MidBossEffectManager : MonoBehaviour
     {
         GameObject cloneVFXLocationPTN4 = Instantiate(objVFXPattern4, objVFXLocationPattern4.transform.position, objVFXLocationPattern4.transform.rotation);
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern4;
+    }
+
+    public IEnumerator Pattern1FallingObj()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            float fallingRangeX = fallingRange.bounds.size.x;
+            float fallingRangeY = fallingRange.bounds.size.y;
+
+            fallingRangeX = Random.Range(-(fallingRangeX / 2), (fallingRangeX / 2));
+            fallingRangeY = Random.Range(-(fallingRangeY / 2), (fallingRangeY / 2));
+
+            GameObject cloneFalling = Instantiate(objVFXPattern1Falling, new Vector3((objVFXLocationPattern1.position.x - fallingRangeX) + fallingRange.offset.x, 114, 0), Quaternion.identity);
+            cloneFalling.GetComponent<ParticleSystem>().Play();
+
+            yield return new WaitForSeconds(fallingTerm);
+        }
     }
 }
