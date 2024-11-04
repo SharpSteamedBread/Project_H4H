@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLocation: {fileID: 0}
   objSpeed: 20
+  vfxHPBead: {fileID: 1440403736698687668}
   healAmount: 80
 --- !u!1001 &1757712034
 PrefabInstance:
@@ -200,5 +201,10 @@ PrefabInstance:
 --- !u!4 &1440403736698687666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440403737382657552, guid: 28141764188d96146b0def9ee7897f4e, type: 3}
+  m_PrefabInstance: {fileID: 1757712034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1440403736698687668 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1440403737382657558, guid: 28141764188d96146b0def9ee7897f4e, type: 3}
   m_PrefabInstance: {fileID: 1757712034}
   m_PrefabAsset: {fileID: 0}
