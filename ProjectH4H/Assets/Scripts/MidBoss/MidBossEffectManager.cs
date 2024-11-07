@@ -29,6 +29,10 @@ public class MidBossEffectManager : MonoBehaviour
     [SerializeField] private Transform objVFXLocationPattern4;
     [SerializeField] private GameObject objVFXPattern4;
 
+    [Space(10)]
+    [SerializeField] private GameObject objVFXDie;
+    [SerializeField] private Transform objVFXDieLocation;
+
     [Header("히트박스")]
     [SerializeField] private DamageInteractor damageInteractor;
 
@@ -66,13 +70,21 @@ public class MidBossEffectManager : MonoBehaviour
     public void Pattern3EFF()
     {
         GameObject cloneVFX3Spark = Instantiate(objVFXPattern3Spark, objVFXLocationPattern3Spark.transform.position, objVFXLocationPattern3Spark.transform.rotation);
+        cloneVFX3Spark.GetComponent<ParticleSystem>().Play();
         GameObject cloneVFX3Projectile = Instantiate(objVFXPattern3Projectile, objVFXLocationPattern3Projectile.transform.position, objVFXLocationPattern3Projectile.transform.rotation);
+        cloneVFX3Projectile.GetComponent<ParticleSystem>().Play();
     }
 
     public void Pattern4EFF()
     {
         GameObject cloneVFXLocationPTN4 = Instantiate(objVFXPattern4, objVFXLocationPattern4.transform.position, objVFXLocationPattern4.transform.rotation);
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern4;
+    }
+
+    public void BossDie()
+    {
+        GameObject cloneVFXDie = Instantiate(objVFXDie, objVFXDieLocation.transform.position, Quaternion.identity);
+        cloneVFXDie.GetComponent<ParticleSystem>().Play();
     }
 
     public IEnumerator Pattern1FallingObj()

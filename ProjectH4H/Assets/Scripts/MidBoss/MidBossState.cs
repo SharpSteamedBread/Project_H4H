@@ -154,11 +154,11 @@ public class MidBossState : MonoBehaviour
                     break;
 
                 case (2):
-                    StateChange(Boss1State.PATTERN2);
+                    StateChange(Boss1State.PATTERN3);
                     break;
 
                 case (3):
-                    StateChange(Boss1State.PATTERN2);
+                    StateChange(Boss1State.PATTERN3);
                     break;
 
                 case (4):
@@ -221,24 +221,13 @@ public class MidBossState : MonoBehaviour
 
     private IEnumerator PATTERN3()
     {
-        StartCoroutine(Pattern3MoveTo());
+        animator.SetTrigger("midBossPattern3");
 
         yield return null;
+
+        StateChange(Boss1State.IDLE);
     }
 
-    private IEnumerator Pattern3MoveTo()
-    {
-        while (transform.position != pattern4Pos)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, pattern4Pos, Time.deltaTime * moveSpeed);
-
-            yield return null;
-        }
-
-        StartCoroutine(Pattern3SummonTanuki());
-
-        yield return null;
-    }
 
     private IEnumerator Pattern3SummonTanuki()
     {
