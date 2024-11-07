@@ -19,6 +19,13 @@ public class MidBossEffectManager : MonoBehaviour
     [SerializeField] private GameObject objVFXPattern2;
 
     [Space(10)]
+    [SerializeField] private Transform objVFXLocationPattern3Spark;
+    [SerializeField] private GameObject objVFXPattern3Spark;
+    [SerializeField] private Transform objVFXLocationPattern3Projectile;
+    [SerializeField] private GameObject objVFXPattern3Projectile;
+
+
+    [Space(10)]
     [SerializeField] private Transform objVFXLocationPattern4;
     [SerializeField] private GameObject objVFXPattern4;
 
@@ -54,6 +61,12 @@ public class MidBossEffectManager : MonoBehaviour
     {
         objVFXPattern2.SetActive(true);
         damageInteractor.midbossDamageType = MidbossDamageType.Pattern2;
+    }
+
+    public void Pattern3EFF()
+    {
+        GameObject cloneVFX3Spark = Instantiate(objVFXPattern3Spark, objVFXLocationPattern3Spark.transform.position, objVFXLocationPattern3Spark.transform.rotation);
+        GameObject cloneVFX3Projectile = Instantiate(objVFXPattern3Projectile, objVFXLocationPattern3Projectile.transform.position, objVFXLocationPattern3Projectile.transform.rotation);
     }
 
     public void Pattern4EFF()
