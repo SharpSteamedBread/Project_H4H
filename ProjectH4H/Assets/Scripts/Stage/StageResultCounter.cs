@@ -5,7 +5,10 @@ using UnityEngine;
 public class StageResultCounter : MonoBehaviour
 {
     public static int enemyKillCount = 0;
-    public static int stageTimeattack = 0;
+
+    public int stageTimeattack = 0;
+    public static int stageTimeMinute = 0;
+    public static int stageTimeSecond = 0;
 
     void Start()
     {
@@ -16,6 +19,10 @@ public class StageResultCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stageTimeMinute = stageTimeattack / 60;
+        stageTimeSecond = stageTimeattack % 60;
+
+        Debug.Log($"{stageTimeMinute}분 {stageTimeSecond}초 경과!");
         
     }
 
