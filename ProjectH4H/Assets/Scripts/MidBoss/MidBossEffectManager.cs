@@ -73,6 +73,18 @@ public class MidBossEffectManager : MonoBehaviour
         cloneVFX3Spark.GetComponent<ParticleSystem>().Play();
         GameObject cloneVFX3Projectile = Instantiate(objVFXPattern3Projectile, objVFXLocationPattern3Projectile.transform.position, objVFXLocationPattern3Projectile.transform.rotation);
         cloneVFX3Projectile.GetComponent<ParticleSystem>().Play();
+
+        if (midbossFlip.transform.localScale.x < 0)
+        {
+            cloneVFX3Spark.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+            cloneVFX3Projectile.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+        }
+
+        else
+        {
+            cloneVFX3Spark.transform.rotation = cloneVFX3Spark.transform.rotation;
+            cloneVFX3Projectile.transform.rotation = cloneVFX3Projectile.transform.rotation;
+        }
     }
 
     public void Pattern4EFF()

@@ -9865,7 +9865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetName: MidBoss
   transformPlayer: {fileID: 0}
-  transformMidboss: {fileID: 0}
+  ySetter: 10
 --- !u!1 &267217110516453832
 GameObject:
   m_ObjectHideFlags: 0

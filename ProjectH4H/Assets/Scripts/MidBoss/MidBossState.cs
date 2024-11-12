@@ -346,14 +346,15 @@ public class MidBossState : MonoBehaviour
 
     void FaceTarget()
     {
-        if (targetRange.position.x - transform.position.x < 0) // 타겟이 왼쪽에 있을 때
+        // 타겟이 왼쪽에 있을 때 (localScale.x를 양수로 설정)
+        if (targetRange.position.x - transform.position.x < 0)
         {
-            bossTransform.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            bossTransform.localScale = new Vector3(Mathf.Abs(bossTransform.localScale.x), bossTransform.localScale.y, bossTransform.localScale.z);
         }
-
-        else // 타겟이 오른쪽에 있을 때
+        // 타겟이 오른쪽에 있을 때 (localScale.x를 음수로 설정)
+        else
         {
-            bossTransform.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            bossTransform.localScale = new Vector3(-Mathf.Abs(bossTransform.localScale.x), bossTransform.localScale.y, bossTransform.localScale.z);
         }
     }
 

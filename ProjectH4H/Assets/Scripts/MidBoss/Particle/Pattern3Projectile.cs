@@ -28,12 +28,12 @@ public class Pattern3Projectile : MonoBehaviour
     {
         if (gameObject.transform.rotation.y == 0)
         {
-            rigidBody.AddForce(Vector3.right * shootingSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector3.left * shootingSpeed * Time.deltaTime, ForceMode2D.Impulse);
         }
 
         else
         {
-            rigidBody.AddForce(Vector3.left * shootingSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector3.right * shootingSpeed * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
 

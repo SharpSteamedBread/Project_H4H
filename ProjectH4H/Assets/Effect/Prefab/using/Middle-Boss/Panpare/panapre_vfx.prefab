@@ -29991,7 +29991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9033030253314786599
 Transform:
   m_ObjectHideFlags: 0
@@ -59574,7 +59574,7 @@ GameObject:
   - component: {fileID: 9033030253800395841}
   - component: {fileID: 9033030253800395840}
   - component: {fileID: 9033030253800395843}
-  - component: {fileID: -3881383343837678410}
+  - component: {fileID: -2380838354362188262}
   m_Layer: 0
   m_Name: panapre_vfx
   m_TagString: Untagged
@@ -64392,7 +64392,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!82 &-3881383343837678410
+--- !u!82 &-2380838354362188262
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

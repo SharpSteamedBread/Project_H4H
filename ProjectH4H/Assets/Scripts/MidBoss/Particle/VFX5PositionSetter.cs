@@ -7,6 +7,7 @@ public class VFX5PositionSetter : MonoBehaviour
     [SerializeField] private string targetName;
     [SerializeField] private Transform transformPlayer;
     //[SerializeField] private Transform transformMidboss;
+    [SerializeField] private float ySetter;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class VFX5PositionSetter : MonoBehaviour
 
     void Start()
     {
-        gameObject.transform.position = new Vector3(transformPlayer.position.x, transformPlayer.position.y, transformPlayer.position.z);
+        gameObject.transform.position = new Vector3(transformPlayer.position.x, transformPlayer.position.y + ySetter, transformPlayer.position.z);
 
         /*
           else if(targetName == "MidBoss")

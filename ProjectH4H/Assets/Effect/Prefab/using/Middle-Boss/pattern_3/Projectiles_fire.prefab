@@ -14627,7 +14627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
-  shootingSpeed: 30
+  shootingSpeed: 50
   vfxHit: {fileID: 332432033746002223, guid: 4e6fe66d48542ba46a09b0464e95fd24, type: 3}
 --- !u!50 &-8700433679517276428
 Rigidbody2D:
