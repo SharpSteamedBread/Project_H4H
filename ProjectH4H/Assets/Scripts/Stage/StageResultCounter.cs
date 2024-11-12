@@ -22,7 +22,7 @@ public class StageResultCounter : MonoBehaviour
         stageTimeMinute = stageTimeattack / 60;
         stageTimeSecond = stageTimeattack % 60;
 
-        Debug.Log($"{stageTimeMinute}분 {stageTimeSecond}초 경과!");
+        //Debug.Log($"{stageTimeMinute}분 {stageTimeSecond}초 경과!");
         
     }
 

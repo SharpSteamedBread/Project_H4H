@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DontDestroy : MonoBehaviour
 {
@@ -18,6 +21,9 @@ public class DontDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            Destroy(gameObject);
+        }
     }
 }
