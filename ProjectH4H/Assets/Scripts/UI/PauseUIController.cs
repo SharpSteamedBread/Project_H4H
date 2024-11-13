@@ -36,13 +36,15 @@ public class PauseUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        StageResultCounter.playerDontmove = objUI.activeSelf;
+
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             onoffUI = !onoffUI;
             objUI.SetActive(!onoffUI);
         }
 
-        if(SceneManager.GetActiveScene().name != "MainScene")
+        if (SceneManager.GetActiveScene().name != "MainScene")
         {
             if (objUI.activeSelf == true)
             {

@@ -56,6 +56,9 @@ public class MidBossState : MonoBehaviour
     [Header("Scale 조정")]
     private float bossScale = 1.1f;
 
+    [Header("결과창 UI")]
+    [SerializeField] private GameObject objUITheEnd;
+
     [SerializeField] private CommandEnterUI activateCommandSkill;
 
 
@@ -315,7 +318,7 @@ public class MidBossState : MonoBehaviour
         StartCoroutine(StopMove());
         animator.SetBool("isDead", true);
 
-        //objUITheEnd.SetActive(true);
+        objUITheEnd.SetActive(true);
 
         yield return null;
     }

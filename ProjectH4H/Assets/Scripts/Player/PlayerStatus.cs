@@ -165,13 +165,15 @@ public class PlayerStatus : BaseGameEntity
       
         playerAnim.SetBool("onGround", !isJumping);
 
-        if (playerAnim.GetBool("isAttack") == true)
+        if (playerAnim.GetBool("isAttack") == true ||
+            StageResultCounter.playerDontmove == true)
         {
             playerAnim.SetBool("isMoving", false);
             playerMove = 0;
         }
 
-        else
+        else if(playerAnim.GetBool("isAttack") == false ||
+            StageResultCounter.playerDontmove == false)
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {

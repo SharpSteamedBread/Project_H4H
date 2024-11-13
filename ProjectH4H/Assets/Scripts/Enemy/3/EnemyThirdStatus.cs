@@ -223,6 +223,7 @@ public class EnemyThirdStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyBoomHitbox, EnemyTransform.position, Quaternion.identity);
+        StageResultCounter.enemyKillCount++;
         Destroy(gameObject);
     }
 

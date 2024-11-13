@@ -203,6 +203,7 @@ public class EnemySecondStatus : BaseGameEntity
     public void EnemyDie()
     {
         Instantiate(enemyDeadItem, EnemyTransform.position, Quaternion.identity);
+        StageResultCounter.enemyKillCount++;
         Destroy(transform.parent.gameObject);
     }
 

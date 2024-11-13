@@ -315,6 +315,7 @@ public class BeforeMidbossDialogEvent : MonoBehaviour
                 uiMos.SetActive(false);
 
                 anim3_portal.SetActive(true);
+                anim2_enemyAnim.SetInteger("animNumber", 1);
                 break;
 
             case 31:

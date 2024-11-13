@@ -10,6 +10,13 @@ public class StageResultCounter : MonoBehaviour
     public static int stageTimeMinute = 0;
     public static int stageTimeSecond = 0;
 
+    public static bool playerDontmove;
+
+    private void Awake()
+    {
+        playerDontmove = false;
+    }
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
