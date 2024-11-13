@@ -16,6 +16,10 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private Button objButtonZ;
     [SerializeField] private Button objButtonX;
 
+    [Header("°á°úÃ¢ UI")]
+    [SerializeField] private GameObject objFailedUI;
+
+
     private void Awake()
     {
         animator.GetComponent<Animator>();
@@ -161,5 +165,11 @@ public class PlayerComboAttack : MonoBehaviour
             ResetAllCombos();
             animator.SetBool("isAttack", false);
         }
+    }
+
+    public void ShowResult()
+    {
+        animator.enabled = false;
+        Instantiate(objFailedUI);
     }
 }

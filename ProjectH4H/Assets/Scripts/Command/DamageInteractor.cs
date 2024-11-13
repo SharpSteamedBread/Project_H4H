@@ -6,7 +6,7 @@ using static DamageManager;
 public enum PlayerDamageType
 {
     ComboAttackZ, ComboAttackX,
-    PlayerSkill1, PlayerSkill2, PlayerSkill3, PlayerSkill4, PlayerSkill5, PlayerSkill6
+    PlayerSkill1, PlayerSkill2, PlayerSkill3, PlayerSkill4, PlayerSkill5, PlayerSkill6, PlayerSkill7
 }
 
 public enum ObjectDamageType
@@ -67,6 +67,9 @@ public class DamageInteractor : MonoBehaviour
             case PlayerDamageType.PlayerSkill6:
                 baseDamage = 55;
                 break;
+            case PlayerDamageType.PlayerSkill7:
+                baseDamage = 60;
+                break;
             default:
                 baseDamage = 23;
                 break;
@@ -121,7 +124,7 @@ public class DamageInteractor : MonoBehaviour
         switch(enemyDamageType)
         {
             case EnemyDamageType.Enemy2:
-                baseDamage = 3;
+                baseDamage = 1;
                 break;
             case EnemyDamageType.Enemy3:
                 baseDamage = 140;
@@ -144,19 +147,19 @@ public class DamageInteractor : MonoBehaviour
         switch(midbossDamageType)
         {
             case MidbossDamageType.Pattern1:
-                baseDamage = 100;
+                baseDamage = 20;
                 break;
             case MidbossDamageType.Pattern2:
                 baseDamage = 60;
                 break;
             case MidbossDamageType.Pattern3:
-                baseDamage = 60;
+                baseDamage = 70;
                 break;
             case MidbossDamageType.Pattern4:
-                baseDamage = 60;
+                baseDamage = 35;
                 break;
             case MidbossDamageType.Pattern5:
-                baseDamage = 60;
+                baseDamage = 40;
                 break;
             default:
                 baseDamage = 60;

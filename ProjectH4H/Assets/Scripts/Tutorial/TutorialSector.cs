@@ -7,11 +7,13 @@ public class TutorialSector : MonoBehaviour
     [SerializeField] private DialogText dialogText;
     [SerializeField] private int dialogStartPointValue;
     [SerializeField] private int dialogEndPointValue;
-    [SerializeField] private BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D tutorialTrigger;
+
+    [SerializeField] private GameObject blockBoundary;
 
     private void Awake()
     {
-        collider = gameObject.GetComponent<BoxCollider2D>();
+        tutorialTrigger = gameObject.GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,7 +22,7 @@ public class TutorialSector : MonoBehaviour
         {
             dialogText.dialogStartPoint = dialogStartPointValue;
             dialogText.dialogEndPoint = dialogEndPointValue;
-            collider.enabled = false;
+            tutorialTrigger.enabled = false;
             StartCoroutine(DisableControler());
         }
     }
@@ -29,6 +31,7 @@ public class TutorialSector : MonoBehaviour
     {
         yield return StartCoroutine(dialogText.TutorialDialog());
 
+        blockBoundary.SetActive(false);
         gameObject.SetActive(false);
     }
 }

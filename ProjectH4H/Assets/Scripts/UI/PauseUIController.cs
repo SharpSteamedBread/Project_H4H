@@ -36,7 +36,7 @@ public class PauseUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StageResultCounter.playerDontmove = objUI.activeSelf;
+        StageResultCounter.playerDontmove = !onoffUI;
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -61,6 +61,8 @@ public class PauseUIController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Debug.Log($"현재 시간 속도: {Time.timeScale}, playerDontMove static 변수: {StageResultCounter.playerDontmove}");
     }
 
     public void ButtonResume()

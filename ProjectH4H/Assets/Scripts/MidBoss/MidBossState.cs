@@ -318,8 +318,6 @@ public class MidBossState : MonoBehaviour
         StartCoroutine(StopMove());
         animator.SetBool("isDead", true);
 
-        objUITheEnd.SetActive(true);
-
         yield return null;
     }
 
@@ -374,7 +372,7 @@ public class MidBossState : MonoBehaviour
         float dirY = targetPos.position.y - transform.position.y + 0.5f;
         dirY = (dirY < 0) ? -1 : 1;
 
-        transform.Translate(new Vector2(dirX, dirY) * moveSpeed * Time.deltaTime);
+        transform.Translate(new Vector2(dirX, 0) * moveSpeed * Time.deltaTime);
 
         yield return null;
     }
@@ -410,5 +408,12 @@ public class MidBossState : MonoBehaviour
         {
             activateCommandSkill.TimeToSkillCommand();
         }
+    }
+
+    public void DisableBoss()
+    {
+        gameObject.SetActive(false);
+        objUITheEnd.SetActive(true);
+
     }
 }

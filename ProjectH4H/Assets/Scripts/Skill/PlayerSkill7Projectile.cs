@@ -48,14 +48,14 @@ public class PlayerSkill7Projectile : MonoBehaviour
             if (hitEffectLocation.localScale.x > 0)
             {
                 GameObject cloneHitVFX = Instantiate(objHitVFXRight,
-                         new Vector3(hitEffectLocation.position.x, hitEffectLocation.position.y, hitEffectLocation.position.z), Quaternion.identity);
+                         new Vector3(hitEffectLocation.position.x, hitEffectLocation.position.y + 3f, hitEffectLocation.position.z), Quaternion.identity);
                 cloneHitVFX.GetComponent<ParticleSystem>().Play();
             }
 
             else if(hitEffectLocation.localScale.x < 0)
             {
                 GameObject cloneHitVFX = Instantiate(objHitVFXLeft,
-                         new Vector3(-hitEffectLocation.position.x, hitEffectLocation.position.y, hitEffectLocation.position.z), Quaternion.identity);
+                         new Vector3(-hitEffectLocation.position.x, hitEffectLocation.position.y + 3f, hitEffectLocation.position.z), Quaternion.identity);
                 cloneHitVFX.GetComponent<ParticleSystem>().Play();
             }
         }

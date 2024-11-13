@@ -73,4 +73,22 @@ namespace PlayerOwnedStates
             throw new System.NotImplementedException();
         }
     }
+
+    public class Player_Dead : State<PlayerStatus>
+    {
+        public override void Enter(PlayerStatus entity)
+        {
+            entity.PlayerAnim.SetBool("isDead", true);
+        }
+
+        public override void Execute(PlayerStatus entity)
+        {
+            Debug.Log("²²²¿´Ú...");
+        }
+
+        public override void Exit(PlayerStatus entity)
+        {
+            Debug.Log("²²²¿´Ú...");
+        }
+    }
 }

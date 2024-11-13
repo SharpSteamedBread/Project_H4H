@@ -41,7 +41,7 @@ public class Pattern3Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
 

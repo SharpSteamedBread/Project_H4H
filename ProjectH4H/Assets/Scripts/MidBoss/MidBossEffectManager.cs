@@ -13,6 +13,8 @@ public class MidBossEffectManager : MonoBehaviour
     [SerializeField] private int fallingCount = 7;
     [SerializeField] private float fallingTerm = 0.3f;
     [SerializeField] private GameObject objVFXPattern1Falling;
+    [SerializeField] private AudioClip sfxFanfareShot;
+    [SerializeField] private AudioSource audioSource;
 
     [Space(10)]
     [SerializeField] private Transform objVFXLocationPattern2;
@@ -58,6 +60,8 @@ public class MidBossEffectManager : MonoBehaviour
 
     public void Pattern1Falling()
     {
+        audioSource.PlayOneShot(sfxFanfareShot);
+
         StartCoroutine(Pattern1FallingObj());
     }
 

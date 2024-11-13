@@ -28,6 +28,7 @@ public class DialogText : MonoBehaviour
     [Header("튜토리얼 옵션")]
     [SerializeField] private GameObject objBlock;
     //[SerializeField] private bool isTutStopped;
+    [SerializeField] private int durationSecond;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class DialogText : MonoBehaviour
     private void Start()
     {
         StartCoroutine(TutorialDialog());
-
+        StartCoroutine(DisableBoundary());
         /*
         if(SceneManager.GetActiveScene().name == "Map_Tutorial")
         {
@@ -79,6 +80,13 @@ public class DialogText : MonoBehaviour
         }
 
         //isTutStopped = true;
+
+    }
+
+    private IEnumerator DisableBoundary()
+    {
+        yield return new WaitForSeconds(durationSecond);
+        objBlock.SetActive(false);
 
     }
 }
