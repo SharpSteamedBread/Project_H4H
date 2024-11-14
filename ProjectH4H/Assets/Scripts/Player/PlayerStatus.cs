@@ -28,8 +28,8 @@ public class PlayerStatus : BaseGameEntity
 
     [Header("ÆÄÃ÷")]
     [SerializeField] private SpriteRenderer playerImage;
-    [SerializeField] private int playerCurrHP = 600;
-    [SerializeField] private int playerMaxHP = 600;
+    [SerializeField] private int playerCurrHP = 1200;
+    [SerializeField] private int playerMaxHP = 1200;
 
 
     [Header("½ºÅÝ")]
@@ -99,7 +99,7 @@ public class PlayerStatus : BaseGameEntity
 
     public int PlayerMaxHP
     {
-        set => playerMaxHP = 600;
+        set => playerMaxHP = 1200;
         get => playerMaxHP;
     }
 

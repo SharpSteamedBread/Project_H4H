@@ -55,7 +55,7 @@ public class CommandCheckDict : MonoBehaviour
         commandDictionary.Add("ADEE", ActivateSkill6_2);
 
         commandEnterUI = gameObject.GetComponent<CommandEnterUI>();
-        
+
         bgm = GameObject.FindWithTag("BGM");
         bgm.GetComponent<AudioLowPassFilter>();
     }
@@ -68,10 +68,8 @@ public class CommandCheckDict : MonoBehaviour
 
     void Update()
     {
-
         ToggleCommandEnterUI();
         ProcessCommand(inputCommand);
-        //Idling();
 
         if (objCommandEnterUI.activeSelf == true)
         {
@@ -136,6 +134,16 @@ public class CommandCheckDict : MonoBehaviour
             isCommandSystemOpened = false;
 
             Debug.Log("꺼진다!");
+        }
+
+        int index = 0;
+        foreach (Transform child in assortObjCommandKey.transform)
+        {
+            if (index >= 5)  // 6번째 자식부터 비활성화
+            {
+                child.gameObject.SetActive(false);
+            }
+            index++;
         }
     }
 

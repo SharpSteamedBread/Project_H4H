@@ -27,13 +27,15 @@ public class CommandEnterUI : MonoBehaviour
             checkCommandOpenTime += Time.unscaledDeltaTime;
             objTimeSlider.value = (checkCommandOpenTime / commandUIEnableTime);
 
-            if (checkCommandOpenTime >= commandUIEnableTime)
+            if (checkCommandOpenTime >= commandUIEnableTime ||
+                Input.GetKeyUp(KeyCode.LeftShift))
             {
                 isCommandUIOpen = false;
                 Time.timeScale = 1f;
                 CommandCheckDict.isCommandSystemOpened = false;
                 objCommandEnterUI.SetActive(false);
                 checkCommandOpenTime = 0;
+
             }
         }
     }
@@ -59,6 +61,9 @@ public class CommandEnterUI : MonoBehaviour
         animPlayer.SetBool("XAttackCombo1", false);
         animPlayer.SetBool("XAttackCombo2", false);
         animPlayer.SetBool("XAttackCombo3", false);
+
+        animPlayer.ResetTrigger("ZAttackCombo1");
+        animPlayer.ResetTrigger("XAttackCombo1");
 
         animPlayer.SetBool("isMoving", false);
     }

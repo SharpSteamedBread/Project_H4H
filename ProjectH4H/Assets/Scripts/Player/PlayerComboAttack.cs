@@ -16,6 +16,9 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private Button objButtonZ;
     [SerializeField] private Button objButtonX;
 
+    [Header("커맨드 입력창")]
+    [SerializeField] private GameObject objCommandUI;
+
     [Header("결과창 UI")]
     [SerializeField] private GameObject objFailedUI;
 
@@ -37,25 +40,30 @@ public class PlayerComboAttack : MonoBehaviour
 
         //Debug.Log($"isAttack: {animator.GetBool("isAttack")}");
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if(objCommandUI.activeSelf == false)
         {
-            objButtonZ.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
-        }
-        else if (Input.GetKeyUp(KeyCode.Z))
-        {
-            objButtonZ.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
-            PerformComboAttack(KeyCode.Z);
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                objButtonZ.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+            }
+            else if (Input.GetKeyUp(KeyCode.Z))
+            {
+                objButtonZ.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+                PerformComboAttack(KeyCode.Z);
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                objButtonX.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+            }
+            else if (Input.GetKeyUp(KeyCode.X))
+            {
+                objButtonX.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
+                PerformComboAttack(KeyCode.X);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            objButtonX.OnPointerDown(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
-        }
-        else if (Input.GetKeyUp(KeyCode.X))
-        {
-            objButtonX.OnPointerUp(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current));
-            PerformComboAttack(KeyCode.X);
-        }
+       
     }
 
     private void PerformComboAttack(KeyCode keyCode)
@@ -81,37 +89,69 @@ public class PlayerComboAttack : MonoBehaviour
         {
             if (step == 1)
             {
-                animator.SetBool("ZAttackCombo1", true);
+                animator.SetTrigger("ZAttackCombo1");
+                //animator.SetBool("ZAttackCombo1", true);
             }
 
             else if (step == 2)
             {
-                animator.SetBool("ZAttackCombo2", true);
+                animator.SetTrigger("ZAttackCombo1");
+                //animator.SetBool("ZAttackCombo2", true);
             }
 
             else if (step == 3)
             {
-                animator.SetBool("ZAttackCombo3", true);
+                animator.SetTrigger("ZAttackCombo1");
+                //animator.SetBool("ZAttackCombo3", true);
             }
 
         }
 
         else if (keyCode == KeyCode.X)
         {
+            if (step == 1)
+            {
+                animator.SetTrigger("XAttackCombo1");
+                //animator.SetBool("ZAttackCombo1", true);
+            }
+
+            else if (step == 2)
+            {
+                animator.SetTrigger("XAttackCombo1");
+                //animator.SetBool("ZAttackCombo2", true);
+            }
+
+            else if (step == 3)
+            {
+                animator.SetTrigger("XAttackCombo1");
+                //animator.SetBool("ZAttackCombo3", true);
+            }
+
+            /*
             if (step == 1) animator.SetBool("XAttackCombo1", true);
             else if (step == 2) animator.SetBool("XAttackCombo2", true);
             else if (step == 3) animator.SetBool("XAttackCombo3", true);
+            */
         }
     }
 
     private void ResetComboStates()
     {
+        animator.ResetTrigger("ZAttackCombo1");
+        animator.ResetTrigger("ZAttackCombo2");
+        animator.ResetTrigger("ZAttackCombo3");
+        animator.ResetTrigger("XAttackCombo1");
+        animator.ResetTrigger("XAttackCombo2");
+        animator.ResetTrigger("XAttackCombo3");
+
+        /*
         animator.SetBool("ZAttackCombo1", false);
         animator.SetBool("ZAttackCombo2", false);
         animator.SetBool("ZAttackCombo3", false);
         animator.SetBool("XAttackCombo1", false);
         animator.SetBool("XAttackCombo2", false);
         animator.SetBool("XAttackCombo3", false);
+        */
     }
 
     private void ResetAllCombos()
@@ -126,6 +166,7 @@ public class PlayerComboAttack : MonoBehaviour
         if (Time.time - lastInputTime > maxComboDelay)
         {
             ResetAllCombos();
+            lastInputTime = 0;
         }
     }
 
@@ -136,11 +177,13 @@ public class PlayerComboAttack : MonoBehaviour
             comboStep = 3;
         }
 
+        /*
         if (!animator.GetBool("ZAttackCombo1") && !animator.GetBool("ZAttackCombo2") && !animator.GetBool("ZAttackCombo3") &&
             !animator.GetBool("XAttackCombo1") && !animator.GetBool("XAttackCombo2") && !animator.GetBool("XAttackCombo3"))
         {
             comboStep = 0;
         }
+        */
 
         if (animator.GetBool("isAttack") == true)
         {

@@ -7,7 +7,14 @@ public class MapSkipper : MonoBehaviour
 {
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Tab))
+        if(SceneManager.GetActiveScene().name == "Map_Tutorial_2" &&
+            Input.GetKeyUp(KeyCode.Tab))
+        {
+            SceneManager.LoadScene("Map_Stage");
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Map_DialogBeforeBoss" &&
+            Input.GetKeyUp(KeyCode.Tab))
         {
             SceneManager.LoadScene("Map_Midboss");
         }
