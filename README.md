@@ -1,6 +1,7 @@
 # Project_H4H
-졸업 작품으로 제작하게 된 플랫포머 게임입니다. 
+2024 졸업 작품으로 제작하게 된 플랫포머 게임입니다. 
 - 해당 프로젝트에 기획, 프로그래밍으로 참여하였습니다.
+- Github를 이용한 첫 공동 협업 프로젝트입니다.
 
 <br/>
 <br/>
@@ -22,10 +23,40 @@ H4H라는 이름도 Hero for Hero(영웅을 위한 영웅)라는 영문 약자�
 <br/>
 <br/>
 
-## 기획
-- 플레이어에게 부위 파괴 기믹을 할당함으로써 더욱 현실적인 피격감 및 캐릭터 조작 경험을 구현합니다.
-
-<br/>
-
 ## 프로그래밍
 - Spine을 사용한 첫 프로젝트입니다.
+
+<br/>
+<br/>
+
+> ### [Enemy 상태]
+
+MonsterNormalOwnedStates.cs 파일로 Enemy 오브젝트의 상태를 정의하고 EnemyStatus.cs 파일로 오브젝트에 포함된 변수를 조정합니다.
+<br/>
+<br/>
+[코드 링크](https://github.com/SharpSteamedBread/Project_H4H/tree/20241115_0.9.10/ProjectH4H/Assets/Scripts/Enemy/1)
+<br/>
+<br/>
+
+> ### [게임 핵심 시스템: 커맨드]
+
+1) 플레이어가 z 혹은 x키로 적을 공격할 시, 일정 확률로 커맨드 시스템이 등장합니다.
+2) 플레이어는 정해진 커맨드를 입력하여 더 강력한 스킬을 발동할 수 있습니다.
+3) 플레이어는 tab 키를 눌러 커맨드를 캔슬할 수 있습니다.
+4) 커맨드 입력 제한시간이 존재하며, 제한시간을 초과할 시 자동으로 커맨드 입력 모드가 해제됩니다.
+5) 커맨드 입력 중에는 불릿타임이 적용됩니다.
+<br/>
+
+**CommandEnterUI.cs**
+<br/>
+커맨드 UI가 등장하면서 커맨드 캔슬, 제한시간 카운트 및 애니메이션 초기화를 컨트롤하는 코드입니다.
+<br/>
+
+**CommandCheckDict.cs**
+<br/>
+입력할 커맨드에 관한 코드입니다. 커맨드 데이터는 딕셔너리 방식을 사용합니다. 
+<br/>
+
+[코드 링크](https://github.com/SharpSteamedBread/Project_H4H/tree/20241115_0.9.10/ProjectH4H/Assets/Scripts/Command)
+
+<br/>
